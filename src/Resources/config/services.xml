@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <!-- Admin for JS Config -->
+        <service id="sulu_admin_extras.admin"
+                 class="Manuxi\SuluAdminExtrasBundle\Admin\AdminExtrasAdmin"
+                 public="true">
+            <argument>%sulu_admin_extras.config%</argument>
+            <tag name="sulu.admin"/>
+        </service>
+
+        <!-- Color Palette Provider Service -->
+        <service id="sulu_admin_extras.color_palette_provider"
+                 class="Manuxi\SuluAdminExtrasBundle\Service\ColorPaletteProvider"
+                 public="true">
+            <argument type="service" id="translator"/>
+            <argument>%sulu_admin_extras.color_palettes%</argument>
+        </service>
+
+        <!-- Backward compatibility aliases -->
+        <service id="sulu_content_types.color_palette_provider"
+                 alias="sulu_admin_extras.color_palette_provider"
+                 public="true"/>
+
+        <!-- Content Types -->
+        <!-- Property Resolvers -->
+        <service id="sulu_admin_extras.property_resolver.number_with_default"
+                 class="Manuxi\SuluAdminExtrasBundle\Content\Type\NumberWithDefaultPropertyResolver">
+            <tag name="sulu_content.property_resolver"/>
+        </service>
+
+        <service id="sulu_admin_extras.property_resolver.color_select"
+                 class="Manuxi\SuluAdminExtrasBundle\Content\Type\ColorSelectPropertyResolver">
+            <tag name="sulu_content.property_resolver"/>
+        </service>
+
+        <service id="sulu_admin_extras.property_resolver.slider_range"
+                 class="Manuxi\SuluAdminExtrasBundle\Content\Type\SliderRangePropertyResolver">
+            <tag name="sulu_content.property_resolver"/>
+        </service>
+
+    </services>
+</container>

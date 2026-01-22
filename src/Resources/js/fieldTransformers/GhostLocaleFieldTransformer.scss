@@ -1,0 +1,18 @@
+@import 'sulu-admin-bundle/containers/Application/colors.scss';
+
+span[class*="ghost-indicator--"] {
+    display: none !important;
+}
+
+.ghostIndicator {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid $shakespeare;
+    border-radius: 3px;
+    color: $shakespeare;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 9px;
+    text-transform: uppercase;
+    margin-right: 2px;
+}

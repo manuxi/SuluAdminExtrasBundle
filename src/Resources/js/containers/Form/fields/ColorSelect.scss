@@ -1,0 +1,32 @@
+@import "sulu-admin-bundle/containers/Application/colors.scss";
+
+$borderColor: $silver;
+
+.colorSelectOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.colorBox {
+    width: 14px;
+    height: 14px;
+    border: 1px solid $borderColor;
+    flex-shrink: 0;
+}
+
+.colorSelectLabel {
+    flex: 1;
+    position: relative;
+    padding-left: 12px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: -4px;
+        bottom: -4px;
+        width: 1px;
+        background-color: $borderColor;
+    }
+}

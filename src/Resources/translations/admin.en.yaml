@@ -1,0 +1,56 @@
+sulu_admin_extras:
+    # Publish State Indicator
+    draft: "Draft"
+    published: "Published"
+    not_published: "Not published"
+    
+    # Ghost Locale
+    ghost_locale: "Language"
+    
+    # Default color names (used by ColorPaletteProvider)
+    colors:
+        primary: "Primary"
+        secondary: "Secondary"
+        success: "Success"
+        info: "Info"
+        warning: "Warning"
+        danger: "Danger"
+        light: "Light"
+        dark: "Dark"
+        default: "Default"
+        custom-primary: "Custom Primary"
+        custom-secondary: "Custom Secondary"
+
+    # Star Rating
+    rates:
+        default:
+            0: "No rating"
+            1: "1 Star"
+            2: "2 Stars"
+            3: "3 Stars"
+            4: "4 Stars"
+            5: "5 Stars"
+            6: "6 Stars"
+            7: "7 Stars"
+            8: "8 Stars"
+            9: "9 Stars"
+            10: "10 Stars"
+        five:
+            0: "No rating"
+            1: "1 Star"
+            2: "2 Stars"
+            3: "3 Stars"
+            4: "4 Stars"
+            5: "5 Stars"
+        ten:
+            0: "No rating"
+            1: "1 Point"
+            2: "2 Points"
+            3: "3 Points"
+            4: "4 Points"
+            5: "5 Points"
+            6: "6 Points"
+            7: "7 Points"
+            8: "8 Points"
+            9: "9 Points"
+            10: "10 Points"

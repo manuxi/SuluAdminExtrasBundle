@@ -1,0 +1,56 @@
+sulu_admin_extras:
+    # Publish State Indicator
+    draft: "Entwurf"
+    published: "Veröffentlicht"
+    not_published: "Nicht veröffentlicht"
+    
+    # Ghost Locale
+    ghost_locale: "Sprache"
+    
+    # Default color names (used by ColorPaletteProvider)
+    colors:
+        primary: "Primär"
+        secondary: "Sekundär"
+        success: "Erfolg"
+        info: "Info"
+        warning: "Warnung"
+        danger: "Gefahr"
+        light: "Hell"
+        dark: "Dunkel"
+        default: "Standard"
+        custom-primary: "Eigene Primärfarbe"
+        custom-secondary: "Eigene Sekundärfarbe"
+
+    # Star Rating
+    rates:
+        default:
+            0: "Keine Bewertung"
+            1: "1 Stern"
+            2: "2 Sterne"
+            3: "3 Sterne"
+            4: "4 Sterne"
+            5: "5 Sterne"
+            6: "6 Sterne"
+            7: "7 Sterne"
+            8: "8 Sterne"
+            9: "9 Sterne"
+            10: "10 Sterne"
+        five:
+            0: "Keine Bewertung"
+            1: "1 Stern"
+            2: "2 Sterne"
+            3: "3 Sterne"
+            4: "4 Sterne"
+            5: "5 Sterne"
+        ten:
+            0: "Keine Bewertung"
+            1: "1 Punkt"
+            2: "2 Punkte"
+            3: "3 Punkte"
+            4: "4 Punkte"
+            5: "5 Punkte"
+            6: "6 Punkte"
+            7: "7 Punkte"
+            8: "8 Punkte"
+            9: "9 Punkte"
+            10: "10 Punkte"
