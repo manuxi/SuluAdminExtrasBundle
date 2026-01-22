@@ -1,0 +1,113 @@
+# Default configuration for SuluAdminExtrasBundle
+# Can be overridden in project config/packages/sulu_admin_extras.yaml
+
+sulu_admin_extras:
+    publish_state_indicator:
+        # Enable offset when not using ghost_locale_indicator as separate column
+        enable_offset: false
+        # offset_width: 28
+
+    star_rating:
+        # Show numeric value next to stars (e.g. "★★★☆☆ (3/5)")
+        show_value: true
+        # Maximum rating value (5 or 10) - can be overridden per list via XML param
+        max_value: 5
+        # Default rating value
+        default_value: 3
+        # Use star symbols (★⯪☆) in dropdown
+        use_star_symbols: false
+
+    percent_bar:
+        # Show percentage value
+        show_value: true
+        # Position: 'inside' (in bar), 'outside' (right of bar), 'none'
+        value_position: outside
+        # Color of the percentage value (hex)
+        value_color: '#000000'
+        # Maximum value for calculation - can be overridden per list via XML param
+        max_value: 100
+        # Height of the bar in pixels
+        # Under 14px: inside value hidden, border-radius: 2px
+        # Under 10px: border-radius: 1px
+        height: 16
+        # Use gradient colors or single color
+        use_gradient: true
+        # Gradient mode: 'interpolate' (smooth transition) or 'steps' (color bands)
+        gradient_mode: interpolate
+        # Single color when use_gradient is false
+        color: '#52b6ca'
+        # Animate bar on page load
+        animate: true
+
+    color_palettes:
+        # Bootstrap 5 theme colors (buttons, badges, alerts)
+        bootstrap:
+            primary: '#0d6efd'
+            secondary: '#6c757d'
+            success: '#198754'
+            info: '#0dcaf0'
+            warning: '#ffc107'
+            danger: '#dc3545'
+            light: '#f8f9fa'
+            dark: '#212529'
+
+        # Bootstrap text colors
+        bootstrap_text:
+            text-primary: '#0d6efd'
+            text-secondary: '#6c757d'
+            text-success: '#198754'
+            text-danger: '#dc3545'
+            text-warning: '#ffc107'
+            text-info: '#0dcaf0'
+            text-light: '#f8f9fa'
+            text-dark: '#212529'
+            text-body: '#212529'
+            text-muted: '#6c757d'
+            text-white: '#ffffff'
+            text-black-50: 'rgba(0,0,0,0.5)'
+            text-white-50: 'rgba(255,255,255,0.5)'
+
+        # Bootstrap background colors
+        bootstrap_bg:
+            bg-primary: '#0d6efd'
+            bg-secondary: '#6c757d'
+            bg-success: '#198754'
+            bg-info: '#0dcaf0'
+            bg-warning: '#ffc107'
+            bg-danger: '#dc3545'
+            bg-light: '#f8f9fa'
+            bg-dark: '#212529'
+            bg-body: '#ffffff'
+            bg-white: '#ffffff'
+            bg-transparent: 'transparent'
+
+        # Bootstrap emphasis colors
+        bootstrap_emphasis:
+            primary: '#0d6efd'
+            primary-emphasis: '#0a58ca'
+            secondary: '#6c757d'
+            secondary-emphasis: '#565e64'
+            success: '#198754'
+            success-emphasis: '#146c43'
+            danger: '#dc3545'
+            danger-emphasis: '#b02a37'
+            warning: '#ffc107'
+            warning-emphasis: '#d9a406'
+            info: '#0dcaf0'
+            info-emphasis: '#0a9fc0'
+            light: '#f8f9fa'
+            light-emphasis: '#d3d4d5'
+            dark: '#212529'
+            dark-emphasis: '#373b3e'
+
+        # Custom palette example
+        custom:
+            custom-primary: '#0e7c7b'
+            custom-secondary: '#17bebb'
+
+        # Status colors (for badges, alerts)
+        status:
+            success: '#198754'
+            warning: '#ffc107'
+            danger: '#dc3545'
+            info: '#0dcaf0'

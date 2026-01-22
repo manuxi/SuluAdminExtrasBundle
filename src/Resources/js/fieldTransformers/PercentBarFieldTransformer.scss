@@ -1,0 +1,70 @@
+@import 'sulu-admin-bundle/containers/Application/colors.scss';
+
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+}
+
+.container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.barBackground {
+    flex: 1;
+    background-color: $mercury;
+    overflow: hidden;
+    min-width: 60px;
+    position: relative;
+}
+
+.barFill {
+    height: 100%;
+    background-position: left center;
+    display: block;
+}
+
+.animated .barFill {
+    animation: fillBar 0.8s ease-out;
+}
+
+.gradientSmooth {
+    background-image: linear-gradient(
+                    90deg,
+                    $persianRed 0%,
+                    #ff8c00 20%,
+                    $gold 45%,
+                    $gold 55%,
+                    #80ff00 80%,
+                    $mantis 100%
+    );
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.valueInside {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    z-index: 1;
+    line-height: 1.1;
+}
+
+.valueOutside {
+    font-size: 12px;
+    min-width: 36px;
+    text-align: right;
+    white-space: nowrap;
+}

@@ -1,0 +1,76 @@
+# Default configuration for SuluAdminExtrasBundle
+# Can be overridden in project config/packages/sulu_admin_extras.yaml
+
+sulu_admin_extras:
+    color_palettes:
+        # Bootstrap 5 theme colors (buttons, badges, alerts)
+        bootstrap:
+            primary: '#0d6efd'
+            secondary: '#6c757d'
+            success: '#198754'
+            info: '#0dcaf0'
+            warning: '#ffc107'
+            danger: '#dc3545'
+            light: '#f8f9fa'
+            dark: '#212529'
+
+        # Bootstrap text colors
+        bootstrap_text:
+            text-primary: '#0d6efd'
+            text-secondary: '#6c757d'
+            text-success: '#198754'
+            text-danger: '#dc3545'
+            text-warning: '#ffc107'
+            text-info: '#0dcaf0'
+            text-light: '#f8f9fa'
+            text-dark: '#212529'
+            text-body: '#212529'
+            text-muted: '#6c757d'
+            text-white: '#ffffff'
+            text-black-50: 'rgba(0,0,0,0.5)'
+            text-white-50: 'rgba(255,255,255,0.5)'
+
+        # Bootstrap background colors
+        bootstrap_bg:
+            bg-primary: '#0d6efd'
+            bg-secondary: '#6c757d'
+            bg-success: '#198754'
+            bg-info: '#0dcaf0'
+            bg-warning: '#ffc107'
+            bg-danger: '#dc3545'
+            bg-light: '#f8f9fa'
+            bg-dark: '#212529'
+            bg-body: '#ffffff'
+            bg-white: '#ffffff'
+            bg-transparent: 'transparent'
+
+        # Bootstrap emphasis colors
+        bootstrap_emphasis:
+            primary: '#0d6efd'
+            primary-emphasis: '#0a58ca'
+            secondary: '#6c757d'
+            secondary-emphasis: '#565e64'
+            success: '#198754'
+            success-emphasis: '#146c43'
+            danger: '#dc3545'
+            danger-emphasis: '#b02a37'
+            warning: '#ffc107'
+            warning-emphasis: '#d9a406'
+            info: '#0dcaf0'
+            info-emphasis: '#0a9fc0'
+            light: '#f8f9fa'
+            light-emphasis: '#d3d4d5'
+            dark: '#212529'
+            dark-emphasis: '#373b3e'
+
+        # Custom palette example
+        custom:
+            custom-primary: '#0e7c7b'
+            custom-secondary: '#17bebb'
+
+        # Status colors (for badges, alerts)
+        status:
+            success: '#198754'
+            warning: '#ffc107'
+            danger: '#dc3545'
+            info: '#0dcaf0'

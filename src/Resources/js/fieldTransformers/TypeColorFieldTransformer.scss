@@ -1,0 +1,10 @@
+@import 'sulu-admin-bundle/containers/Application/colors.scss';
+
+.typeDot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    border: 2px solid $white;
+}

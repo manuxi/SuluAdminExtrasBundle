@@ -1,0 +1,61 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # Admin for JS Config
+    Manuxi\SuluAdminExtrasBundle\Admin\AdminExtrasAdmin:
+        arguments:
+            $config: '%sulu_admin_extras.config%'
+        tags:
+            - { name: 'sulu.admin' }
+        public: true
+
+    # Color Palette Provider Service
+    Manuxi\SuluAdminExtrasBundle\Service\ColorPaletteProvider:
+        arguments:
+            $palettes: '%sulu_admin_extras.color_palettes%'
+        public: true
+
+    # Backward compatibility aliases
+    sulu_admin_extras.color_palette_provider:
+        alias: Manuxi\SuluAdminExtrasBundle\Service\ColorPaletteProvider
+        public: true
+
+    sulu_content_types.color_palette_provider:
+        alias: Manuxi\SuluAdminExtrasBundle\Service\ColorPaletteProvider
+        public: true
+
+    # Property Resolvers
+    Manuxi\SuluAdminExtrasBundle\Content\Type\NumberWithDefaultPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'number_with_default', alias: 'number_with_default' }
+
+    Manuxi\SuluAdminExtrasBundle\Content\Type\ColorSelectPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'color_select', alias: 'color_select' }
+
+    Manuxi\SuluAdminExtrasBundle\Content\Type\SliderRangePropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'slider_range', alias: 'slider_range' }
+
+    Manuxi\SuluAdminExtrasBundle\Content\Type\StarRatingPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'star_rating', alias: 'star_rating' }
+
+    # Star Rating Service (Provider)
+    Manuxi\SuluAdminExtrasBundle\Service\StarRatingProvider:
+        arguments:
+            $maxValue: '%sulu_admin_extras.star_rating.max_value%'
+            $defaultValue: '%sulu_admin_extras.star_rating.default_value%'
+            $useStarSymbols: '%sulu_admin_extras.star_rating.use_star_symbols%'
+        public: true
+
+    sulu_admin_extras.star_rating_provider:
+        alias: Manuxi\SuluAdminExtrasBundle\Service\StarRatingProvider
+        public: true
+
+    sulu_admin_extras.rating_selection:
+        alias: Manuxi\SuluAdminExtrasBundle\Service\StarRatingProvider
+        public: true
