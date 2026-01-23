@@ -1,12 +1,47 @@
 # Color Select (Farbauswahl)
 
-Der Content Type **Color Select** ermöglicht es Benutzern, eine Farbe aus einer Dropdown-Liste auszuwählen. Das Dropdown zeigt eine visuelle Vorschau jeder Farbe (Farbcode/Box) neben dem Namen an.
+Der Content Type **Color Select** ermöglicht es, einen Wert aus einer Dropdown-Liste auszuwählen. Das Dropdown zeigt eine visuelle Vorschau jeder Farbe (Farbcode/Box) neben dem Namen an.
 
 ---
 
-## Verwendung (Formular XML)
+## Verwendung  in Templates (XML)
 
-Verwenden Sie den Typ `color_select`. Dieser benötigt eine Liste von `values` (Optionen). Sie können diese manuell angeben oder, was komfortabler ist, über den `ColorPaletteProvider` laden.
+Den Typ `color_select` benötigt eine Liste von `values` (Optionen). Diese können manuell angeben werden:
+
+**Wichtig:** Die Farbe wird im value-Attribut im Format `"key:farbe"` kodiert (z.B. `"primary:#0d6efd"`).
+
+```xml
+<property name="button_color" type="color_select">
+    <meta>
+        <title lang="de">Button-Farbe</title>
+        <title lang="en">Button Color</title>
+    </meta>
+    <params>
+        <param name="values" type="collection">
+            <param name="primary" value="primary:#0d6efd">
+                <meta>
+                    <title lang="en">Primary (Blue)</title>
+                    <title lang="de">Primärfarbe (Blau)</title>
+                </meta>
+            </param>
+            <param name="secondary" value="secondary:#6c757d">
+                <meta>
+                    <title lang="en">Secondary (Gray)</title>
+                    <title lang="de">Sekundärfarbe (Grau)</title>
+                </meta>
+            </param>
+            <param name="success" value="success:#198754">
+                <meta>
+                    <title lang="en">Success (Green)</title>
+                    <title lang="de">Erfolg (Grün)</title>
+                </meta>
+            </param>
+        </param>
+    </params>
+</property>
+```
+
+Komfortabler ist es allerdings, die Farben in yaml zu konfigurieren und über den `ColorPaletteProvider`-Service zu laden.
 
 ```xml
 <property name="theme_color" type="color_select">
@@ -15,7 +50,6 @@ Verwenden Sie den Typ `color_select`. Dieser benötigt eine Liste von `values` (
         <title lang="de">Themenfarbe</title>
     </meta>
     <params>
-        <!-- Option 1: Laden über ColorPaletteProvider (Empfohlen) -->
         <param name="values" type="expression"
                value="service('sulu_admin_extras.color_palette_provider').getValues('bootstrap')"/>
         
