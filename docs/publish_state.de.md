@@ -2,6 +2,8 @@
 
 Der **Publish State Indicator** ist ein List Transformer, der den Workflow-Status einer Entität (z.B. Entwurf vs. Veröffentlicht) mittels eines farbigen Punktes darstellt.
 
+![img.png](img/publish_state_indicator.de.png)
+
 ---
 
 ## Verwendung (Listen XML)

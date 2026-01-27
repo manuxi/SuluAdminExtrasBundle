@@ -2,6 +2,10 @@
 
 The **Color Select** Content Type allows users to select a color from a dropdown list. The dropdown shows a visual preview of each color (the hex code) alongside its name.
 
+![img.png](img/color_select1.de.png)
+
+![img.png](img/color_select2.de.png)
+
 ---
 
 ## Usage (Form XML)

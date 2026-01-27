@@ -2,6 +2,8 @@
 
 The **Percent Bar** is a List Transformer that visualizes a numeric value (0-100) as a progress bar in the administration list view.
 
+![img.png](img/percent_bar.de.png)
+
 ---
 
 ## Usage (List XML)

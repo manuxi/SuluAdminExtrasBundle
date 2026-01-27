@@ -1,6 +1,6 @@
 # Star Rating (Bewertung)
 
-Das **Star Rating** Feature ermöglicht die Verwaltung und Visualisierung von Bewertungen in Ihrer Sulu-Applikation. Es besteht aus zwei Komponenten:
+Das **Star Rating** Feature ermöglicht die Verwaltung und Visualisierung von Bewertungen in Sulu-Applikationen. Es besteht aus zwei Komponenten:
 1. **Content Type**: Zum Zuweisen von Bewertungen in Formularen.
 2. **List Transformer**: Zur Anzeige von Bewertungen in der Listenansicht.
 
@@ -8,7 +8,11 @@ Das **Star Rating** Feature ermöglicht die Verwaltung und Visualisierung von Be
 
 ## 1. Content Type (Eingabe)
 
-Verwenden Sie den Typ `star_rating` in Ihrer Formular-XML-Definition, um Redakteuren das Setzen einer Bewertung zu ermöglichen.
+Den Typ `star_rating` in der Formular-XML-Definition wird verwendet, um das Setzen einer Bewertung zu ermöglichen.
+
+![img.png](img/star_rating1.de.png)
+
+![img.png](img/star_rating2.de.png)
 
 ### Verwendung
 
@@ -24,19 +28,21 @@ Verwenden Sie den Typ `star_rating` in Ihrer Formular-XML-Definition, um Redakte
 </property>
 ```
 > [!IMPORTANT]
-> Sie **müssen** den oben stehenden Ausdruck verwenden, um `max_value` vom Service zu laden. `value="5"` hardzucodieren wird nicht empfohlen, wenn Sie die globale Konfiguration nutzen möchten.
+> Der oben stehende Ausdruck **muss** verwendet werden, um `max_value` vom Service zu laden. `value="5"` hardzucodieren wird nicht empfohlen, wenn die globale Konfiguration genutzt werden soll.
 
 ### Parameter
 
-| Name        | Typ     | Standard | Beschreibung |
-|-------------|---------|----------|--------------|
-| `max_value` | Integer | `5`      | Die maximale Anzahl der Sterne (Skala). Üblicherweise werden `5` oder `10` unterstützt. |
+| Name        | Typ     | Standard | Beschreibung                                                              |
+|-------------|---------|----------|---------------------------------------------------------------------------|
+| `max_value` | Integer | `5`      | Die maximale Anzahl der Sterne (Skala). `5` oder `10` werden unterstützt. |
 
 ---
 
 ## 2. List Transformer (Listenansicht)
 
-Verwenden Sie den Transformer `star_rating` in Ihrer Listen-XML, um die Bewertung als Sterne zu visualisieren.
+Der Transformer `star_rating` in der Listen-XML wird verwendet, um die Bewertung als Sterne zu visualisieren.
+
+![img.png](img/star_rating3.de.png)
 
 ### Verwendung
 
@@ -64,7 +70,7 @@ Verwenden Sie den Transformer `star_rating` in Ihrer Listen-XML, um die Bewertun
 
 ## 3. Globale Konfiguration
 
-Sie können projektweite Standardwerte in `config/packages/sulu_admin_extras.yaml` festlegen. Diese werden verwendet, wenn im XML keine spezifischen Parameter definiert sind.
+Projektweite Standardwerte  können in `config/packages/sulu_admin_extras.yaml` festgelegt werden. Diese werden verwendet, wenn im XML keine spezifischen Parameter definiert sind.
 
 ```yaml
 sulu_admin_extras:

@@ -2,11 +2,13 @@
 
 Der Content Type **Slider Range** bietet ein visuelles Schieberegler-Eingabefeld zur Auswahl numerischer Werte innerhalb eines definierten Bereichs.
 
+![img.png](img/slider_range.de.png)
+
 ---
 
 ## Verwendung (Formular XML)
 
-Verwenden Sie den Typ `slider_range` in Ihren Eigenschaftsdefinitionen.
+Der Typ `slider_range` wird folgendermaßen verwendet:
 
 ```xml
 <property name="opacity" type="slider_range">

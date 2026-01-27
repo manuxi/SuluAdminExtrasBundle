@@ -2,6 +2,8 @@
 
 The **Publish State Indicator** is a List Transformer that displays the workflow status of an entity (e.g., Draft vs. Published) using a colored dot.
 
+![img.png](img/publish_state_indicator.de.png)
+
 ---
 
 ## Usage (List XML)
