@@ -52,6 +52,7 @@ class SuluAdminExtrasExtension extends Extension implements PrependExtensionInte
             'star_rating' => $config['star_rating'] ?? [],
             'percent_bar' => $config['percent_bar'] ?? [],
             'type_color' => $config['type_color'] ?? [],
+            'palettes' => $this->normalizePalettes($palettes),
         ]);
 
         $container->setParameter('sulu_admin_extras.star_rating.max_value', $config['star_rating']['max_value']);

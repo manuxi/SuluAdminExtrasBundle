@@ -2,6 +2,8 @@
 
 The **Number With Default** Content Type is a standard number input field that allows defining a fallback value. This value is used/saved if the editor leaves the field empty.
 
+![img.png](img/number_with_default.de.png)
+
 ---
 
 ## Usage (Form XML)

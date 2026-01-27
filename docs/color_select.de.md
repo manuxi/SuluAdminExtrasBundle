@@ -2,6 +2,10 @@
 
 Der Content Type **Color Select** ermöglicht es, einen Wert aus einer Dropdown-Liste auszuwählen. Das Dropdown zeigt eine visuelle Vorschau jeder Farbe (Farbcode/Box) neben dem Namen an.
 
+![img.png](img/color_select1.de.png)
+
+![img.png](img/color_select2.de.png)
+
 ---
 
 ## Verwendung  in Templates (XML)

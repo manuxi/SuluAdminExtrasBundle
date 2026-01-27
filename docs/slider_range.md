@@ -2,6 +2,8 @@
 
 The **Slider Range** Content Type provides a visual slider input for selecting numeric values within a defined range.
 
+![img.png](img/slider_range.de.png)
+
 ---
 
 ## Usage (Form XML)

@@ -10,6 +10,10 @@ The **Star Rating** feature allows you to manage and visualize ratings in your S
 
 Use the `star_rating` type in your form XML definition to allow content managers to set a rating.
 
+![img.png](img/star_rating1.de.png)
+
+![img.png](img/star_rating2.de.png)
+
 ### Usage
 
 ```xml
@@ -37,6 +41,8 @@ Use the `star_rating` type in your form XML definition to allow content managers
 ## 2. List Transformer (Display)
 
 Use the `star_rating` transformer in your list XML to visualize the rating as stars.
+
+![img.png](img/star_rating3.de.png)
 
 ### Usage
 

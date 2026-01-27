@@ -2,6 +2,8 @@
 
 Der Content Type **Number With Default** ist ein Standard-Zahleingabefeld, das die Definition eines Fallback-Wertes ermöglicht. Dieser Wert wird verwendet/gespeichert, wenn der Redakteur das Feld leer lässt.
 
+![img.png](img/number_with_default.de.png)
+
 ---
 
 ## Verwendung (Formular XML)
