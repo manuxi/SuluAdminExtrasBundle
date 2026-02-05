@@ -2,6 +2,8 @@
 
 Der **Ghost Locale Indicator** ist ein List Transformer, der visualisiert, ob Inhalt in der aktuellen Sprache existiert oder ob es sich um einen "Ghost" (Fallback aus einer anderen Sprache) handelt.
 
+![Ghost Locale](img/ghost_locale.png)
+
 ---
 
 ## Verwendung (Listen XML)
