@@ -13,7 +13,7 @@ This bundle combines and modernizes functionality from the former `SuluContentTy
 ## ✨ Features
 
 ### Content Types (Form Fields)
-- **[Colour Select](docs/colour_select.md)** - Colour selection with colour display for better visualisation
+- **[Colour Select](docs/color_select.md)** - Colour selection with colour display for better visualisation
 - **[Number With Default](docs/number_with_default.md)** - Number with storable default value
 - **[Slider Range](docs/slider_range.md)** - Slider
 - **[Star Rating](docs/star_rating.md)** - Selection field for star rating
