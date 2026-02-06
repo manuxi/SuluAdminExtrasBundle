@@ -2,15 +2,15 @@
 
 td[class*="cell--"] {
     height: 50px;
+    div[class*="publish-indicator--"] {
+        display: none !important;
+    }
+
+/*    span[class*="ghost-indicator--"] {
+        display: none !important;
+    }*/
 }
 
-div[class*="publish-indicator--"] {
-    display: none !important;
-}
-
-span[class*="ghost-indicator--"] {
-    display: none !important;
-}
 
 .stateIndicator {
     display: inline-block;

@@ -1,7 +1,9 @@
 @import 'sulu-admin-bundle/containers/Application/colors.scss';
 
-span[class*="ghost-indicator--"] {
-    display: none !important;
+td[class*="cell--"] {
+    span[class*="ghost-indicator--"] {
+        display: none !important;
+    }
 }
 
 .ghostIndicator {
