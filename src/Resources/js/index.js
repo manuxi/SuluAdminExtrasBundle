@@ -16,6 +16,7 @@ import NumberWithDefault from './containers/Form/fields/NumberWithDefault';
 import SliderRange from './containers/Form/fields/SliderRange';
 import StarRatingInput from './containers/Form/fields/StarRatingInput';
 import StarRatingSelect from './containers/Form/fields/StarRatingSelect';
+import DateTimeWithDefault from './containers/Form/fields/DateTimeWithDefault';
 
 initializer.addUpdateConfigHook('sulu_admin_extras', (config: Object, initialized: boolean) => {
     if (initialized) {
@@ -64,6 +65,7 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config: Object, initialize
     fieldRegistry.add('slider_range', SliderRange);
     fieldRegistry.add('star_rating', StarRatingInput);
     fieldRegistry.add('star_rating_select', StarRatingSelect);
+    fieldRegistry.add('datetime_with_default', DateTimeWithDefault);
 });
 
 // Export for manual usage
