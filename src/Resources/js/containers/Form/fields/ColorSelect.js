@@ -1,22 +1,33 @@
 // @flow
 import React from 'react';
-import {observer} from 'mobx-react';
-import {SingleSelect} from 'sulu-admin-bundle/components';
-import type {FieldTypeProps} from 'sulu-admin-bundle/types';
-import {toJS} from 'mobx';
+import { observer } from 'mobx-react';
+import { SingleSelect } from 'sulu-admin-bundle/components';
+import type { FieldTypeProps } from 'sulu-admin-bundle/types';
+import { toJS } from 'mobx';
 import colorSelectStyles from './ColorSelect.scss';
 
 @observer
 class ColorSelect extends React.Component<FieldTypeProps<string>> {
     handleChange = (value: string | number) => {
-        const {onChange, onFinish} = this.props;
+        const { onChange, onFinish } = this.props;
         onChange(value);
         onFinish();
     };
 
+    componentDidMount() {
+        const { onChange, value, schemaOptions } = this.props;
+        const defaultValue = schemaOptions?.default_value?.value || schemaOptions?.default_value;
+
+        if ((value === undefined || value === null) && defaultValue) {
+            onChange(defaultValue);
+        }
+    }
+
     render() {
-        const {dataPath, error, value, schemaOptions} = this.props;
+        const { dataPath, error, value, schemaOptions } = this.props;
         const values: Array<any> = toJS(schemaOptions?.values?.value || []);
+        const defaultValue = schemaOptions?.default_value?.value || schemaOptions?.default_value;
+        const currentValue = value !== undefined && value !== null ? value : defaultValue;
 
         const selectValues = values.map((item) => {
             const itemValue = item.value || '';
@@ -31,7 +42,7 @@ class ColorSelect extends React.Component<FieldTypeProps<string>> {
                     <div className={colorSelectStyles.colorSelectOption}>
                         <span
                             className={colorSelectStyles.colorBox}
-                            style={{backgroundColor: color}}
+                            style={{ backgroundColor: color }}
                         />
                         <span className={colorSelectStyles.colorSelectLabel}>{displayName}</span>
                     </div>
@@ -42,7 +53,7 @@ class ColorSelect extends React.Component<FieldTypeProps<string>> {
         return (
             <SingleSelect
                 id={dataPath}
-                value={value}
+                value={currentValue}
                 onChange={this.handleChange}
                 valid={!error}
             >
