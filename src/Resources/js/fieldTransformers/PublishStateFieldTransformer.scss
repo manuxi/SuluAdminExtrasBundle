@@ -1,16 +1,15 @@
 @import 'sulu-admin-bundle/containers/Application/colors.scss';
 
+/* Only hide publish/ghost indicators in list table cells, NOT in form toolbars */
 td[class*="cell--"] {
-    height: 50px;
     div[class*="publish-indicator--"] {
         display: none !important;
     }
 
-/*    span[class*="ghost-indicator--"] {
+    span[class*="ghost-indicator--"] {
         display: none !important;
-    }*/
+    }
 }
-
 
 .stateIndicator {
     display: inline-block;
