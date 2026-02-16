@@ -4,32 +4,30 @@
 ![GitHub Tag](https://img.shields.io/github/v/tag/manuxi/SuluAdminExtrasBundle)
 ![Supports Sulu 3.0 or later](https://img.shields.io/badge/Sulu->=3.0-0088cc?color=00b2df)
 
-> **English** | [🇩🇪 Deutsch](README.de.md)
-
 A bundle for **Sulu CMS** that adds useful **Content Types** (Form Fields) and **List Transformers** (Visualizations) to the Admin UI.
 
 This bundle combines and modernizes functionality from the former `SuluContentTypesBundle` and `SuluTweaksBundle` for Sulu 3.0.
 
-## ✨ Features
+**English** | [🇩🇪 Deutsch](README.de.md)
 
-### Content Types (Form Fields)
-- **[Colour Select](docs/color_select.md)** - Colour selection with colour display for better visualisation
-- **[Number With Default](docs/number_with_default.md)** - Number with storable default value
-- **[Slider Range](docs/slider_range.md)** - Slider
-- **[Star Rating](docs/star_rating.md)** - Selection field for star rating
+---
 
-### List Transformers (list view)
-- **[Percent Bar](docs/percent_bar.md)** - Percentage bar
-- **[Publish State](docs/publish_state.md)** - Status display in separate column (default is hidden)
-- **[Ghost Locale](docs/ghost_locale.md)** - Language status in separate column (hidden by default)
-- **[Type Colour](docs/type_colour.md)** - Colour display for colour categorisation
-- **[Star Rating](docs/star_rating.md)** - Star rating
+## 📚 Features & Documentation
 
-## 📋 Requirements
+Detailed documentation for each feature can be found in the `docs/` folder:
 
-- PHP 8.2+
-- Sulu CMS 3.0+
-- Symfony 6.4+ / 7.0+
+### Content Types
+*   **[Colour Select](docs/color_select.md)** - Colour selection with colour display for better visualisation
+*   **[Number With Default](docs/number_with_default.md)** - Number with storable default value
+*   **[Slider Range](docs/slider_range.md)** - Slider
+*   **[Star Rating](docs/star_rating.md)** - Selection field for star rating
+
+### List Transformers
+*   **[Percent Bar](docs/percent_bar.md)** - Percentage bar
+*   **[Publish State](docs/publish_state.md)** - Status display in separate column (default is hidden)
+*   **[Ghost Locale](docs/ghost_locale.md)** - Language status in separate column (hidden by default)
+*   **[Type Colour](docs/type_colour.md)** - Colour display for colour categorisation
+*   **[Star Rating](docs/star_rating.md)** - Star rating
 
 ---
 
@@ -37,12 +35,12 @@ This bundle combines and modernizes functionality from the former `SuluContentTy
 
 **Requirement:** Sulu CMS 3.0+
 
-### Step 1: Install via Composer
+### 1. Install via Composer
 ```bash
 composer require manuxi/sulu-admin-extras-bundle
 ```
 
-### Step 2: Register Bundle
+### 2. Register Bundle
 Add to `config/bundles.php`:
 ```php
 return [
@@ -50,7 +48,7 @@ return [
 ];
 ```
 
-### Step 3: Admin Assets Setup
+### 3. Admin Assets Setup (Crucial Step)
 To load the JavaScript components in the Sulu Admin, you must adjust your project's asset configuration.
 
 **A) Update `assets/admin/package.json`**
@@ -75,24 +73,16 @@ import 'sulu-admin-extras-bundle';
 Run the following commands to compile the admin assets:
 ```bash
 cd assets/admin
-npm install --save classnames
 npm install
 npm run build
 ```
 
 ---
-## 🧶 Configuration
 
-Create `config/packages/sulu_admin_extras.yaml`
-(or copy it from the bundle: vendor/manuxi/sulu-admin-extras-bundle/src/Resources/config/packages/sulu_admin_extras.yaml)
-and modify it to your needs.
+## ⚙️ Configuration
+Copy the default configuration file:
+```bash
+cp vendor/manuxi/sulu-admin-extras-bundle/src/Resources/config/default.yaml config/packages/sulu_admin_extras.yaml
+```
 
-See detailed configuration options in the detailed documentations in docs/ (linked above under features).
-
-## 👩‍🍳 Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
-## 📄 License
-
-This bundle is released under the [MIT License](LICENSE).
+See [docs](docs/) for detailed configuration options.

@@ -43,7 +43,6 @@ class ColorPaletteProvider
 
         foreach ($this->palettes[$paletteName] as $key => $config) {
             $color = $config['color'] ?? '#cccccc';
-            //$transKey = $config['name'] ?? sprintf('sulu_admin_extras.colors.%s', $key);
             $transKey = $config['name'] ?? sprintf('sulu_admin_extras.color_palettes.%s.%s', $paletteName, $key);
 
             $values[] = [
@@ -98,7 +97,6 @@ class ColorPaletteProvider
         }
 
         $config = $this->palettes[$paletteName][$key];
-        //$transKey = $config['name'] ?? sprintf('sulu_admin_extras.colors.%s', $key);
         $transKey = $config['name'] ?? sprintf('sulu_admin_extras.color_palettes.%s.%s', $paletteName, $key);
 
         return $this->translator->trans($transKey, [], 'admin');

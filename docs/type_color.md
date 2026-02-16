@@ -344,11 +344,3 @@ bin/adminconsole sulu:admin:build
 **Check:**
 - Palette parameter value matches exactly (case-sensitive)
 - No typos in palette name
-
----
-
-## See Also
-
-- [ColorPaletteProvider](./COLOR_PALETTE_PROVIDER.md) - Backend service for palette access
-- [ColorSelect Content Type](./COLOR_SELECT.md) - Form field for color selection
-- [Architecture Overview](./ARCHITECTURE.md) - Bundle architecture

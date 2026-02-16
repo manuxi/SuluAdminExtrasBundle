@@ -1,6 +1,7 @@
 # Ghost Locale Indicator (Sprachstatus)
 
 Der **Ghost Locale Indicator** ist ein List Transformer, der visualisiert, ob Inhalt in der aktuellen Sprache existiert oder ob es sich um einen "Ghost" (Fallback aus einer anderen Sprache) handelt.
+Er ersetzt den Sulu-eigenen **Ghost Locale Indicator** (dieser wird ausgeblendet) und platziert ihn in einer eigenen Spalte.
 
 ![Ghost Locale](img/ghost_locale.png)
 

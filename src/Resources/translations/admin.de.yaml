@@ -7,7 +7,23 @@ sulu_admin_extras:
     # Ghost Locale
     ghost_locale: "Sprache"
     
-    # Default color names (used by ColorPaletteProvider)
+    # Color Palettes (Neue Struktur)
+    color_palettes:
+        event_types:
+            default: "Standard"
+            primary: "Primär"
+            secondary: "Sekundär"
+        bootstrap:
+            primary: "Primär"
+            secondary: "Sekundär"
+            success: "Erfolg"
+            info: "Info"
+            warning: "Warnung"
+            danger: "Gefahr"
+            light: "Hell"
+            dark: "Dunkel"
+
+    # Default color names (Backward Compatibility)
     colors:
         primary: "Primär"
         secondary: "Sekundär"

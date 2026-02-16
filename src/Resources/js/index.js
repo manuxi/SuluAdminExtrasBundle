@@ -1,5 +1,3 @@
-console.log('SuluAdminExtrasBundle LOADED');
-
 import { initializer } from 'sulu-admin-bundle/services';
 import fieldRegistry from 'sulu-admin-bundle/containers/Form/registries/fieldRegistry';
 import listFieldTransformerRegistry from 'sulu-admin-bundle/containers/List/registries/listFieldTransformerRegistry';

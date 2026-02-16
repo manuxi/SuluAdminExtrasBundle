@@ -1,6 +1,6 @@
 # Number With Default (Zahl mit Standardwert)
 
-Der Content Type **Number With Default** ist ein Standard-Zahleingabefeld, das die Definition eines Fallback-Wertes ermöglicht. Dieser Wert wird verwendet/gespeichert, wenn der Redakteur das Feld leer lässt.
+Der Content Type **Number With Default** ist ein Standard-Zahleingabefeld, das die Definition eines Fallback-Wertes ermöglicht. Dieser Wert wird verwendet/gespeichert, wenn das Feld leer gelassen wird.
 
 ![img.png](img/number_with_default.de.png)
 
@@ -8,7 +8,7 @@ Der Content Type **Number With Default** ist ein Standard-Zahleingabefeld, das d
 
 ## Verwendung (Formular XML)
 
-Verwenden Sie den Typ `number_with_default` in Ihren Eigenschaftsdefinitionen.
+Verwenden des Typs `number_with_default` als Property.
 
 ```xml
 <property name="priority" type="number_with_default">

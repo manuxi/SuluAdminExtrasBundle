@@ -70,7 +70,7 @@ Der Transformer `star_rating` in der Listen-XML wird verwendet, um die Bewertung
 
 ## 3. Globale Konfiguration
 
-Projektweite Standardwerte  können in `config/packages/sulu_admin_extras.yaml` festgelegt werden. Diese werden verwendet, wenn im XML keine spezifischen Parameter definiert sind.
+Projektweite Standardwerte können in `config/packages/sulu_admin_extras.yaml` festgelegt werden. Diese werden verwendet, wenn im XML keine spezifischen Parameter definiert sind.
 
 ```yaml
 sulu_admin_extras:

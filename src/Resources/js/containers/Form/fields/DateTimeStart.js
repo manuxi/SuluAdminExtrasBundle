@@ -43,7 +43,7 @@ class DateTimeStart extends AbstractDateTime {
         }
     }
 
-    handleChange = (value: ?Date) => {
+    handleChange = (value) => {
         const { onChange, onFinish } = this.props;
         const stringValue = value ? moment(value).format('YYYY-MM-DDTHH:mm:ss') : undefined;
 
@@ -58,7 +58,7 @@ class DateTimeStart extends AbstractDateTime {
         onFinish();
     };
 
-    @action validateTime(value: ?string) {
+    @action validateTime(value) {
         if (!value || !this.settings) {
             this.isValidTime = true;
             this.timeErrorMessage = null;
@@ -77,7 +77,7 @@ class DateTimeStart extends AbstractDateTime {
         }
     }
 
-    getDayKey(date: moment$Moment): string {
+    getDayKey(date) {
         const mapping = {
             1: 'monday',
             2: 'tuesday',
@@ -90,7 +90,7 @@ class DateTimeStart extends AbstractDateTime {
         return mapping[date.isoWeekday()] || 'monday';
     }
 
-    isTimeValid(date: moment$Moment): boolean {
+    isTimeValid(date) {
         try {
             if (!this.settings) return true;
 
@@ -119,7 +119,7 @@ class DateTimeStart extends AbstractDateTime {
         }
     }
 
-    findNextAvailableSlot(startDate: moment$Moment): ?moment$Moment {
+    findNextAvailableSlot(startDate) {
         if (!this.settings) return null;
 
         let date = startDate.clone();
@@ -140,7 +140,7 @@ class DateTimeStart extends AbstractDateTime {
         return null;
     }
 
-    afterChange(value: ?string) {
+    afterChange(value) {
         const { formInspector, schemaOptions } = this.props;
 
         const endDateField = schemaOptions?.end_date_field?.value || 'end';
@@ -166,11 +166,20 @@ class DateTimeStart extends AbstractDateTime {
     }
 
     render() {
-        const { error } = this.props;
+        const { error, schemaOptions } = this.props;
+        const step = parseInt(schemaOptions?.step?.value || 15, 10);
+
+        const options = {
+            timeConstraints: {
+                minutes: {
+                    step: step
+                }
+            }
+        };
 
         return (
             <div>
-                {this.renderDatePicker({}, !error)}
+                {this.renderDatePicker(options, !error)}
                 {!this.isValidTime && (
                     <div style={{ color: '#ea9c00', fontSize: '10px', marginTop: '5px' }}>
                         <span className="fa fa-exclamation-triangle" style={{ marginRight: '5px' }}></span>

@@ -23,6 +23,10 @@ services:
         alias: Manuxi\SuluAdminExtrasBundle\Service\ColorPaletteProvider
         public: true
 
+    sulu_content_types.color_palette_provider:
+        alias: Manuxi\SuluAdminExtrasBundle\Service\ColorPaletteProvider
+        public: true
+
     # Property Resolvers
     Manuxi\SuluAdminExtrasBundle\Content\Type\NumberWithDefaultPropertyResolver:
         tags:
