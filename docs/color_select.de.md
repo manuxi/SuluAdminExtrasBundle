@@ -67,7 +67,7 @@ Komfortabler ist es allerdings, die Farben in yaml zu konfigurieren und über de
 
 ## Konfiguration der Farbpaletten
 
-Sie können Ihre eigenen Paletten in `config/packages/sulu_admin_extras.yaml` definieren. Auf diese kann dann mittels `getValues('palette_name')` zugegriffen werden.
+Eigene Paletten können in `config/packages/sulu_admin_extras.yaml` definiert werden. Auf diese kann dann mittels `getValues('<palette_name>')` zugegriffen werden.
 
 ```yaml
 sulu_admin_extras:

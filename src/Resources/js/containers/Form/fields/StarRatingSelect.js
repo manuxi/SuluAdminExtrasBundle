@@ -2,6 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { SingleSelect } from 'sulu-admin-bundle/components';
+import { Config } from 'sulu-admin-bundle/services';
 import { toJS } from 'mobx';
 import type { FieldTypeProps } from 'sulu-admin-bundle/types';
 import starRatingStyles from './StarRating.scss';
@@ -58,8 +59,11 @@ class StarRatingSelect extends React.Component<FieldTypeProps<string, SchemaOpti
     render() {
         const { dataPath, error, value, schemaOptions } = this.props;
 
+        const globalConfig = Config.get('sulu_admin_extras') || {};
+        const starRatingConfig = globalConfig.star_rating || {};
+
         const rawValues: Array<{ name: string, title?: string }> = toJS(schemaOptions?.values?.value || []);
-        const maxValue: number = schemaOptions?.max_value?.value || 5;
+        const maxValue: number = schemaOptions?.max_value?.value || starRatingConfig.max_value || 5;
         const showText: boolean = schemaOptions?.show_text?.value !== false;
 
         return (

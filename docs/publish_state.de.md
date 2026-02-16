@@ -1,6 +1,7 @@
 # Publish State Indicator (Statusanzeige)
 
 Der **Publish State Indicator** ist ein List Transformer, der den Workflow-Status einer Entität (z.B. Entwurf vs. Veröffentlicht) mittels eines farbigen Punktes darstellt.
+Er ersetzt den Sulu-eigenen **Publish State Indicator** (dieser wird ausgeblendet) und platziert ihn in einer eigenen Spalte.
 
 ![img.png](img/publish_state_indicator.de.png)
 

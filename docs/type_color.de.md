@@ -344,11 +344,3 @@ bin/adminconsole sulu:admin:build
 **Prüfen:**
 - Palette-Parameter-Wert stimmt exakt überein (Groß-/Kleinschreibung)
 - Keine Tippfehler im Palette-Namen
-
----
-
-## Siehe auch
-
-- [ColorPaletteProvider](./COLOR_PALETTE_PROVIDER.md) - Backend-Service für Palette-Zugriff
-- [ColorSelect Content Type](./COLOR_SELECT.md) - Formularfeld für Farbauswahl
-- [Architektur-Übersicht](./ARCHITECTURE.md) - Bundle-Architektur
