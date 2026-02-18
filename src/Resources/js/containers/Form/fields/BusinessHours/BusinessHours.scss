@@ -1,0 +1,198 @@
+@import "sulu-admin-bundle/containers/Application/colors.scss";
+
+$rowBg: $white;
+$rowBgDisabled: $wildSand;
+$rowBorder: $mercury;
+$headerColor: $doveGray;
+$toggleActive: $shakespeare;
+$toggleInactive: $silver;
+$breakBadgeColor: $shakespeare;
+$breakBadgeText: $white;
+$labelColor: $blueZodiac;
+$labelDisabled: $silverChalice;
+$dayWidth: 100px;
+$timeInputWidth: 96px;
+$rowPadding: 8px 12px;
+
+.container {
+    border: 1px solid $rowBorder;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 12px;
+    background: $alabaster;
+    border-bottom: 1px solid $rowBorder;
+    gap: 8px;
+}
+
+.applyButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: $shakespeare;
+    background: transparent;
+    border: 1px solid $shakespeare;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+        background: $shakespeare;
+        color: $white;
+    }
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: $rowPadding;
+    background: $rowBg;
+    border-bottom: 1px solid $rowBorder;
+    gap: 10px;
+    min-height: 44px;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &.disabled {
+        background: $rowBgDisabled;
+        opacity: 0.6;
+    }
+}
+
+.toggle {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: $toggleInactive;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+    padding: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: $white;
+        transition: transform 0.2s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    &.active {
+        background: $toggleActive;
+
+        &::after {
+            transform: translateX(16px);
+        }
+    }
+}
+
+.dayLabel {
+    width: $dayWidth;
+    font-size: 13px;
+    font-weight: 600;
+    color: $labelColor;
+    flex-shrink: 0;
+    user-select: none;
+
+    &.labelDisabled {
+        color: $labelDisabled;
+        font-weight: 400;
+    }
+}
+
+.slots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.slot {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.timeInput {
+    width: $timeInputWidth;
+    height: 30px;
+    padding: 2px 6px;
+    font-size: 13px;
+    font-family: inherit;
+    color: $blueZodiac;
+    background: $white;
+    border: 1px solid $rowBorder;
+    border-radius: 3px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.15s ease;
+
+    &:focus {
+        border-color: $shakespeare;
+    }
+
+    &:disabled {
+        background: $wildSand;
+        color: $silverChalice;
+        cursor: not-allowed;
+    }
+}
+
+.separator {
+    font-size: 12px;
+    color: $dustyGray;
+    padding: 0 2px;
+}
+
+.breakToggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: $dustyGray;
+    background: transparent;
+    border: 1px solid $mercury;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 4px;
+
+    &:hover {
+        border-color: $shakespeare;
+        color: $shakespeare;
+    }
+
+    &.breakActive {
+        background: $shakespeare;
+        color: $white;
+        border-color: $shakespeare;
+    }
+}
+
+.breakIcon {
+    font-size: 12px;
+    line-height: 1;
+}

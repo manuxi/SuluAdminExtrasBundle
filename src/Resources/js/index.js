@@ -19,6 +19,11 @@ import StarRatingSelect from './containers/Form/fields/StarRatingSelect';
 import DateTimeStart from './containers/Form/fields/DateTimeStart';
 import DateTimeEnd from './containers/Form/fields/DateTimeEnd';
 import DateTimeWithDefault from './containers/Form/fields/DateTimeWithDefault';
+
+import BusinessHours from './containers/Form/fields/BusinessHours/BusinessHours';
+import PublicHolidays from './containers/Form/fields/PublicHolidays/PublicHolidays';
+import HolidayDates from './containers/Form/fields/HolidayDates/HolidayDates';
+
 initializer.addUpdateConfigHook('sulu_admin_extras', (config: Object, initialized: boolean) => {
     if (initialized) {
         return;
@@ -60,7 +65,6 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config: Object, initialize
         new ColorDotFieldTransformer()
     );
 
-    // Register Form Fields
     fieldRegistry.add('number_with_default', NumberWithDefault);
     fieldRegistry.add('color_select', ColorSelect);
     fieldRegistry.add('slider_range', SliderRange);
@@ -69,6 +73,10 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config: Object, initialize
     fieldRegistry.add('datetime_with_default', DateTimeWithDefault);
     fieldRegistry.add('datetime_start', DateTimeStart);
     fieldRegistry.add('datetime_end', DateTimeEnd);
+
+    fieldRegistry.add('business_hours', BusinessHours);
+    fieldRegistry.add('public_holidays', PublicHolidays);
+    fieldRegistry.add('holiday_dates', HolidayDates);
 });
 
 // Export for manual usage
@@ -85,4 +93,7 @@ export {
     DateTimeStart,
     DateTimeEnd,
     DateTimeWithDefault,
+    BusinessHours,
+    PublicHolidays,
+    HolidayDates,
 };

@@ -44,6 +44,18 @@ services:
         tags:
             - { name: 'sulu_content.property_resolver', type: 'star_rating', alias: 'star_rating' }
 
+    Manuxi\SuluAdminExtrasBundle\Content\Type\BusinessHoursPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'business_hours', alias: 'business_hours' }
+
+    Manuxi\SuluAdminExtrasBundle\Content\Type\PublicHolidaysPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'public_holidays', alias: 'public_holidays' }
+
+    Manuxi\SuluAdminExtrasBundle\Content\Type\HolidayDatesPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'holiday_dates', alias: 'holiday_dates' }
+
     # Star Rating Service (Provider)
     Manuxi\SuluAdminExtrasBundle\Service\StarRatingProvider:
         arguments:
@@ -58,4 +70,21 @@ services:
 
     sulu_admin_extras.rating_selection:
         alias: Manuxi\SuluAdminExtrasBundle\Service\StarRatingProvider
+        public: true
+
+
+    # Public Holiday API Service (Nager.Date proxy)
+    Manuxi\SuluAdminExtrasBundle\Service\PublicHolidayService:
+        arguments:
+            $httpClient: '@http_client'
+            $cache: '@cache.app'
+            $logger: '@?logger'
+        public: true
+
+    # Public Holiday API Proxy Controller
+    Manuxi\SuluAdminExtrasBundle\Controller\PublicHolidayProxyController:
+        arguments:
+            $publicHolidayService: '@Manuxi\SuluAdminExtrasBundle\Service\PublicHolidayService'
+        tags:
+            - { name: 'controller.service_arguments' }
         public: true

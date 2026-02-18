@@ -1,0 +1,5 @@
+sulu_admin_extras_public_holidays:
+    resource: Manuxi\SuluAdminExtrasBundle\Controller\PublicHolidayProxyController
+    type: attribute
+    options:
+        expose: true
