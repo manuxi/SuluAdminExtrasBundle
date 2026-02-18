@@ -2,7 +2,8 @@
 import React from 'react';
 import {action, observable} from 'mobx';
 import {observer} from 'mobx-react';
-import {Checkbox, Icon, SingleSelect} from 'sulu-admin-bundle/components';
+import moment from 'moment';
+import {Checkbox, DatePicker, Icon, SingleSelect} from 'sulu-admin-bundle/components';
 import {translate} from 'sulu-admin-bundle/utils';
 import styles from './PublicHolidays.scss';
 
@@ -37,7 +38,7 @@ class PublicHolidaysEditor extends React.Component<Props> {
     @observable countries: Array<{countryCode: string, name: string}> = [];
     @observable subdivisions: Array<{code: string, shortName: string}> = [];
     @observable addingCustom: boolean = false;
-    @observable customDate: string = '';
+    @observable customDate: ?Date = null;
     @observable customName: string = '';
 
     static defaultProps = {proxyEndpoint: '/admin/api/public-holidays'};
@@ -122,12 +123,13 @@ class PublicHolidaysEditor extends React.Component<Props> {
 
     @action handleAddCustom = () => {
         if (!this.customDate || !this.customName) return;
+        const dateStr = moment(this.customDate).format('YYYY-MM-DD');
         const data = {...this.getData()};
-        const holidays = [...data.holidays, {date: this.customDate, localName: this.customName, name: this.customName, enabled: true, custom: true}];
+        const holidays = [...data.holidays, {date: dateStr, localName: this.customName, name: this.customName, enabled: true, custom: true}];
         holidays.sort((a, b) => a.date.localeCompare(b.date));
         this.props.onChange({...data, holidays});
         this.props.onFinish();
-        this.customDate = '';
+        this.customDate = null;
         this.customName = '';
         this.addingCustom = false;
     };
@@ -204,12 +206,13 @@ class PublicHolidaysEditor extends React.Component<Props> {
                 </div>
                 {this.addingCustom && (
                     <div className={styles.customRow}>
-                        <input
-                            className={styles.customDateInput}
-                            onChange={action((e) => { this.customDate = e.target.value; })}
-                            type="date"
-                            value={this.customDate}
-                        />
+                        <div className={styles.customDateCell}>
+                            <DatePicker
+                                onChange={action((date) => { this.customDate = date; })}
+                                options={{dateFormat: true, timeFormat: false}}
+                                value={this.customDate}
+                            />
+                        </div>
                         <input
                             className={styles.customNameInput}
                             onChange={action((e) => { this.customName = e.target.value; })}
@@ -244,14 +247,21 @@ class PublicHolidaysEditor extends React.Component<Props> {
                             <span className={styles.date}>{this.formatDate(holiday.date)}</span>
                             <span className={styles.localName}>{holiday.localName}</span>
                             <span className={styles.intlName}>{holiday.name}</span>
-                            {holiday.custom && (
-                                <span className={styles.customBadge}>{translate('sulu_admin_extras.public_holidays.custom')}</span>
-                            )}
-                            {holiday.custom && !disabled && (
-                                <button className={styles.iconButton} onClick={() => this.handleRemoveCustom(index)} type="button">
-                                    <Icon name="su-trash-alt" />
-                                </button>
-                            )}
+                            <div className={styles.trailingCell}>
+                                {holiday.custom && (
+                                    <span className={styles.customBadge}>{translate('sulu_admin_extras.public_holidays.custom')}</span>
+                                )}
+                                {holiday.custom && !disabled && (
+                                    <button
+                                        className={styles.iconButton}
+                                        onClick={() => this.handleRemoveCustom(index)}
+                                        title={translate('sulu_admin_extras.delete')}
+                                        type="button"
+                                    >
+                                        <Icon name="su-trash-alt" />
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>

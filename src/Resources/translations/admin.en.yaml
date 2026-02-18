@@ -6,7 +6,10 @@ sulu_admin_extras:
     
     # Ghost Locale
     ghost_locale: "Language"
-    
+
+    # actions
+    delete: "Delete entry"
+
     # Color Palettes (New Structure)
     color_palettes:
         event_types:

@@ -85,7 +85,7 @@ class HolidayDatesEditor extends React.Component<Props> {
         return (
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <span className={styles.title}>{translate('sulu_admin_extras.holiday_dates.title')}</span>
+                    {/*<span className={styles.title}>{translate('sulu_admin_extras.holiday_dates.title')}</span>*/}
                     <button className={styles.actionButton} disabled={disabled} onClick={this.handleAdd} type="button">
                         <Icon name="su-plus" />
                         <span>{translate('sulu_admin_extras.holiday_dates.add')}</span>
@@ -134,7 +134,12 @@ class HolidayDatesEditor extends React.Component<Props> {
                                 <span>{translate('sulu_admin_extras.holiday_dates.recurring')}</span>
                             </button>
                             {!disabled && (
-                                <button className={styles.iconButton} onClick={() => this.handleRemove(index)} type="button">
+                                <button
+                                    className={styles.iconButton}
+                                    onClick={() => this.handleRemove(index)}
+                                    title={translate('sulu_admin_extras.delete')}
+                                    type="button"
+                                >
                                     <Icon name="su-trash-alt" />
                                 </button>
                             )}

@@ -40,6 +40,7 @@ $rowBorder: $mercury;
     transition: all 0.15s ease;
     white-space: nowrap;
     flex-shrink: 0;
+    margin-left: auto;
 
     &:hover {
         background: $shakespeare;
@@ -113,7 +114,7 @@ $rowBorder: $mercury;
     padding: 2px 8px;
     font-size: 13px;
     font-family: inherit;
-    color: $blueZodiac;
+    color: $black;
     background: $white;
     border: 1px solid $rowBorder;
     border-radius: 3px;
