@@ -86,7 +86,13 @@ class HolidayDatesEditor extends React.Component<Props> {
             <div className={styles.container}>
                 <div className={styles.header}>
                     {/*<span className={styles.title}>{translate('sulu_admin_extras.holiday_dates.title')}</span>*/}
-                    <button className={styles.actionButton} disabled={disabled} onClick={this.handleAdd} type="button">
+                    <button
+                        className={styles.actionButton}
+                        disabled={disabled}
+                        onClick={this.handleAdd}
+                        title={translate('sulu_admin_extras.holiday_dates.add_label')}
+                        type="button"
+                    >
                         <Icon name="su-plus" />
                         <span>{translate('sulu_admin_extras.holiday_dates.add')}</span>
                     </button>

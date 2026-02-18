@@ -9,6 +9,7 @@ sulu_admin_extras:
 
     # actions
     delete: "Delete entry"
+    activate: "Activate/Deactivate"
 
     # Color Palettes (New Structure)
     color_palettes:
@@ -76,8 +77,11 @@ sulu_admin_extras:
 
     # Business Hours
     business_hours:
+        weekdays_label: "Activate/deactivate day"
         apply_to_weekdays: "Mon → Tue–Fri"
+        apply_to_weekdays_label: "Copy Monday setting to Tue–Fri"
         break: "Break"
+        break_label: "Add/delete break"
 
     # Weekday names
     weekday:
@@ -94,9 +98,11 @@ sulu_admin_extras:
         country: "Country"
         region: "Region"
         year: "Year"
-        all_regions: "— All —"
+        all_regions: "- All -"
         add_custom: "Custom"
+        add_custom_label: "Add holiday"
         refresh: "Refresh now"
+        refresh_label: "Refresh now using API"
         empty: "No holidays loaded. Click refresh to fetch."
         active: "active"
         custom: "Custom"
@@ -106,6 +112,7 @@ sulu_admin_extras:
     holiday_dates:
         title: "Company Holidays"
         add: "Add"
+        add_label: "Add entry"
         empty: "No company holidays defined."
         label_placeholder: "Label..."
         recurring: "Annual"

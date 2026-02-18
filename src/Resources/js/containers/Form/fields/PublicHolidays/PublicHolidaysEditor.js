@@ -188,6 +188,7 @@ class PublicHolidaysEditor extends React.Component<Props> {
                             className={styles.actionButton}
                             disabled={disabled}
                             onClick={action(() => { this.addingCustom = true; })}
+                            title={translate('sulu_admin_extras.public_holidays.add_custom_label')}
                             type="button"
                         >
                             <Icon name="su-plus" />
@@ -197,7 +198,7 @@ class PublicHolidaysEditor extends React.Component<Props> {
                             className={styles.refreshButton + (this.loading ? ' ' + styles.refreshLoading : '')}
                             disabled={disabled || this.loading}
                             onClick={this.handleRefresh}
-                            title={translate('sulu_admin_extras.public_holidays.refresh')}
+                            title={translate('sulu_admin_extras.public_holidays.refresh_label')}
                             type="button"
                         >
                             <Icon name="su-sync" />
@@ -240,6 +241,7 @@ class PublicHolidaysEditor extends React.Component<Props> {
                                     checked={holiday.enabled}
                                     disabled={!!disabled}
                                     onChange={(checked) => this.handleToggleHoliday(checked, index)}
+                                    title={translate('sulu_admin_extras.activate')}
                                     size="small"
                                     value={index}
                                 />

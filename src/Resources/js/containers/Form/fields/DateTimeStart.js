@@ -90,13 +90,25 @@ class DateTimeStart extends AbstractDateTime {
         return mapping[date.isoWeekday()] || 'monday';
     }
 
+    normalizeTime(value) {
+        if (!value) return null;
+
+        // "08:00:00" → "08:00", "14:30" stays "14:30"
+        return value.substring(0, 5);
+    }
+
     isTimeValid(date) {
         try {
             if (!this.settings) return true;
 
             const dayName = this.getDayKey(date);
 
-            if (!this.settings[dayName + 'MorningStart'] && !this.settings[dayName + 'AfternoonStart']) {
+            const morningStart = this.normalizeTime(this.settings[dayName + 'MorningStart']);
+            const morningEnd = this.normalizeTime(this.settings[dayName + 'MorningEnd']);
+            const afternoonStart = this.normalizeTime(this.settings[dayName + 'AfternoonStart']);
+            const afternoonEnd = this.normalizeTime(this.settings[dayName + 'AfternoonEnd']);
+
+            if (!morningStart && !afternoonStart) {
                 return false;
             }
 
@@ -106,11 +118,6 @@ class DateTimeStart extends AbstractDateTime {
                 if (!start || !end) return false;
                 return time >= start && time < end;
             };
-
-            const morningStart = this.settings[dayName + 'MorningStart'];
-            const morningEnd = this.settings[dayName + 'MorningEnd'];
-            const afternoonStart = this.settings[dayName + 'AfternoonStart'];
-            const afternoonEnd = this.settings[dayName + 'AfternoonEnd'];
 
             return isInRange(morningStart, morningEnd) || isInRange(afternoonStart, afternoonEnd);
         } catch (e) {

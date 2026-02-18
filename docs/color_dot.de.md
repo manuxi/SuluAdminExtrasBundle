@@ -2,6 +2,8 @@
 
 Ein einfacher Listen-Feld-Transformer, der einen farbigen Kreis (Punkt) in Listenansichten darstellt. Er nimmt einen Hex-Farbwert aus dem Feld und zeigt ihn als 18×18px Kreis an. Nützlich für schnelle visuelle Zuordnung in Tabellen, z.B. für Kategorien, Status oder Tags.
 
+![img.png](img/colorDotFieldTransformer.de.png)
+
 ---
 
 ## Verwendung in Listen-XML
