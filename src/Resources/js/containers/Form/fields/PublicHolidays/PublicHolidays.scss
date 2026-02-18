@@ -1,0 +1,258 @@
+@import "sulu-admin-bundle/containers/Application/colors.scss";
+
+$rowBorder: $mercury;
+$headerBg: $alabaster;
+
+.container {
+    border: 1px solid $rowBorder;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: $headerBg;
+    border-bottom: 1px solid $rowBorder;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.selectGroup {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.selectLabel {
+    font-size: 11px;
+    font-weight: 600;
+    color: $doveGray;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.select {
+    height: 30px;
+    padding: 2px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: $blueZodiac;
+    background: $white;
+    border: 1px solid $rowBorder;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    min-width: 80px;
+
+    &:focus {
+        border-color: $shakespeare;
+    }
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.refreshButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    font-size: 14px;
+    color: $shakespeare;
+    background: transparent;
+    border: 1px solid $shakespeare;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+
+    &:hover {
+        background: $shakespeare;
+        color: $white;
+    }
+
+    &.loading {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spinning {
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+}
+
+.addButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: $shakespeare;
+    background: transparent;
+    border: 1px solid $shakespeare;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+        background: $shakespeare;
+        color: $white;
+    }
+}
+
+.list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-bottom: 1px solid $rowBorder;
+    gap: 10px;
+    transition: background-color 0.1s ease;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background: $alabaster;
+    }
+
+    &.rowDisabled {
+        opacity: 0.45;
+    }
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: $shakespeare;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.date {
+    width: 95px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $blueZodiac;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+}
+
+.localName {
+    flex: 1;
+    font-size: 13px;
+    color: $blueZodiac;
+}
+
+.intlName {
+    font-size: 12px;
+    color: $dustyGray;
+    flex: 1;
+}
+
+.customBadge {
+    display: inline-flex;
+    padding: 1px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: $shakespeare;
+    background: rgba($shakespeare, 0.1);
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+
+.removeButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    font-size: 14px;
+    color: $silverChalice;
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.1s ease;
+
+    &:hover {
+        color: $persianRed;
+    }
+}
+
+.empty {
+    padding: 24px 12px;
+    text-align: center;
+    color: $dustyGray;
+    font-size: 13px;
+}
+
+.customRow {
+    display: flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-bottom: 1px solid $rowBorder;
+    gap: 6px;
+    background: rgba($shakespeare, 0.03);
+}
+
+.customInput {
+    height: 28px;
+    padding: 2px 6px;
+    font-size: 13px;
+    font-family: inherit;
+    color: $blueZodiac;
+    background: $white;
+    border: 1px solid $rowBorder;
+    border-radius: 3px;
+    outline: none;
+
+    &:focus {
+        border-color: $shakespeare;
+    }
+}
+
+.customDateInput {
+    composes: customInput;
+    width: 130px;
+}
+
+.customNameInput {
+    composes: customInput;
+    flex: 1;
+}
+
+.info {
+    padding: 6px 12px;
+    font-size: 11px;
+    color: $dustyGray;
+    background: $alabaster;
+    border-top: 1px solid $rowBorder;
+    text-align: right;
+}
