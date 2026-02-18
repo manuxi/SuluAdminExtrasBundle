@@ -70,7 +70,7 @@ class DateTimeStart extends AbstractDateTime {
 
         if (!this.isTimeValid(date)) {
             this.isValidTime = false;
-            this.timeErrorMessage = translate('sulu_appointment.errors.invalid_time_slot');
+            this.timeErrorMessage = translate('sulu_admin_extras.errors.invalid_time_slot');
         } else {
             this.isValidTime = true;
             this.timeErrorMessage = null;

@@ -112,3 +112,8 @@ sulu_admin_extras:
         recurring_title: "Recurring annually"
         entries: "entries"
         days_total: "days total"
+
+    # errors
+    errors:
+        start_after_end: "The end date must not be before the start date."
+        invalid_time_slot: "The selected time is outside working hours or during a break."

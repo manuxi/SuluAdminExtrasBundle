@@ -21,10 +21,13 @@ Detaillierte Dokumentationen für jedes Feature finden Sie im `docs/` Ordner:
 *   **[Number With Default](docs/number_with_default.de.md)** - Zahl mit hinterlegbarem Standardwert
 *   **[Slider Range](docs/slider_range.de.md)** - Schieberegler
 *   **[Star Rating](docs/star_rating.de.md)** - Auswahlfeld für Sternebewertung
+*   **[Business Hours](docs/business_hours.de.md)** - Wochenplan mit Zeitfenstern, Pausen und Kopierfunktion
+*   **[Public Holidays](docs/public_holidays.de.md)** - Feiertags-Manager mit Nager.Date-API-Integration
+*   **[Holiday Dates](docs/holiday_dates.de.md)** - Betriebsferien und Schließungszeiten mit Unterstützung wiederkehrender Daten
 
 ### List Transformers (Listenansicht)
 *   **[Percent Bar](docs/percent_bar.de.md)** - Prozentbalken
-*   **[Publish State](docs/publish_state.de.md)** - Statusanzeige in eigener Spalte (Standard wird ausgeblendet)
+*   **[Publish State](docs/publish_state.de.md)** - Anzeige Veröffentlichungsstatus in eigener Spalte (Standard wird ausgeblendet)
 *   **[Ghost Locale](docs/ghost_locale.de.md)** - Sprachstatus in eigener Spalte (Standard wird ausgeblendet)
 *   **[Type Color](docs/type_color.de.md)** - Farbanzeige zur farblichen Kategorisierung
 *   **[Star Rating](docs/star_rating.de.md)** - Sternebewertung
