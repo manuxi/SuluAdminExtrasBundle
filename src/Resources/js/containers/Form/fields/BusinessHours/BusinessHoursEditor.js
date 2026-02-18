@@ -141,6 +141,7 @@ class BusinessHoursEditor extends React.Component<Props> {
                     className={styles.actionButton + (dayConfig.break ? ' ' + styles.actionButtonActive : '')}
                     disabled={disabled}
                     onClick={() => this.handleToggleBreak(dayKey)}
+                    title={translate('sulu_admin_extras.business_hours.break_label')}
                     type="button"
                 >
                     <Icon name="su-clock" />
@@ -161,6 +162,7 @@ class BusinessHoursEditor extends React.Component<Props> {
                         className={styles.actionButton}
                         disabled={disabled || !data.monday?.enabled}
                         onClick={this.handleApplyToWeekdays}
+                        title={translate('sulu_admin_extras.business_hours.apply_to_weekdays_label')}
                         type="button"
                     >
                         <Icon name="su-copy" />
@@ -175,6 +177,7 @@ class BusinessHoursEditor extends React.Component<Props> {
                                 checked={dayConfig.enabled}
                                 disabled={!!disabled}
                                 onChange={(checked) => this.handleToggleDay(checked, dayKey)}
+                                title={translate('sulu_admin_extras.business_hours.weekdays_label')}
                                 value={dayKey}
                             />
                             <span className={styles.dayLabel + (!dayConfig.enabled ? ' ' + styles.dayLabelDisabled : '')}>

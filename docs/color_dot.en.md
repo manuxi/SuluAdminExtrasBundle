@@ -2,6 +2,8 @@
 
 A simple list field transformer that renders a colored circle (dot) in list views. It takes a hex color string from the field value and displays it as an 18×18px circle. Useful for quick visual identification in tables, e.g. for categories, statuses, or tags.
 
+![colorDotFieldTransformer](img/colorDotFieldTransformer.en.png)
+
 ---
 
 ## Usage in List XML

@@ -9,6 +9,7 @@ sulu_admin_extras:
 
     # actions
     delete: "Eintrag löschen"
+    activate: "Aktivieren/Deaktivieren"
 
     # Color Palettes (Neue Struktur)
     color_palettes:
@@ -76,8 +77,11 @@ sulu_admin_extras:
 
     # Business Hours
     business_hours:
+        weekdays_label: "Tag aktivieren/deaktivieren"
         apply_to_weekdays: "Mo → Di–Fr"
+        apply_to_weekdays_label: "Kopiere Montags-Einstellung auf Di-Fr"
         break: "Pause"
+        break_label: "Pause hinzufügen/löschen"
 
     # Weekday names
     weekday:
@@ -96,7 +100,9 @@ sulu_admin_extras:
         year: "Jahr"
         all_regions: "- Alle -"
         add_custom: "Eigener"
+        add_custom_label: "Feiertag hinzufügen"
         refresh: "Jetzt aktualisieren"
+        refresh_label: "Jetzt via API aktualisieren"
         empty: "Keine Feiertage geladen. Klicke auf Aktualisieren zum Laden."
         active: "aktiv"
         custom: "Eigener"
@@ -106,6 +112,7 @@ sulu_admin_extras:
     holiday_dates:
         title: "Betriebsferien"
         add: "Hinzufügen"
+        add_label: "Neuen Eintrag hinzufügen"
         empty: "Keine Betriebsferien eingetragen."
         label_placeholder: "Bezeichnung..."
         recurring: "Jährlich"
