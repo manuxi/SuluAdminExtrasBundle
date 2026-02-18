@@ -112,3 +112,8 @@ sulu_admin_extras:
         recurring_title: "Jährlich wiederkehrend"
         entries: "Einträge"
         days_total: "Tage gesamt"
+
+    # errors
+    errors:
+        start_after_end: "Das Enddatum darf nicht vor dem Startdatum liegen."
+        invalid_time_slot: "Die ausgewählte Zeit liegt außerhalb der Arbeitszeiten oder in einer Pause."

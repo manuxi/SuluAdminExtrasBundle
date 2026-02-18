@@ -26,7 +26,7 @@ class DateTimeEnd extends AbstractDateTime {
 
                 if (end.isBefore(start)) {
                     isValid = false;
-                    errorMessage = translate('sulu_appointment.errors.start_after_end');
+                    errorMessage = translate('sulu_admin_extras.errors.start_after_end');
                 }
             }
         }
