@@ -85,41 +85,35 @@ class DateTimeStart extends AbstractDateTime {
             4: 'thursday',
             5: 'friday',
             6: 'saturday',
-            7: 'sunday'
+            0: 'sunday'
         };
-        return mapping[date.isoWeekday()] || 'monday';
+        return mapping[date.day()] || 'monday';
     }
 
-    normalizeTime(value) {
-        if (!value) return null;
+    getBusinessSlotsForDay(date) {
+        if (!this.settings || !this.settings.businessHours) return null;
 
-        // "08:00:00" → "08:00", "14:30" stays "14:30"
-        return value.substring(0, 5);
+        const dayKey = this.getDayKey(date);
+        const dayConfig = this.settings.businessHours[dayKey];
+
+        if (!dayConfig || !dayConfig.enabled) return null;
+
+        return dayConfig.slots || [];
     }
 
     isTimeValid(date) {
         try {
-            if (!this.settings) return true;
+            const slots = this.getBusinessSlotsForDay(date);
 
-            const dayName = this.getDayKey(date);
-
-            const morningStart = this.normalizeTime(this.settings[dayName + 'MorningStart']);
-            const morningEnd = this.normalizeTime(this.settings[dayName + 'MorningEnd']);
-            const afternoonStart = this.normalizeTime(this.settings[dayName + 'AfternoonStart']);
-            const afternoonEnd = this.normalizeTime(this.settings[dayName + 'AfternoonEnd']);
-
-            if (!morningStart && !afternoonStart) {
-                return false;
-            }
+            if (!slots || slots.length === 0) return false;
 
             const time = date.format('HH:mm');
 
-            const isInRange = (start, end) => {
-                if (!start || !end) return false;
-                return time >= start && time < end;
-            };
-
-            return isInRange(morningStart, morningEnd) || isInRange(afternoonStart, afternoonEnd);
+            return slots.some(slot => {
+                const start = (slot.start || '').substring(0, 5);
+                const end = (slot.end || '').substring(0, 5);
+                return start && end && time >= start && time < end;
+            });
         } catch (e) {
             console.error("isTimeValid error", e);
             return true;
@@ -127,13 +121,16 @@ class DateTimeStart extends AbstractDateTime {
     }
 
     findNextAvailableSlot(startDate) {
-        if (!this.settings) return null;
+        if (!this.settings || !this.settings.businessHours) return null;
 
         let date = startDate.clone();
         const step = parseInt(this.props.schemaOptions?.step?.value || 15, 10);
 
         const remainder = step - (date.minute() % step);
-        date.add(remainder, 'minutes').second(0);
+        if (remainder < step) {
+            date.add(remainder, 'minutes');
+        }
+        date.second(0);
 
         const maxDate = date.clone().add(7, 'days');
 
