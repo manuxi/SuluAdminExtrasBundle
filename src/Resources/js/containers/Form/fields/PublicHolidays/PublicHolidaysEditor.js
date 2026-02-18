@@ -2,11 +2,20 @@
 import React from 'react';
 import {action, observable} from 'mobx';
 import {observer} from 'mobx-react';
+import {Checkbox, Icon, SingleSelect} from 'sulu-admin-bundle/components';
+import {translate} from 'sulu-admin-bundle/utils';
 import styles from './PublicHolidays.scss';
 
 type Holiday = {date: string, localName: string, name: string, enabled: boolean, custom?: boolean};
 type PublicHolidaysData = {country: string, subdivision: ?string, year: number, holidays: Array<Holiday>};
-type Props = {disabled: boolean, locale: string, onChange: (value: PublicHolidaysData) => void, onFinish: () => void, proxyEndpoint: string, value: ?PublicHolidaysData};
+type Props = {
+    disabled: boolean,
+    locale: string,
+    onChange: (value: PublicHolidaysData) => void,
+    onFinish: () => void,
+    proxyEndpoint: string,
+    value: ?PublicHolidaysData,
+};
 
 const currentYear = new Date().getFullYear();
 
@@ -46,8 +55,7 @@ class PublicHolidaysEditor extends React.Component<Props> {
             if (current.country) {
                 this.loadSubdivisions(current.country);
             }
-        })).catch((err) => {
-            console.error('Failed to load countries', err);
+        })).catch(() => {
             this.countries = [{countryCode: 'DE', name: 'Germany'}];
         });
     };
@@ -60,18 +68,17 @@ class PublicHolidaysEditor extends React.Component<Props> {
         });
     };
 
-    @action handleCountryChange = (e: SyntheticInputEvent<HTMLSelectElement>) => {
-        const cc = e.target.value;
-        this.props.onChange({...this.getData(), country: cc, subdivision: null, holidays: []});
-        this.loadSubdivisions(cc);
+    @action handleCountryChange = (value: string) => {
+        this.props.onChange({...this.getData(), country: value, subdivision: null, holidays: []});
+        this.loadSubdivisions(value);
     };
 
-    @action handleSubdivisionChange = (e: SyntheticInputEvent<HTMLSelectElement>) => {
-        this.props.onChange({...this.getData(), subdivision: e.target.value || null});
+    @action handleSubdivisionChange = (value: string) => {
+        this.props.onChange({...this.getData(), subdivision: value || null});
     };
 
-    @action handleYearChange = (e: SyntheticInputEvent<HTMLSelectElement>) => {
-        this.props.onChange({...this.getData(), year: parseInt(e.target.value, 10), holidays: []});
+    @action handleYearChange = (value: number) => {
+        this.props.onChange({...this.getData(), year: value, holidays: []});
     };
 
     @action handleRefresh = () => {
@@ -93,16 +100,14 @@ class PublicHolidaysEditor extends React.Component<Props> {
             this.props.onChange({...data, holidays: merged});
             this.props.onFinish();
             this.loading = false;
-        })).catch(action((err) => {
-            console.error('Failed to fetch holidays', err);
-            this.loading = false;
-        }));
+        })).catch(action(() => { this.loading = false; }));
     };
 
-    @action handleToggleHoliday = (index: number) => {
+    @action handleToggleHoliday = (checked: boolean, index: ?number) => {
+        if (index == null) return;
         const data = {...this.getData()};
         const holidays = [...data.holidays];
-        holidays[index] = {...holidays[index], enabled: !holidays[index].enabled};
+        holidays[index] = {...holidays[index], enabled: checked};
         this.props.onChange({...data, holidays});
         this.props.onFinish();
     };
@@ -122,7 +127,9 @@ class PublicHolidaysEditor extends React.Component<Props> {
         holidays.sort((a, b) => a.date.localeCompare(b.date));
         this.props.onChange({...data, holidays});
         this.props.onFinish();
-        this.customDate = ''; this.customName = ''; this.addingCustom = false;
+        this.customDate = '';
+        this.customName = '';
+        this.addingCustom = false;
     };
 
     formatDate(dateStr: string): string {
@@ -133,72 +140,125 @@ class PublicHolidaysEditor extends React.Component<Props> {
     }
 
     render() {
-        const {disabled, locale} = this.props;
+        const {disabled} = this.props;
         const data = this.getData();
         const enabledCount = data.holidays.filter((h) => h.enabled).length;
+        const Option = SingleSelect.Option;
 
         return (
             <div className={styles.container}>
                 <div className={styles.header}>
                     <div className={styles.selectGroup}>
-                        <span className={styles.selectLabel}>{locale === 'de' ? 'Land' : 'Country'}</span>
-                        <select className={styles.select} disabled={disabled} onChange={this.handleCountryChange} value={data.country}>
-                            {this.countries.map((c) => <option key={c.countryCode} value={c.countryCode}>{c.name}</option>)}
-                        </select>
+                        <span className={styles.selectLabel}>{translate('sulu_admin_extras.public_holidays.country')}</span>
+                        <div className={styles.selectWrapper}>
+                            <SingleSelect disabled={disabled} onChange={this.handleCountryChange} value={data.country}>
+                                {this.countries.map((c) => (
+                                    <Option key={c.countryCode} value={c.countryCode}>{c.name}</Option>
+                                ))}
+                            </SingleSelect>
+                        </div>
                     </div>
                     {this.subdivisions.length > 0 && (
                         <div className={styles.selectGroup}>
-                            <span className={styles.selectLabel}>{locale === 'de' ? 'Region' : 'Region'}</span>
-                            <select className={styles.select} disabled={disabled} onChange={this.handleSubdivisionChange} value={data.subdivision || ''}>
-                                <option value="">{locale === 'de' ? '— Alle —' : '— All —'}</option>
-                                {this.subdivisions.map((s) => <option key={s.code} value={s.code}>{s.shortName}</option>)}
-                            </select>
+                            <span className={styles.selectLabel}>{translate('sulu_admin_extras.public_holidays.region')}</span>
+                            <div className={styles.selectWrapper}>
+                                <SingleSelect disabled={disabled} onChange={this.handleSubdivisionChange} value={data.subdivision || ''}>
+                                    <Option value="">{translate('sulu_admin_extras.public_holidays.all_regions')}</Option>
+                                    {this.subdivisions.map((s) => (
+                                        <Option key={s.code} value={s.code}>{s.shortName}</Option>
+                                    ))}
+                                </SingleSelect>
+                            </div>
                         </div>
                     )}
                     <div className={styles.selectGroup}>
-                        <span className={styles.selectLabel}>{locale === 'de' ? 'Jahr' : 'Year'}</span>
-                        <select className={styles.select} disabled={disabled} onChange={this.handleYearChange} value={data.year}>
-                            {[currentYear - 1, currentYear, currentYear + 1, currentYear + 2].map((y) => <option key={y} value={y}>{y}</option>)}
-                        </select>
+                        <span className={styles.selectLabel}>{translate('sulu_admin_extras.public_holidays.year')}</span>
+                        <div className={styles.selectWrapper}>
+                            <SingleSelect disabled={disabled} onChange={this.handleYearChange} value={data.year}>
+                                {[currentYear - 1, currentYear, currentYear + 1, currentYear + 2].map((y) => (
+                                    <Option key={y} value={y}>{String(y)}</Option>
+                                ))}
+                            </SingleSelect>
+                        </div>
                     </div>
                     <div className={styles.headerActions}>
-                        <button className={styles.addButton} disabled={disabled} onClick={action(() => { this.addingCustom = true; })} type="button">
-                            + {locale === 'de' ? 'Eigener' : 'Custom'}
+                        <button
+                            className={styles.actionButton}
+                            disabled={disabled}
+                            onClick={action(() => { this.addingCustom = true; })}
+                            type="button"
+                        >
+                            <Icon name="su-plus" />
+                            <span>{translate('sulu_admin_extras.public_holidays.add_custom')}</span>
                         </button>
-                        <button className={styles.refreshButton + (this.loading ? ' ' + styles.loading : '')}
-                                disabled={disabled || this.loading} onClick={this.handleRefresh}
-                                title={locale === 'de' ? 'Jetzt aktualisieren' : 'Refresh now'} type="button">
-                            <span className={this.loading ? styles.spinning : ''}>↻</span>
+                        <button
+                            className={styles.refreshButton + (this.loading ? ' ' + styles.refreshLoading : '')}
+                            disabled={disabled || this.loading}
+                            onClick={this.handleRefresh}
+                            title={translate('sulu_admin_extras.public_holidays.refresh')}
+                            type="button"
+                        >
+                            <Icon name="su-sync" />
                         </button>
                     </div>
                 </div>
                 {this.addingCustom && (
                     <div className={styles.customRow}>
-                        <input className={styles.customDateInput} onChange={action((e) => { this.customDate = e.target.value; })} type="date" value={this.customDate} />
-                        <input className={styles.customNameInput} onChange={action((e) => { this.customName = e.target.value; })}
-                               onKeyDown={(e) => { if (e.key === 'Enter') this.handleAddCustom(); }}
-                               placeholder={locale === 'de' ? 'Bezeichnung...' : 'Name...'} type="text" value={this.customName} />
-                        <button className={styles.addButton} onClick={this.handleAddCustom} type="button">✓</button>
-                        <button className={styles.removeButton} onClick={action(() => { this.addingCustom = false; })} type="button">✕</button>
+                        <input
+                            className={styles.customDateInput}
+                            onChange={action((e) => { this.customDate = e.target.value; })}
+                            type="date"
+                            value={this.customDate}
+                        />
+                        <input
+                            className={styles.customNameInput}
+                            onChange={action((e) => { this.customName = e.target.value; })}
+                            onKeyDown={(e) => { if (e.key === 'Enter') this.handleAddCustom(); }}
+                            placeholder={translate('sulu_admin_extras.public_holidays.name_placeholder')}
+                            type="text"
+                            value={this.customName}
+                        />
+                        <button className={styles.actionButton} onClick={this.handleAddCustom} type="button">
+                            <Icon name="su-check" />
+                        </button>
+                        <button className={styles.iconButton} onClick={action(() => { this.addingCustom = false; })} type="button">
+                            <Icon name="su-times" />
+                        </button>
                     </div>
                 )}
                 <div className={styles.list}>
                     {data.holidays.length === 0 && (
-                        <div className={styles.empty}>{locale === 'de' ? 'Keine Feiertage geladen. Klicke ↻ zum Laden.' : 'No holidays loaded. Click ↻ to fetch.'}</div>
+                        <div className={styles.empty}>{translate('sulu_admin_extras.public_holidays.empty')}</div>
                     )}
                     {data.holidays.map((holiday, index) => (
                         <div className={styles.row + (!holiday.enabled ? ' ' + styles.rowDisabled : '')} key={holiday.date + '-' + index}>
-                            <input checked={holiday.enabled} className={styles.checkbox} disabled={disabled} onChange={() => this.handleToggleHoliday(index)} type="checkbox" />
+                            <div className={styles.checkboxCell}>
+                                <Checkbox
+                                    checked={holiday.enabled}
+                                    disabled={!!disabled}
+                                    onChange={(checked) => this.handleToggleHoliday(checked, index)}
+                                    size="small"
+                                    value={index}
+                                />
+                            </div>
                             <span className={styles.date}>{this.formatDate(holiday.date)}</span>
                             <span className={styles.localName}>{holiday.localName}</span>
                             <span className={styles.intlName}>{holiday.name}</span>
-                            {holiday.custom && <span className={styles.customBadge}>{locale === 'de' ? 'Eigener' : 'Custom'}</span>}
-                            {holiday.custom && !disabled && <button className={styles.removeButton} onClick={() => this.handleRemoveCustom(index)} type="button">✕</button>}
+                            {holiday.custom && (
+                                <span className={styles.customBadge}>{translate('sulu_admin_extras.public_holidays.custom')}</span>
+                            )}
+                            {holiday.custom && !disabled && (
+                                <button className={styles.iconButton} onClick={() => this.handleRemoveCustom(index)} type="button">
+                                    <Icon name="su-trash-alt" />
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>
                 {data.holidays.length > 0 && (
-                    <div className={styles.info}>{enabledCount} / {data.holidays.length} {locale === 'de' ? 'aktiv' : 'active'} · Nager.Date API</div>
+                    <div className={styles.info}>
+                        {enabledCount} / {data.holidays.length} {translate('sulu_admin_extras.public_holidays.active')} · Nager.Date API
+                    </div>
                 )}
             </div>
         );

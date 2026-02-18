@@ -1,7 +1,6 @@
 @import "sulu-admin-bundle/containers/Application/colors.scss";
 
 $rowBorder: $mercury;
-$headerBg: $alabaster;
 
 .container {
     border: 1px solid $rowBorder;
@@ -13,8 +12,8 @@ $headerBg: $alabaster;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 6px 12px;
-    background: $headerBg;
+    padding: 12px 12px;
+    background: $alabaster;
     border-bottom: 1px solid $rowBorder;
 }
 
@@ -26,11 +25,11 @@ $headerBg: $alabaster;
     letter-spacing: 0.5px;
 }
 
-.addButton {
+.actionButton {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 10px;
+    padding: 3px 8px;
     font-size: 11px;
     font-weight: 500;
     color: $shakespeare;
@@ -40,10 +39,44 @@ $headerBg: $alabaster;
     cursor: pointer;
     transition: all 0.15s ease;
     white-space: nowrap;
+    flex-shrink: 0;
 
     &:hover {
         background: $shakespeare;
         color: $white;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    &.actionButtonActive {
+        background: $shakespeare;
+        color: $white;
+        border-color: $shakespeare;
+    }
+}
+
+.iconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 11px;
+    color: $silverChalice;
+    background: transparent;
+    border: 1px solid $mercury;
+    border-radius: 3px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+
+    &:hover {
+        color: $persianRed;
+        border-color: $persianRed;
     }
 }
 
@@ -64,30 +97,12 @@ $headerBg: $alabaster;
     }
 }
 
-.dateInput {
-    width: 140px;
-    height: 30px;
-    padding: 2px 6px;
-    font-size: 13px;
-    font-family: inherit;
-    color: $blueZodiac;
-    background: $white;
-    border: 1px solid $rowBorder;
-    border-radius: 3px;
-    outline: none;
-
-    &:focus {
-        border-color: $shakespeare;
-    }
-
-    &:disabled {
-        background: $wildSand;
-        color: $silverChalice;
-        cursor: not-allowed;
-    }
+.dateCell {
+    width: 150px;
+    flex-shrink: 0;
 }
 
-.separator {
+.dateSeparator {
     font-size: 12px;
     color: $dustyGray;
 }
@@ -116,61 +131,6 @@ $headerBg: $alabaster;
     }
 }
 
-.recurringToggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 8px;
-    font-size: 11px;
-    font-weight: 500;
-    color: $dustyGray;
-    background: transparent;
-    border: 1px solid $mercury;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
-
-    &:hover {
-        border-color: $shakespeare;
-        color: $shakespeare;
-    }
-
-    &.recurringActive {
-        background: $shakespeare;
-        color: $white;
-        border-color: $shakespeare;
-    }
-}
-
-.recurringIcon {
-    font-size: 12px;
-    line-height: 1;
-}
-
-.removeButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    padding: 0;
-    font-size: 14px;
-    color: $silverChalice;
-    background: transparent;
-    border: 1px solid $mercury;
-    border-radius: 3px;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.15s ease;
-
-    &:hover {
-        color: $persianRed;
-        border-color: $persianRed;
-    }
-}
-
 .empty {
     padding: 24px 12px;
     text-align: center;
@@ -182,7 +142,7 @@ $headerBg: $alabaster;
     padding: 6px 12px;
     font-size: 11px;
     color: $dustyGray;
-    background: $headerBg;
+    background: $alabaster;
     border-top: 1px solid $rowBorder;
     text-align: right;
 }

@@ -74,11 +74,15 @@ services:
 
 
     # Public Holiday API Service (Nager.Date proxy)
+    # To limit the country list, set allowed_countries:
+    #   $allowedCountries: ['DE', 'AT', 'CH', 'FR', 'NL', 'BE', 'LU', 'PL', 'CZ', 'DK']
+    # Leave empty [] for all 100+ countries.
     Manuxi\SuluAdminExtrasBundle\Service\PublicHolidayService:
         arguments:
             $httpClient: '@http_client'
             $cache: '@cache.app'
             $logger: '@?logger'
+            $allowedCountries: ['DE', 'AT', 'CH', 'FR', 'NL', 'BE', 'LU', 'PL', 'CZ', 'DK']
         public: true
 
     # Public Holiday API Proxy Controller

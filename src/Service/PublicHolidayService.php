@@ -18,12 +18,13 @@ class PublicHolidayService
         private readonly HttpClientInterface $httpClient,
         private readonly CacheInterface $cache,
         private readonly ?LoggerInterface $logger = null,
+        private readonly array $allowedCountries = [],
     ) {
     }
 
     public function getAvailableCountries(): array
     {
-        return $this->cache->get('public_holidays_countries', function (ItemInterface $item): array {
+        $countries = $this->cache->get('public_holidays_countries', function (ItemInterface $item): array {
             $item->expiresAfter(self::CACHE_TTL * 7);
 
             try {
@@ -36,6 +37,16 @@ class PublicHolidayService
                 return [['countryCode' => 'DE', 'name' => 'Germany']];
             }
         });
+
+        if (!empty($this->allowedCountries)) {
+            $allowed = array_map('strtoupper', $this->allowedCountries);
+
+            return array_values(array_filter($countries, function (array $c) use ($allowed): bool {
+                return \in_array(strtoupper($c['countryCode']), $allowed, true);
+            }));
+        }
+
+        return $countries;
     }
 
     public function getSubdivisions(string $countryCode): array

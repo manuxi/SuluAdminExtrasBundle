@@ -70,3 +70,42 @@ sulu_admin_extras:
             8: "8 Punkte"
             9: "9 Punkte"
             10: "10 Punkte"
+
+    # Business Hours
+    business_hours:
+        apply_to_weekdays: "Mo → Di–Fr"
+        break: "Pause"
+
+    # Weekday names
+    weekday:
+        monday: "Montag"
+        tuesday: "Dienstag"
+        wednesday: "Mittwoch"
+        thursday: "Donnerstag"
+        friday: "Freitag"
+        saturday: "Samstag"
+        sunday: "Sonntag"
+
+    # Public Holidays
+    public_holidays:
+        country: "Land"
+        region: "Region"
+        year: "Jahr"
+        all_regions: "— Alle —"
+        add_custom: "Eigener"
+        refresh: "Jetzt aktualisieren"
+        empty: "Keine Feiertage geladen. Klicke auf Aktualisieren zum Laden."
+        active: "aktiv"
+        custom: "Eigener"
+        name_placeholder: "Bezeichnung..."
+
+    # Holiday Dates
+    holiday_dates:
+        title: "Betriebsferien"
+        add: "Hinzufügen"
+        empty: "Keine Betriebsferien eingetragen."
+        label_placeholder: "Bezeichnung..."
+        recurring: "Jährlich"
+        recurring_title: "Jährlich wiederkehrend"
+        entries: "Einträge"
+        days_total: "Tage gesamt"

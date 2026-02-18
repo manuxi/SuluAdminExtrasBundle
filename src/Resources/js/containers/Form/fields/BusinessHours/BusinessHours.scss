@@ -1,18 +1,6 @@
 @import "sulu-admin-bundle/containers/Application/colors.scss";
 
-$rowBg: $white;
-$rowBgDisabled: $wildSand;
 $rowBorder: $mercury;
-$headerColor: $doveGray;
-$toggleActive: $shakespeare;
-$toggleInactive: $silver;
-$breakBadgeColor: $shakespeare;
-$breakBadgeText: $white;
-$labelColor: $blueZodiac;
-$labelDisabled: $silverChalice;
-$dayWidth: 100px;
-$timeInputWidth: 96px;
-$rowPadding: 8px 12px;
 
 .container {
     border: 1px solid $rowBorder;
@@ -23,38 +11,16 @@ $rowPadding: 8px 12px;
 .toolbar {
     display: flex;
     justify-content: flex-end;
-    padding: 6px 12px;
+    padding: 12px 12px;
     background: $alabaster;
     border-bottom: 1px solid $rowBorder;
-    gap: 8px;
-}
-
-.applyButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 500;
-    color: $shakespeare;
-    background: transparent;
-    border: 1px solid $shakespeare;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
-
-    &:hover {
-        background: $shakespeare;
-        color: $white;
-    }
 }
 
 .row {
     display: flex;
     align-items: center;
-    padding: $rowPadding;
-    background: $rowBg;
+    padding: 8px 12px;
+    background: $white;
     border-bottom: 1px solid $rowBorder;
     gap: 10px;
     min-height: 44px;
@@ -64,56 +30,22 @@ $rowPadding: 8px 12px;
         border-bottom: none;
     }
 
-    &.disabled {
-        background: $rowBgDisabled;
+    &.rowDisabled {
+        background: $wildSand;
         opacity: 0.6;
     }
 }
 
-.toggle {
-    position: relative;
-    width: 36px;
-    height: 20px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background: $toggleInactive;
-    transition: background-color 0.2s ease;
-    flex-shrink: 0;
-    padding: 0;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: $white;
-        transition: transform 0.2s ease;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    }
-
-    &.active {
-        background: $toggleActive;
-
-        &::after {
-            transform: translateX(16px);
-        }
-    }
-}
-
 .dayLabel {
-    width: $dayWidth;
+    width: 100px;
     font-size: 13px;
     font-weight: 600;
-    color: $labelColor;
+    color: $blueZodiac;
     flex-shrink: 0;
     user-select: none;
 
-    &.labelDisabled {
-        color: $labelDisabled;
+    &.dayLabelDisabled {
+        color: $silverChalice;
         font-weight: 400;
     }
 }
@@ -133,7 +65,7 @@ $rowPadding: 8px 12px;
 }
 
 .timeInput {
-    width: $timeInputWidth;
+    width: 96px;
     height: 30px;
     padding: 2px 6px;
     font-size: 13px;
@@ -157,42 +89,41 @@ $rowPadding: 8px 12px;
     }
 }
 
-.separator {
+.timeSeparator {
     font-size: 12px;
     color: $dustyGray;
     padding: 0 2px;
 }
 
-.breakToggle {
+.actionButton {
     display: inline-flex;
     align-items: center;
     gap: 4px;
     padding: 3px 8px;
     font-size: 11px;
     font-weight: 500;
-    color: $dustyGray;
+    color: $shakespeare;
     background: transparent;
-    border: 1px solid $mercury;
-    border-radius: 12px;
+    border: 1px solid $shakespeare;
+    border-radius: 3px;
     cursor: pointer;
     transition: all 0.15s ease;
     white-space: nowrap;
     flex-shrink: 0;
-    margin-left: 4px;
 
     &:hover {
-        border-color: $shakespeare;
-        color: $shakespeare;
+        background: $shakespeare;
+        color: $white;
     }
 
-    &.breakActive {
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    &.actionButtonActive {
         background: $shakespeare;
         color: $white;
         border-color: $shakespeare;
     }
-}
-
-.breakIcon {
-    font-size: 12px;
-    line-height: 1;
 }

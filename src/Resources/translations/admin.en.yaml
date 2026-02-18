@@ -70,3 +70,42 @@ sulu_admin_extras:
             8: "8 Points"
             9: "9 Points"
             10: "10 Points"
+
+    # Business Hours
+    business_hours:
+        apply_to_weekdays: "Mon → Tue–Fri"
+        break: "Break"
+
+    # Weekday names
+    weekday:
+        monday: "Monday"
+        tuesday: "Tuesday"
+        wednesday: "Wednesday"
+        thursday: "Thursday"
+        friday: "Friday"
+        saturday: "Saturday"
+        sunday: "Sunday"
+
+    # Public Holidays
+    public_holidays:
+        country: "Country"
+        region: "Region"
+        year: "Year"
+        all_regions: "— All —"
+        add_custom: "Custom"
+        refresh: "Refresh now"
+        empty: "No holidays loaded. Click refresh to fetch."
+        active: "active"
+        custom: "Custom"
+        name_placeholder: "Name..."
+
+    # Holiday Dates
+    holiday_dates:
+        title: "Company Holidays"
+        add: "Add"
+        empty: "No company holidays defined."
+        label_placeholder: "Label..."
+        recurring: "Annual"
+        recurring_title: "Recurring annually"
+        entries: "entries"
+        days_total: "days total"
