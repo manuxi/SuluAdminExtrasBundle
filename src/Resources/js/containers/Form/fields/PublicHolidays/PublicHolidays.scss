@@ -34,8 +34,10 @@ $rowBorder: $mercury;
 
 .selectWrapper {
     min-width: 80px;
-    .displayValue {
-        padding: 5px 30px 7px 10px;
+
+    :global([class*="displayValue"]) {
+        align-items: center;
+        padding: 5px 30px 5px 10px;
     }
 }
 
@@ -50,7 +52,7 @@ $rowBorder: $mercury;
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 3px 8px;
+    padding: 3px;
     font-size: 11px;
     font-weight: 500;
     color: $shakespeare;
@@ -118,13 +120,13 @@ $rowBorder: $mercury;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     padding: 0;
-    font-size: 13px;
+    font-size: 11px;
     color: $silverChalice;
     background: transparent;
-    border: none;
+    border: 1px solid $mercury;
     border-radius: 3px;
     cursor: pointer;
     flex-shrink: 0;
@@ -132,6 +134,7 @@ $rowBorder: $mercury;
 
     &:hover {
         color: $persianRed;
+        border-color: $persianRed;
     }
 }
 
@@ -169,7 +172,7 @@ $rowBorder: $mercury;
     width: 95px;
     font-size: 13px;
     font-weight: 600;
-    color: $blueZodiac;
+    color: $black;
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
 }
@@ -177,7 +180,7 @@ $rowBorder: $mercury;
 .localName {
     flex: 1;
     font-size: 13px;
-    color: $blueZodiac;
+    color: $black;
 }
 
 .intlName {
@@ -215,10 +218,15 @@ $rowBorder: $mercury;
     background: rgba($shakespeare, 0.03);
 }
 
-.customDateInput {
-    width: 130px;
-    height: 28px;
-    padding: 2px 6px;
+.customDateCell {
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.customNameInput {
+    flex: 1;
+    height: 30px;
+    padding: 2px 8px;
     font-size: 13px;
     font-family: inherit;
     color: $blueZodiac;
@@ -232,10 +240,13 @@ $rowBorder: $mercury;
     }
 }
 
-.customNameInput {
-    composes: customDateInput;
-    width: auto;
-    flex: 1;
+.trailingCell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    width: 100px;
+    flex-shrink: 0;
 }
 
 .info {

@@ -6,7 +6,10 @@ sulu_admin_extras:
     
     # Ghost Locale
     ghost_locale: "Sprache"
-    
+
+    # actions
+    delete: "Eintrag löschen"
+
     # Color Palettes (Neue Struktur)
     color_palettes:
         event_types:
@@ -91,7 +94,7 @@ sulu_admin_extras:
         country: "Land"
         region: "Region"
         year: "Jahr"
-        all_regions: "— Alle —"
+        all_regions: "- Alle -"
         add_custom: "Eigener"
         refresh: "Jetzt aktualisieren"
         empty: "Keine Feiertage geladen. Klicke auf Aktualisieren zum Laden."
