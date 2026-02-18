@@ -20,13 +20,11 @@ class BusinessHours extends React.Component<FieldTypeProps<Object>> {
     };
 
     render() {
-        const {disabled, value, formInspector} = this.props;
-        const locale = formInspector?.locale?.get?.() || 'de';
+        const {disabled, value} = this.props;
 
         return (
             <BusinessHoursEditor
                 disabled={!!disabled}
-                locale={locale}
                 onChange={this.handleChange}
                 onFinish={this.handleFinish}
                 value={value}
