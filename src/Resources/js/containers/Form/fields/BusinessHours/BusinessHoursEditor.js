@@ -2,7 +2,8 @@
 import React from 'react';
 import {action} from 'mobx';
 import {observer} from 'mobx-react';
-import {Icon, Toggler} from 'sulu-admin-bundle/components';
+import moment from 'moment';
+import {DatePicker, Icon, Toggler} from 'sulu-admin-bundle/components';
 import {translate} from 'sulu-admin-bundle/utils';
 import styles from './BusinessHours.scss';
 
@@ -10,6 +11,8 @@ const WEEKDAY_KEYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 's
 
 const DEFAULT_MORNING = {start: '08:00', end: '12:00'};
 const DEFAULT_AFTERNOON = {start: '13:00', end: '17:00'};
+
+const TIME_OPTIONS = {dateFormat: false, timeFormat: 'HH:mm'};
 
 type Slot = {start: string, end: string};
 type DayConfig = {enabled: boolean, break: boolean, slots: Array<Slot>};
@@ -20,6 +23,17 @@ type Props = {
     onChange: (value: BusinessHoursData) => void,
     onFinish: () => void,
     value: ?BusinessHoursData,
+};
+
+const timeToDate = (timeStr: string): ?Date => {
+    if (!timeStr) return undefined;
+    const m = moment(timeStr, 'HH:mm');
+    return m.isValid() ? m.toDate() : undefined;
+};
+
+const dateToTime = (date: ?Date): string => {
+    if (!date) return '';
+    return moment(date).format('HH:mm');
 };
 
 const getDefaultValue = (): BusinessHoursData => {
@@ -71,15 +85,16 @@ class BusinessHoursEditor extends React.Component<Props> {
         this.props.onFinish();
     };
 
-    @action handleTimeChange = (dayKey: string, slotIndex: number, field: string, value: string) => {
+    @action handleTimeChange = (dayKey: string, slotIndex: number, field: string, date: ?Date) => {
+        const timeStr = dateToTime(date);
+        if (!timeStr) return;
         const data = {...this.getData()};
         const slots = [...data[dayKey].slots];
-        slots[slotIndex] = {...slots[slotIndex], [field]: value};
+        slots[slotIndex] = {...slots[slotIndex], [field]: timeStr};
         data[dayKey] = {...data[dayKey], slots};
         this.props.onChange(data);
+        this.props.onFinish();
     };
-
-    handleTimeBlur = () => { this.props.onFinish(); };
 
     @action handleApplyToWeekdays = () => {
         const data = {...this.getData()};
@@ -102,23 +117,23 @@ class BusinessHoursEditor extends React.Component<Props> {
                     <React.Fragment key={index}>
                         {index > 0 && <span className={styles.timeSeparator}>|</span>}
                         <div className={styles.slot}>
-                            <input
-                                className={styles.timeInput}
-                                disabled={disabled}
-                                onBlur={this.handleTimeBlur}
-                                onChange={(e) => this.handleTimeChange(dayKey, index, 'start', e.target.value)}
-                                type="time"
-                                value={slot.start}
-                            />
+                            <div className={styles.timeCell}>
+                                <DatePicker
+                                    disabled={!!disabled}
+                                    onChange={(date) => this.handleTimeChange(dayKey, index, 'start', date)}
+                                    options={TIME_OPTIONS}
+                                    value={timeToDate(slot.start)}
+                                />
+                            </div>
                             <span className={styles.timeSeparator}>&ndash;</span>
-                            <input
-                                className={styles.timeInput}
-                                disabled={disabled}
-                                onBlur={this.handleTimeBlur}
-                                onChange={(e) => this.handleTimeChange(dayKey, index, 'end', e.target.value)}
-                                type="time"
-                                value={slot.end}
-                            />
+                            <div className={styles.timeCell}>
+                                <DatePicker
+                                    disabled={!!disabled}
+                                    onChange={(date) => this.handleTimeChange(dayKey, index, 'end', date)}
+                                    options={TIME_OPTIONS}
+                                    value={timeToDate(slot.end)}
+                                />
+                            </div>
                         </div>
                     </React.Fragment>
                 ))}
