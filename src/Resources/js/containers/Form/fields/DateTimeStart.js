@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import { observer } from 'mobx-react';
+import {observer} from 'mobx-react';
 import moment from 'moment';
-import { action, observable } from 'mobx';
-import { translate } from 'sulu-admin-bundle/utils';
+import {action, observable} from 'mobx';
+import {translate} from 'sulu-admin-bundle/utils';
 import ResourceRequester from 'sulu-admin-bundle/services/ResourceRequester';
 import AbstractDateTime from './AbstractDateTime';
 
@@ -22,7 +22,7 @@ class DateTimeStart extends AbstractDateTime {
             ResourceRequester.get(settingsResourceKey)
                 .then(action((response) => {
                     this.settings = response;
-                    const { value, onChange } = this.props;
+                    const {value, onChange} = this.props;
 
                     if (!value) {
                         try {
@@ -44,8 +44,9 @@ class DateTimeStart extends AbstractDateTime {
     }
 
     handleChange = (value) => {
-        const { onChange, onFinish } = this.props;
-        const stringValue = value ? moment(value).format('YYYY-MM-DDTHH:mm:ss') : undefined;
+        const {onChange, onFinish} = this.props;
+        const stringValue = value ?
+            moment(value).format('YYYY-MM-DDTHH:mm:ss') : undefined;
 
         try {
             this.validateTime(stringValue);
@@ -85,7 +86,7 @@ class DateTimeStart extends AbstractDateTime {
             4: 'thursday',
             5: 'friday',
             6: 'saturday',
-            0: 'sunday'
+            0: 'sunday',
         };
         return mapping[date.day()] || 'monday';
     }
@@ -145,7 +146,7 @@ class DateTimeStart extends AbstractDateTime {
     }
 
     afterChange(value) {
-        const { formInspector, schemaOptions } = this.props;
+        const {formInspector, schemaOptions} = this.props;
 
         const endDateField = schemaOptions?.end_date_field?.value || 'end';
         const defaultDuration = parseInt(schemaOptions?.default_duration?.value || 15, 10);
@@ -169,25 +170,37 @@ class DateTimeStart extends AbstractDateTime {
         }
     }
 
+    getCollisionDetected() {
+        const {formInspector} = this.props;
+        if (!formInspector?.formStore) return false;
+
+        return formInspector.formStore.__collisionDetected || false;
+    }
+
     render() {
-        const { error, schemaOptions } = this.props;
+        const {error, schemaOptions} = this.props;
         const step = parseInt(schemaOptions?.step?.value || 15, 10);
+        const hasCollision = this.getCollisionDetected();
 
         const options = {
             timeConstraints: {
-                minutes: {
-                    step: step
-                }
-            }
+                minutes: {step},
+            },
         };
 
         return (
             <div>
-                {this.renderDatePicker(options, !error)}
-                {!this.isValidTime && (
-                    <div style={{ color: '#ea9c00', fontSize: '10px', marginTop: '5px' }}>
-                        <span className="fa fa-exclamation-triangle" style={{ marginRight: '5px' }}></span>
-                        {this.timeErrorMessage || "Invalid time"}
+                {this.renderDatePicker(options, !error && !hasCollision)}
+                {hasCollision && !error && (
+                    <div style={{color: '#ea9c00', fontSize: '10px', marginTop: '5px'}}>
+                        <span className="fa fa-exclamation-triangle" style={{marginRight: '5px'}}></span>
+                        {translate('sulu_admin_extras.errors.collision')}
+                    </div>
+                )}
+                {!hasCollision && !this.isValidTime && (
+                    <div style={{color: '#ea9c00', fontSize: '10px', marginTop: '5px'}}>
+                        <span className="fa fa-exclamation-triangle" style={{marginRight: '5px'}}></span>
+                        {this.timeErrorMessage || 'Invalid time'}
                     </div>
                 )}
             </div>
