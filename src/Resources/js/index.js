@@ -24,6 +24,11 @@ import BusinessHours from './containers/Form/fields/BusinessHours/BusinessHours'
 import PublicHolidays from './containers/Form/fields/PublicHolidays/PublicHolidays';
 import HolidayDates from './containers/Form/fields/HolidayDates/HolidayDates';
 
+// Drawer
+import Drawer from './containers/Drawer';
+import drawerStore from './stores/DrawerStore';
+import drawerRegistry from './registries/DrawerRegistry';
+
 initializer.addUpdateConfigHook('sulu_admin_extras', (config: Object, initialized: boolean) => {
     if (initialized) {
         return;
@@ -96,4 +101,13 @@ export {
     BusinessHours,
     PublicHolidays,
     HolidayDates,
+    Drawer,
+    drawerStore,
+    drawerRegistry,
+};
+
+window.suluAdminExtras = {
+    Drawer,
+    drawerStore,
+    drawerRegistry,
 };

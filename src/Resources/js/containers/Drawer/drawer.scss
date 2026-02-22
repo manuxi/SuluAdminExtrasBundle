@@ -1,0 +1,83 @@
+@import "sulu-admin-bundle/containers/Application/colors.scss";
+
+$drawerWidth: 512px;
+$animDuration: 0.28s;
+
+/* Rely on React Portal DOM order rather than a hardcoded z-index to stay above sulu-app */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $animDuration ease;
+}
+
+.backdropVisible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: $drawerWidth;
+    background: $white;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12);
+    transform: translateX(100%);
+    transition: transform $animDuration cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    color: $mineShaft;
+
+    /* Ensure content inside can be scrolled if needed */
+    overflow: hidden;
+}
+
+.drawerOpen {
+    transform: translateX(0);
+}
+
+/* Generic Drawer Header */
+.header {
+    padding: 14px 20px;
+    background: $pickledBluewood;
+    color: $white;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-top: -2px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    padding: 0 0 4px 0;
+    transition: all 0.15s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: $white;
+    }
+}
