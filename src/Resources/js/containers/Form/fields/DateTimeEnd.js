@@ -124,8 +124,11 @@ class DateTimeEnd extends AbstractDateTime {
             start,
             end,
             resource: String(resource),
-            exclude: String(formInspector.formStore.id || ''),
         });
+
+        if (formInspector.formStore.id) {
+            params.set('exclude', String(formInspector.formStore.id));
+        }
 
         Requester.get(url + '?' + params.toString())
             .then(action((response) => {
