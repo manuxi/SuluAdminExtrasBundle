@@ -28,7 +28,9 @@ class DateTimeStart extends AbstractDateTime {
                         try {
                             const nextSlot = this.findNextAvailableSlot(moment());
                             if (nextSlot) {
-                                onChange(nextSlot.format('YYYY-MM-DDTHH:mm:ss'));
+                                const formatted = nextSlot.format('YYYY-MM-DDTHH:mm:ss');
+                                onChange(formatted);
+                                this.afterChange(formatted);
                             }
                         } catch (e) {
                             console.error("Error calculating next slot", e);
