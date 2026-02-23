@@ -1,22 +1,22 @@
 // @flow
 import React from 'react';
-import {action} from 'mobx';
-import {observer} from 'mobx-react';
+import { action } from 'mobx';
+import { observer } from 'mobx-react';
 import moment from 'moment';
-import {DatePicker, Icon, Toggler} from 'sulu-admin-bundle/components';
-import {translate} from 'sulu-admin-bundle/utils';
+import { DatePicker, Icon, Toggler } from 'sulu-admin-bundle/components';
+import { translate } from 'sulu-admin-bundle/utils';
 import styles from './BusinessHours.scss';
 
 const WEEKDAY_KEYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-const DEFAULT_MORNING = {start: '08:00', end: '12:00'};
-const DEFAULT_AFTERNOON = {start: '13:00', end: '17:00'};
+const DEFAULT_MORNING = { start: '08:00', end: '12:00' };
+const DEFAULT_AFTERNOON = { start: '13:00', end: '17:00' };
 
-const TIME_OPTIONS = {dateFormat: false, timeFormat: 'HH:mm'};
+const TIME_OPTIONS = { dateFormat: false, timeFormat: 'HH:mm' };
 
-type Slot = {start: string, end: string};
-type DayConfig = {enabled: boolean, break: boolean, slots: Array<Slot>};
-type BusinessHoursData = {[string]: DayConfig};
+type Slot = { start: string, end: string };
+type DayConfig = { enabled: boolean, break: boolean, slots: Array<Slot> };
+type BusinessHoursData = { [string]: DayConfig };
 
 type Props = {
     disabled: boolean,
@@ -36,13 +36,13 @@ const dateToTime = (date: ?Date): string => {
     return moment(date).format('HH:mm');
 };
 
-const getDefaultValue = (): BusinessHoursData => {
+export const getDefaultValue = (): BusinessHoursData => {
     const data = {};
     WEEKDAY_KEYS.forEach((key, index) => {
         data[key] = {
             enabled: index < 5,
             break: true,
-            slots: index < 5 ? [{...DEFAULT_MORNING}, {...DEFAULT_AFTERNOON}] : [],
+            slots: index < 5 ? [{ ...DEFAULT_MORNING }, { ...DEFAULT_AFTERNOON }] : [],
         };
     });
     return data;
@@ -57,29 +57,29 @@ class BusinessHoursEditor extends React.Component<Props> {
 
     @action handleToggleDay = (checked: boolean, dayKey: ?string) => {
         if (!dayKey) return;
-        const data = {...this.getData()};
+        const data = { ...this.getData() };
         const current = data[dayKey];
         if (checked) {
-            data[dayKey] = {...current, enabled: true, break: true, slots: [{...DEFAULT_MORNING}, {...DEFAULT_AFTERNOON}]};
+            data[dayKey] = { ...current, enabled: true, break: true, slots: [{ ...DEFAULT_MORNING }, { ...DEFAULT_AFTERNOON }] };
         } else {
-            data[dayKey] = {...current, enabled: false, slots: []};
+            data[dayKey] = { ...current, enabled: false, slots: [] };
         }
         this.props.onChange(data);
         this.props.onFinish();
     };
 
     @action handleToggleBreak = (dayKey: string) => {
-        const data = {...this.getData()};
+        const data = { ...this.getData() };
         const current = data[dayKey];
         if (!current.enabled) return;
 
         if (current.break) {
             const mergedStart = current.slots.length > 0 ? current.slots[0].start : '08:00';
             const mergedEnd = current.slots.length > 1 ? current.slots[1].end : '17:00';
-            data[dayKey] = {...current, break: false, slots: [{start: mergedStart, end: mergedEnd}]};
+            data[dayKey] = { ...current, break: false, slots: [{ start: mergedStart, end: mergedEnd }] };
         } else {
-            const existing = current.slots[0] || {start: '08:00', end: '17:00'};
-            data[dayKey] = {...current, break: true, slots: [{start: existing.start, end: '12:00'}, {start: '13:00', end: existing.end}]};
+            const existing = current.slots[0] || { start: '08:00', end: '17:00' };
+            data[dayKey] = { ...current, break: true, slots: [{ start: existing.start, end: '12:00' }, { start: '13:00', end: existing.end }] };
         }
         this.props.onChange(data);
         this.props.onFinish();
@@ -88,27 +88,27 @@ class BusinessHoursEditor extends React.Component<Props> {
     @action handleTimeChange = (dayKey: string, slotIndex: number, field: string, date: ?Date) => {
         const timeStr = dateToTime(date);
         if (!timeStr) return;
-        const data = {...this.getData()};
+        const data = { ...this.getData() };
         const slots = [...data[dayKey].slots];
-        slots[slotIndex] = {...slots[slotIndex], [field]: timeStr};
-        data[dayKey] = {...data[dayKey], slots};
+        slots[slotIndex] = { ...slots[slotIndex], [field]: timeStr };
+        data[dayKey] = { ...data[dayKey], slots };
         this.props.onChange(data);
         this.props.onFinish();
     };
 
     @action handleApplyToWeekdays = () => {
-        const data = {...this.getData()};
+        const data = { ...this.getData() };
         const monday = data.monday;
         if (!monday || !monday.enabled) return;
         ['tuesday', 'wednesday', 'thursday', 'friday'].forEach((dayKey) => {
-            data[dayKey] = {enabled: monday.enabled, break: monday.break, slots: monday.slots.map((s) => ({...s}))};
+            data[dayKey] = { enabled: monday.enabled, break: monday.break, slots: monday.slots.map((s) => ({ ...s })) };
         });
         this.props.onChange(data);
         this.props.onFinish();
     };
 
     renderTimeSlots(dayKey: string, dayConfig: DayConfig) {
-        const {disabled} = this.props;
+        const { disabled } = this.props;
         if (!dayConfig.enabled || dayConfig.slots.length === 0) return null;
 
         return (
@@ -152,7 +152,7 @@ class BusinessHoursEditor extends React.Component<Props> {
     }
 
     render() {
-        const {disabled} = this.props;
+        const { disabled } = this.props;
         const data = this.getData();
 
         return (
@@ -170,7 +170,7 @@ class BusinessHoursEditor extends React.Component<Props> {
                     </button>
                 </div>
                 {WEEKDAY_KEYS.map((dayKey) => {
-                    const dayConfig = data[dayKey] || {enabled: false, break: false, slots: []};
+                    const dayConfig = data[dayKey] || { enabled: false, break: false, slots: [] };
                     return (
                         <div className={styles.row + (!dayConfig.enabled ? ' ' + styles.rowDisabled : '')} key={dayKey}>
                             <Toggler
