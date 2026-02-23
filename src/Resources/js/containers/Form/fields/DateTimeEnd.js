@@ -1,9 +1,10 @@
 // @flow
 import React from 'react';
-import {observer} from 'mobx-react';
-import {action, extendObservable, observable, reaction} from 'mobx';
+import ReactDOM from 'react-dom';
+import { observer } from 'mobx-react';
+import { action, extendObservable, observable, reaction } from 'mobx';
 import moment from 'moment';
-import {translate} from 'sulu-admin-bundle/utils';
+import { translate } from 'sulu-admin-bundle/utils';
 import Requester from 'sulu-admin-bundle/services/Requester';
 import AbstractDateTime from './AbstractDateTime';
 
@@ -13,17 +14,22 @@ class DateTimeEnd extends AbstractDateTime {
     originalValidate = null;
     disposeReaction = null;
     checkTimer = null;
+    wrapperRef = null;
+    errorLabelEl = null;
 
     componentDidMount() {
         super.componentDidMount();
 
-        const {formInspector} = this.props;
+        // Find Sulu's error-label div by walking up the DOM
+        this.findErrorLabelEl();
+
+        const { formInspector } = this.props;
         if (!formInspector?.formStore) return;
 
         const store = formInspector.formStore;
 
         if (store.__collisionDetected === undefined) {
-            extendObservable(store, {__collisionDetected: false});
+            extendObservable(store, { __collisionDetected: false });
         }
 
         this.originalValidate = store.validate.bind(store);
@@ -49,13 +55,13 @@ class DateTimeEnd extends AbstractDateTime {
                     };
                 },
                 () => this.debouncedCollisionCheck(),
-                {fireImmediately: false}
+                { fireImmediately: false }
             );
         }
     }
 
     componentWillUnmount() {
-        const {formInspector} = this.props;
+        const { formInspector } = this.props;
         if (this.originalValidate && formInspector?.formStore) {
             formInspector.formStore.validate = this.originalValidate;
         }
@@ -66,6 +72,27 @@ class DateTimeEnd extends AbstractDateTime {
             clearTimeout(this.checkTimer);
         }
     }
+
+    findErrorLabelEl() {
+        if (!this.wrapperRef) return;
+
+        let el = this.wrapperRef;
+        while (el) {
+            const parent = el.parentElement;
+            if (!parent) break;
+
+            const errorLabel = parent.querySelector('[class*="error-label"]');
+            if (errorLabel) {
+                this.errorLabelEl = errorLabel;
+                return;
+            }
+            el = parent;
+        }
+    }
+
+    setWrapperRef = (ref) => {
+        this.wrapperRef = ref;
+    };
 
     getStartField() {
         return this.props.schemaOptions?.start_date_field?.value || 'start';
@@ -80,7 +107,7 @@ class DateTimeEnd extends AbstractDateTime {
     }
 
     hasEndBeforeStartError() {
-        const {formInspector, value} = this.props;
+        const { formInspector, value } = this.props;
         if (!formInspector || !value) return false;
 
         const startValue = formInspector.formStore.data[this.getStartField()];
@@ -97,7 +124,7 @@ class DateTimeEnd extends AbstractDateTime {
     @action updateCollisionState(collision) {
         this.hasCollision = collision;
 
-        const {formInspector} = this.props;
+        const { formInspector } = this.props;
         if (formInspector?.formStore) {
             formInspector.formStore.__collisionDetected = collision;
         }
@@ -107,7 +134,7 @@ class DateTimeEnd extends AbstractDateTime {
         const url = this.getCollisionCheckUrl();
         if (!url) return;
 
-        const {formInspector} = this.props;
+        const { formInspector } = this.props;
         if (!formInspector) return;
 
         const data = formInspector.formStore.data;
@@ -139,40 +166,51 @@ class DateTimeEnd extends AbstractDateTime {
             });
     }
 
-    render() {
-        const {schemaOptions, error} = this.props;
-        const step = parseInt(schemaOptions?.step?.value || 1, 10);
+    renderErrorLabelContent() {
+        const { error } = this.props;
 
-        let isValid = !error;
         let errorMessage = null;
 
         if (this.hasEndBeforeStartError()) {
-            isValid = false;
             errorMessage = translate('sulu_admin_extras.errors.start_after_end');
         } else if (this.hasCollision) {
-            isValid = false;
             errorMessage = translate('sulu_admin_extras.errors.collision');
         }
 
-        const options = {
-            timeConstraints: {minutes: {step}},
-        };
+        if (!errorMessage || error) return null;
 
         return (
-            <div>
-                {this.renderDatePicker(options, isValid)}
-                {!isValid && !error && errorMessage && (
-                    <div style={{
-                        color: this.hasCollision ? '#ea9c00' : '#d9534f',
-                        fontSize: '10px',
-                        marginTop: '5px',
-                    }}>
-                        {this.hasCollision && (
-                            <span className="fa fa-exclamation-triangle" style={{marginRight: '5px'}}></span>
-                        )}
-                        {errorMessage}
-                    </div>
+            <span style={{ color: this.hasCollision ? '#ea9c00' : '#d9534f' }}>
+                {this.hasCollision && (
+                    <span className="fa fa-exclamation-triangle" style={{ marginRight: '5px' }}></span>
                 )}
+                {errorMessage}
+            </span>
+        );
+    }
+
+    render() {
+        const { schemaOptions, error } = this.props;
+        const step = parseInt(schemaOptions?.step?.value || 1, 10);
+
+        let isValid = !error;
+
+        if (this.hasEndBeforeStartError() || this.hasCollision) {
+            isValid = false;
+        }
+
+        const options = {
+            timeConstraints: { minutes: { step } },
+        };
+
+        const errorLabelContent = this.renderErrorLabelContent();
+
+        return (
+            <div ref={this.setWrapperRef}>
+                {this.renderDatePicker(options, isValid)}
+                {this.errorLabelEl && errorLabelContent &&
+                    ReactDOM.createPortal(errorLabelContent, this.errorLabelEl)
+                }
             </div>
         );
     }
