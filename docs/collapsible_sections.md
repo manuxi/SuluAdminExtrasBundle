@@ -20,7 +20,14 @@ sulu_admin_extras:
     collapsible_sections:
         - 'sulu_appointment.section_customer'
         - 'sulu_appointment.section_content' # Add your custom english titles here
+    initially_closed_sections:
+        - 'sulu_appointment.section_content' # Add sections that should be closed by default
 ```
+
+### Initially Closed Sections & Local Storage
+
+Using the `initially_closed_sections` configuration key, you can define which sections should be collapsed by default when the page first loads.
+Additionally, the browser remembers the collapsed/expanded state for each section per user in their `localStorage`. This means if a user collapses a section, it will remain collapsed on subsequent page loads, regardless of the default configuration.
 
 ## Usage in XML forms
 

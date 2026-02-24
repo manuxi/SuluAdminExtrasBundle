@@ -91,6 +91,13 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue([])
                     ->scalarPrototype()->end()
                 ->end()
+
+                // Initially Closed Sections config
+                ->arrayNode('initially_closed_sections')
+                    ->info('Titles or explicit translation keys of sections that should be closed initially by default.')
+                    ->defaultValue([])
+                    ->scalarPrototype()->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

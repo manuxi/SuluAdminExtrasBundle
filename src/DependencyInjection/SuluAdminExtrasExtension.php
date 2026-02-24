@@ -54,6 +54,7 @@ class SuluAdminExtrasExtension extends Extension implements PrependExtensionInte
             'type_color' => $config['type_color'] ?? [],
             'palettes' => $this->normalizePalettes($palettes),
             'collapsible_sections' => $config['collapsible_sections'] ?? [],
+            'initially_closed_sections' => $config['initially_closed_sections'] ?? [],
         ]);
 
         $container->setParameter('sulu_admin_extras.star_rating.max_value', $config['star_rating']['max_value']);
