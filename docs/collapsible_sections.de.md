@@ -20,7 +20,14 @@ sulu_admin_extras:
     collapsible_sections:
         - 'sulu_appointment.section_customer'
         - 'sulu_appointment.section_content'
+    initially_closed_sections:
+        - 'sulu_appointment.section_content'
 ```
+
+### Initial geschlossene Sektionen & lokaler Speicher
+
+Mit dem Schlüssel `initially_closed_sections` können Sektionen angegeben werden, die beim ersten Laden der Seite standardmäßig eingeklappt sein sollen.
+Zusätzlich merkt sich der Browser für jeden Benutzer individuell den auf-/zugeklappten Zustand jeder Sektion im `localStorage`. Das bedeutet, wenn ein Benutzer eine Sektion einklappt, bleibt sie auch nach einem Neuladen der Seite eingeklappt, unabhängig vom Standardwert in der Konfiguration.
 
 ## Verwendung in XML Formularen
 

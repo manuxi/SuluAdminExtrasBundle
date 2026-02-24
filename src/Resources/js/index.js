@@ -39,10 +39,12 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     const percentBarConfig = config.percent_bar || {};
     const typeColorConfig = config.type_color || {};
     const collapsibleSectionsConfig = config.collapsible_sections || [];
+    const initiallyClosedSectionsConfig = config.initially_closed_sections || [];
 
     window.suluAdminExtras = {
         ...(window.suluAdminExtras || {}),
-        collapsibleSections: collapsibleSectionsConfig
+        collapsibleSections: collapsibleSectionsConfig,
+        initiallyClosedSections: initiallyClosedSectionsConfig
     };
 
     listFieldTransformerRegistry.add(

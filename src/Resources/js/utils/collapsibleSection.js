@@ -8,11 +8,21 @@ const getCollapsibleSectionTitles = () => {
     return raw.map(title => (translate(title) || title).trim());
 };
 
+const getInitiallyClosedSectionTitles = () => {
+    let raw = [];
+    if (window.suluAdminExtras && Array.isArray(window.suluAdminExtras.initiallyClosedSections)) {
+        raw = window.suluAdminExtras.initiallyClosedSections;
+    }
+    return raw.map(title => (translate(title) || title).trim());
+};
+
 const initializedSections = new WeakSet();
 
 function initSuluCollapsibleSections() {
     const titles = getCollapsibleSectionTitles();
     if (titles.length === 0) return;
+
+    const initiallyClosedTitles = getInitiallyClosedSectionTitles();
 
     titles.forEach(title => {
         const xpath = `//text()[normalize-space(.)='${title}']/parent::*`;
@@ -38,6 +48,19 @@ function initSuluCollapsibleSections() {
                 gridSection.classList.add('sulu-collapsible-section');
                 gridSection.dataset.collapsibleInit = 'true';
 
+                const routePart = window.location.hash ? window.location.hash.split(/[?:]/)[0].replace(/[^a-z0-9]/gi, '_').toLowerCase() : 'global';
+                const safeTitle = title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                const storageKey = `sulu_collapsible_${routePart}_${safeTitle}`;
+                const savedState = localStorage.getItem(storageKey);
+
+                const isInitiallyClosed = initiallyClosedTitles.includes(title);
+                const shouldBeClosed = savedState === 'closed' || (!savedState && isInitiallyClosed);
+
+                if (shouldBeClosed) {
+                    gridSection.classList.add('is-hidden');
+                    gridSection.classList.add('is-closed');
+                }
+
                 if (clickableHeader) {
                     clickableHeader.classList.add('sulu-collapsible-header');
 
@@ -45,7 +68,9 @@ function initSuluCollapsibleSections() {
                     iconWrapper.className = 'sulu-collapsible-icon-wrapper';
 
                     const iconEl = document.createElement('i');
-                    iconEl.className = 'su-eye sulu-collapsible-icon';
+                    iconEl.className = shouldBeClosed
+                        ? 'su-hide sulu-collapsible-icon'
+                        : 'su-eye sulu-collapsible-icon';
                     iconEl.setAttribute('aria-label', title);
 
                     iconWrapper.appendChild(iconEl);
@@ -61,6 +86,8 @@ function initSuluCollapsibleSections() {
                             setTimeout(() => {
                                 gridSection.classList.remove('is-hidden');
                             }, 20);
+
+                            localStorage.setItem(storageKey, 'open');
                         } else {
                             gridSection.classList.add('is-hidden');
                             iconEl.className = 'su-hide sulu-collapsible-icon';
@@ -70,6 +97,8 @@ function initSuluCollapsibleSections() {
                                     gridSection.classList.add('is-closed');
                                 }
                             }, 300);
+
+                            localStorage.setItem(storageKey, 'closed');
                         }
 
                         e.stopPropagation();
