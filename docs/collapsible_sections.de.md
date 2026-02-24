@@ -4,6 +4,8 @@ Dieser UI-Hack ermöglicht es, reguläre Sulu-Sektionen im Admin-Backend (`<sect
 
 Es ist kein spezieller Form-Type notwendig; es reicht, wenn die Sektion einen bestimmten Namen/Titel über `<title>` erhält, der in der Bundle-Konfiguration hinterlegt ist.
 
+![Collapsible Sections](img/collapsible_sections.de.png)
+
 ## Funktionsweise
 Da Sulu in seinem React-Frontend für Formular-Sektionen das `cssClass` Attribut aus der XML-Definition ignoriert, nutzt dieses Bundle einen *Mutation Observer*, der das DOM nach Sektionstiteln durchsucht. 
 Wenn ein bekannter Titel gefunden wird, werden automatisch die benötigten CSS-Klassen (`sulu-collapsible-section`) injiziert, was ein Auge-Icon hinzufügt und den Inhalt ein-/ausklappbar macht.

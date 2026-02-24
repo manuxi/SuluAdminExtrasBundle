@@ -4,6 +4,8 @@ This UI hack enables regular Sulu sections in the admin backend (`<section>`) to
 
 No specialized custom form type is required. Instead, any section whose title (`<title>`) matches a predetermined list in the bundle configuration will automatically morph into a collapsible UI block.
 
+![Collapsible Sections](img/collapsible_sections.de.png)
+
 ## How it works
 
 Since the Sulu React frontend ignores the `cssClass` attribute from XML section definitions, this bundle employs a **Mutation Observer**. It continuously scans the DOM for section labels. 
