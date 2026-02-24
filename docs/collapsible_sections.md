@@ -25,16 +25,16 @@ sulu_admin_extras:
 Simply utilize the standard `.xml` syntax for Sulu sections. The only prerequisite is that the text inside the `<title>` element exactly matches one of the labels defined in the configuration array:
 
 ```xml
-        <section name="description_notes">
+<section name="description_notes">
+    <meta>
+        <title>sulu_appointment.section_content</title>
+    </meta>
+    <properties>
+        <property name="description" type="text_area" colspan="12">
             <meta>
-                <title>sulu_appointment.section_content</title>
+                <title>sulu_appointment.description</title>
             </meta>
-            <properties>
-                <property name="description" type="text_area" colspan="12">
-                    <meta>
-                        <title>sulu_appointment.description</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
+        </property>
+    </properties>
+</section>
 ```
