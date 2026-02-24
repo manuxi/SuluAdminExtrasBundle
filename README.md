@@ -26,6 +26,7 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 *   **[Business Hours](docs/business_hours.en.md)** - Weekly schedule with time slots, breaks and copy function
 *   **[Public Holidays](docs/public_holidays.en.md)** - Holiday manager with Nager.Date API integration
 *   **[Holiday Dates](docs/holiday_dates.en.md)** - Company holidays and closure periods with recurring support
+*   **[Collapsible Sections](docs/collapsible_sections.md)** - Auto-collapsible XML sections in the Admin UI
 
 ### List Transformers
 *   **[Percent Bar](docs/percent_bar.md)** - Percentage bar
