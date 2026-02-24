@@ -1,0 +1,52 @@
+:global {
+    .sulu-collapsible-section {
+        .sulu-collapsible-header {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+
+            .sulu-collapsible-icon-wrapper {
+                position: absolute;
+                right: 50px;
+                top: 60%;
+                transform: translateY(-50%);
+                background-color: #f5f5f5;
+                padding: 0 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .sulu-collapsible-icon {
+                    font-size: 18px;
+                    color: #6d6d6d;
+                    transition: color 0.15s ease-in-out;
+                }
+            }
+
+            &:hover .sulu-collapsible-icon {
+                color: #1A1A1A;
+            }
+        }
+
+        &>div[class*="item"]:not(.sulu-collapsible-header) {
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            opacity: 1;
+            transform: translateY(0);
+            transform-origin: top;
+        }
+
+        &.is-hidden {
+            &>div[class*="item"]:not(.sulu-collapsible-header) {
+                opacity: 0 !important;
+                transform: translateY(-10px) !important;
+                pointer-events: none !important;
+            }
+        }
+
+        &.is-closed {
+            &>div[class*="item"]:not(.sulu-collapsible-header) {
+                display: none !important;
+            }
+        }
+    }
+}

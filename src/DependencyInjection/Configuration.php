@@ -84,6 +84,13 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('fallback_color')->defaultValue('#cccccc')->end()
                     ->end()
                 ->end()
+
+                // Collapsible Sections config
+                ->arrayNode('collapsible_sections')
+                    ->info('Titles or explicit translation keys of sections that should become collapsible automatically in the admin UI.')
+                    ->defaultValue([])
+                    ->scalarPrototype()->end()
+                ->end()
             ->end();
 
         return $treeBuilder;
