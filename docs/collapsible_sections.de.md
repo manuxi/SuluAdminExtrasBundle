@@ -25,17 +25,17 @@ sulu_admin_extras:
 Verwenden Sie eine ganz normale Sulu `section`. Wichtig ist nur, dass der Text innerhalb des `<title>`-Tags mit einem der Einträge in der Konfiguration übereinstimmt:
 
 ```xml
-        <section name="description_notes">
+<section name="description_notes">
+    <meta>
+        <!-- Title wird gematcht -->
+        <title>sulu_appointment.section_content</title>
+    </meta>
+    <properties>
+        <property name="description" type="text_area" colspan="12">
             <meta>
-                <!-- Title wird gematcht -->
-                <title>sulu_appointment.section_content</title>
+                <title>sulu_appointment.description</title>
             </meta>
-            <properties>
-                <property name="description" type="text_area" colspan="12">
-                    <meta>
-                        <title>sulu_appointment.description</title>
-                    </meta>
-                </property>
-            </properties>
-        </section>
+        </property>
+    </properties>
+</section>
 ```
