@@ -4,6 +4,8 @@ Die `AddNewToolbarAction` ist eine benutzerdefinierte JavaScript-Toolbar-Aktion,
 
 Dies ist besonders nützlich, um die Dateneingabe zu beschleunigen, da Benutzer fortlaufend neue Datensätze anlegen können, ohne zwischendurch in die Listenansicht zurückkehren zu müssen.
 
+![AddNewToolbarAction](img/add_new_toolbar_action.de.png)
+
 ## Features
 
 - Weiterleitung zu einer beliebigen angegebenen Route (meistens die `add_form` Route).

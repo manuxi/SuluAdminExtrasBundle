@@ -4,6 +4,8 @@ The `AddNewToolbarAction` is a custom JavaScript toolbar action provided by the 
 
 This is particularly useful to increase data entry speed, allowing users to create consecutive records without needing to go back to the list view first.
 
+![AddNewToolbarAction](img/add_new_toolbar_action.de.png)
+
 ## Features
 
 - Redirects to any specified route (usually the `add_form` route).

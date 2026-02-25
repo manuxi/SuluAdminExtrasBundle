@@ -4,7 +4,7 @@
 ![GitHub Tag](https://img.shields.io/github/v/tag/manuxi/SuluAdminExtrasBundle)
 ![Supports Sulu 3.0 or later](https://img.shields.io/badge/Sulu->=3.0-0088cc?color=00b2df)
 
-A bundle for **Sulu CMS** that adds useful **Content Types** (Form Fields) and **List Transformers** (Visualizations) to the Admin UI.
+A bundle for **Sulu CMS** that adds useful tools like **Content Types** (Form Fields) and **List Transformers** (Visualizations) to the Admin UI.
 
 This bundle combines and modernizes functionality from the former `SuluContentTypesBundle` and `SuluTweaksBundle` for Sulu 3.0.
 
@@ -37,6 +37,7 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 
 ### Other
 *   **[Collapsible Sections](docs/collapsible_sections.md)** - Auto-collapsible XML sections in the Admin UI (hacky)
+*   **[AddNewToolbarAction](docs/add_new_toolbar_action.en.md)** - "New"-Button in Action-Toolbar of an element
 
 ---
 

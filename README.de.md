@@ -4,7 +4,7 @@
 ![GitHub Tag](https://img.shields.io/github/v/tag/manuxi/SuluAdminExtrasBundle)
 ![Supports Sulu 3.0 or later](https://img.shields.io/badge/Sulu->=3.0-0088cc?color=00b2df)
 
-Ein Bundle für **Sulu CMS**, das nützliche **Content Types** (Formularfelder) und **List Transformers** (Visualisierungen) zur Admin-Oberfläche hinzufügt.
+Ein Bundle für **Sulu CMS**, das nützliche Tools wie **Content Types** (Formularfelder) und **List Transformers** (Visualisierungen) zur Admin-Oberfläche hinzufügt.
 
 Dieses Bundle kombiniert und modernisiert Funktionen der ehemaligen `SuluContentTypesBundle` und `SuluTweaksBundle` für Sulu 3.0.
 
@@ -34,6 +34,7 @@ Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 
 ### Sonstiges
 *   **[Collapsible Sections](docs/collapsible_sections.de.md)** - Aufklappbare Formular-Sektionen im Admin UI (hacky)
+*   **[AddNewToolbarAction](docs/add_new_toolbar_action.de.md)** - "Neu"-Button in Action-Toolbar eines Elements
 
 ---
 
