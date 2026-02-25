@@ -24,7 +24,6 @@ Detaillierte Dokumentationen für jedes Feature finden Sie im `docs/` Ordner:
 *   **[Business Hours](docs/business_hours.de.md)** - Wochenplan mit Zeitfenstern, Pausen und Kopierfunktion
 *   **[Public Holidays](docs/public_holidays.de.md)** - Feiertags-Manager mit Nager.Date-API-Integration
 *   **[Holiday Dates](docs/holiday_dates.de.md)** - Betriebsferien und Schließungszeiten mit Unterstützung wiederkehrender Daten
-*   **[Collapsible Sections](docs/collapsible_sections.de.md)** - Automatisch aufklappbare Formular-Sektionen im Admin UI
 
 ### List Transformers (Listenansicht)
 *   **[Percent Bar](docs/percent_bar.de.md)** - Prozentbalken
@@ -32,6 +31,9 @@ Detaillierte Dokumentationen für jedes Feature finden Sie im `docs/` Ordner:
 *   **[Ghost Locale](docs/ghost_locale.de.md)** - Sprachstatus in eigener Spalte (Standard wird ausgeblendet)
 *   **[Type Color](docs/type_color.de.md)** - Farbanzeige zur farblichen Kategorisierung
 *   **[Star Rating](docs/star_rating.de.md)** - Sternebewertung
+
+### Sonstiges
+*   **[Collapsible Sections](docs/collapsible_sections.de.md)** - Aufklappbare Formular-Sektionen im Admin UI (hacky)
 
 ---
 
