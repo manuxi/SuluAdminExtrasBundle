@@ -124,4 +124,4 @@ sulu_admin_extras:
     errors:
         start_after_end: "The end date must not be before the start date."
         invalid_time_slot: "The selected time is outside working hours or during a break."
-        collision: "An entry already exists in this time range."
+        collision: "An entry already exists in this time range."sulu_admin_extras.new: New

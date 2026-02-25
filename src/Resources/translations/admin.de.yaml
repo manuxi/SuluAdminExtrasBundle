@@ -124,4 +124,4 @@ sulu_admin_extras:
     errors:
         start_after_end: "Das Enddatum darf nicht vor dem Startdatum liegen."
         invalid_time_slot: "Die ausgewählte Zeit liegt außerhalb der Arbeitszeiten oder in einer Pause."
-        collision: "Es existiert bereits ein Eintrag in diesem Zeitraum."
+        collision: "Es existiert bereits ein Eintrag in diesem Zeitraum."sulu_admin_extras.new: Neu

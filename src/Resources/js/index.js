@@ -1,6 +1,7 @@
 import { initializer } from 'sulu-admin-bundle/services';
 import fieldRegistry from 'sulu-admin-bundle/containers/Form/registries/fieldRegistry';
 import listFieldTransformerRegistry from 'sulu-admin-bundle/containers/List/registries/listFieldTransformerRegistry';
+import formToolbarActionRegistry from 'sulu-admin-bundle/views/Form/registries/formToolbarActionRegistry';
 
 import PublishStateFieldTransformer from './fieldTransformers/PublishStateFieldTransformer';
 import GhostLocaleFieldTransformer from './fieldTransformers/GhostLocaleFieldTransformer';
@@ -24,6 +25,8 @@ import HolidayDates from './containers/Form/fields/HolidayDates/HolidayDates';
 
 import './utils/collapsibleSection.js';
 import './utils/collapsibleSection.scss';
+
+import AddNewToolbarAction from './toolbarActions/AddNewToolbarAction';
 
 import Drawer from './containers/Drawer';
 import drawerStore from './stores/DrawerStore';
@@ -89,6 +92,8 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     fieldRegistry.add('business_hours', BusinessHours);
     fieldRegistry.add('public_holidays', PublicHolidays);
     fieldRegistry.add('holiday_dates', HolidayDates);
+
+    formToolbarActionRegistry.add('sulu_admin_extras.add_new', AddNewToolbarAction);
 });
 
 export {
