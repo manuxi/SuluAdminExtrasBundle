@@ -13,7 +13,7 @@ Wenn ein bekannter Titel gefunden wird, werden automatisch die benötigten CSS-K
 ## Konfiguration (sulu_admin_extras.yaml)
 
 In der Konfiguration des Projekts (`config/packages/sulu_admin_extras.yaml`) wird ein Array an Sektions-Titeln definiert. Jede Sektion, die exakt so benannt ist (Groß-/Kleinschreibung wird beachtet, Leerzeichen am Rand werden ignoriert), wird automatisch einklappbar.
-Dabei werden auch übersetzungsstring unterstützt, um möglichst hohe Flexibilität zu gewährleisten.
+Dabei werden auch Übersetzungsstrings unterstützt, um möglichst hohe Flexibilität zu gewährleisten.
 
 ```yaml
 sulu_admin_extras:
@@ -31,7 +31,7 @@ Zusätzlich merkt sich der Browser für jeden Benutzer individuell den auf-/zuge
 
 ## Verwendung in XML Formularen
 
-Verwenden Sie eine ganz normale Sulu `section`. Wichtig ist nur, dass der Text innerhalb des `<title>`-Tags mit einem der Einträge in der Konfiguration übereinstimmt:
+Verwendet wird eine ganz normale Sulu `section`. Wichtig ist nur, dass der Text innerhalb des `<title>`-Tags mit einem der Einträge in der Konfiguration übereinstimmt:
 
 ```xml
 <section name="description_notes">

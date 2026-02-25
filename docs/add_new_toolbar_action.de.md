@@ -12,16 +12,16 @@ Dies ist besonders nützlich, um die Dateneingabe zu beschleunigen, da Benutzer 
 
 ## Verwendung
 
-Du kannst die `sulu_admin_extras.add_new` Toolbar-Aktion nativ in jeder deiner Admin PHP-Klassen nutzen, in denen ein Formular-View konfiguriert wird.
+Die `sulu_admin_extras.add_new` Toolbar-Aktion kann nativ in jeder Admin PHP-Klassen genutzt werden, in denen eine Formular-View konfiguriert wird.
 
 ### Standardbeispiel (Ressourcen)
 
-Füge die Aktion einfach in das Array `$toolbarActions` deines Form View Builders ein und gib die Zielroute an.
+Die Aktion wird einfach in das Array `$toolbarActions` des Form View Builders eingefügt und die Zielroute angegeben.
 
 ```php
 use Sulu\Bundle\AdminBundle\Admin\View\ToolbarAction;
 
-// ... innerhalb deiner Admin::configureViews() ...
+// ... innerhalb der Admin::configureViews() ...
 
 $detailsToolbarActions = [
     new ToolbarAction('sulu_admin_extras.add_new', [
@@ -33,12 +33,12 @@ $detailsToolbarActions = [
 
 ### Datum vorausfüllen (Termine)
 
-Wenn deine "Hinzufügen"-Route einen `date` Parameter unterstützt (z.B. um das heutige Datum in einem Kalender oder Datepicker vorzuselektieren), kannst du die Option `'passDate' => true` verwenden.
+Wenn die "Hinzufügen"-Route einen `date` Parameter unterstützt (z.B. um das heutige Datum in einem Kalender oder Datepicker vorzuselektieren), kann die Option `'passDate' => true` verwendet werden.
 
 ```php
 use Sulu\Bundle\AdminBundle\Admin\View\ToolbarAction;
 
-// ... innerhalb deiner Admin::configureViews() ...
+// ... innerhalb der Admin::configureViews() ...
 
 $detailsToolbarActions = [
     new ToolbarAction('sulu_admin_extras.add_new', [
