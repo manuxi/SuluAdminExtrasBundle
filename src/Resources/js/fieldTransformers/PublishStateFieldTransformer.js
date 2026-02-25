@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
-import {translate} from 'sulu-admin-bundle/utils';
+import { translate } from 'sulu-admin-bundle/utils';
 import publishStateFieldTransformerStyles from './PublishStateFieldTransformer.scss';
-import type {Node} from 'react';
+import type { Node } from 'react';
 
 class PublishStateFieldTransformer {
     config: Object;
@@ -15,7 +15,7 @@ class PublishStateFieldTransformer {
         };
     }
 
-    transform(value: *, parameters: {[string]: any}, context: Object): Node {
+    transform(value: *, parameters: { [string]: any }, context: Object): Node {
         const styles = publishStateFieldTransformerStyles;
 
         let publishedState = value;
@@ -35,10 +35,14 @@ class PublishStateFieldTransformer {
             ghostLocale = mobxValues?.ghostLocale?.value ?? context?.ghostLocale;
         }
 
-        const hasGhostLocale = !!ghostLocale;
+        let isPublished = publishedState === true || publishedState === 'published' || workflowPlace === 'published';
+        let isDraft = livePublished && (publishedState === false || publishedState === 'draft' || workflowPlace === 'draft');
 
-        const isPublished = publishedState === true || publishedState === 'published' || workflowPlace === 'published';
-        const isDraft = livePublished && (publishedState === false || publishedState === 'draft' || workflowPlace === 'draft');
+        // Stronger workflowPlace check to avoid false positives when publishedState is boolean true but it's actually a draft
+        if (workflowPlace === 'draft') {
+            isDraft = true;
+            isPublished = false;
+        }
 
         let labelKey = 'sulu_admin_extras.not_published';
         if (isDraft) {
