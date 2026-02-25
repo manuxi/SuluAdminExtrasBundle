@@ -14,7 +14,7 @@ Dieses Bundle kombiniert und modernisiert Funktionen der ehemaligen `SuluContent
 
 ## 📚 Funktionen & Dokumentation
 
-Detaillierte Dokumentationen für jedes Feature finden Sie im `docs/` Ordner:
+Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 
 ### Content Types (Formularfelder)
 *   **[Color Select](docs/color_select.de.md)** - Farbauswahl mit visueller Vorschau zur besseren Visualisierung
