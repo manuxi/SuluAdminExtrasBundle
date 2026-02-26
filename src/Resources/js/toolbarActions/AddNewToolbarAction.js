@@ -17,10 +17,24 @@ export default class AddNewToolbarAction extends AbstractFormToolbarAction {
                 const attributes = {};
 
                 if (passDate) {
-                    const today = new Date();
-                    const year = today.getFullYear();
-                    const month = String(today.getMonth() + 1).padStart(2, '0');
-                    const day = String(today.getDate()).padStart(2, '0');
+                    let dateStr = null;
+                    const dateField = typeof passDate === 'string' ? passDate : 'startDate';
+
+                    if (this.resourceFormStore && this.resourceFormStore.data && this.resourceFormStore.data[dateField]) {
+                        dateStr = this.resourceFormStore.data[dateField];
+                    } else if (this.router.attributes.date) {
+                        dateStr = this.router.attributes.date;
+                    }
+
+                    let dateObj = dateStr ? new Date(dateStr) : new Date();
+
+                    if (isNaN(dateObj.getTime())) {
+                        dateObj = new Date();
+                    }
+
+                    const year = dateObj.getFullYear();
+                    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                    const day = String(dateObj.getDate()).padStart(2, '0');
                     attributes.date = `${year}-${month}-${day}`;
                 }
 
