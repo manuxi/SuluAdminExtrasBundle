@@ -1,19 +1,19 @@
 // @flow
 import React from 'react';
-import {action, computed, observable, reaction, runInAction} from 'mobx';
-import {observer} from 'mobx-react';
+import { action, computed, observable, reaction, runInAction } from 'mobx';
+import { observer } from 'mobx-react';
 import debounce from 'debounce';
 import SingleSelectionStore from 'sulu-admin-bundle/stores/SingleSelectionStore';
 import SearchStore from 'sulu-admin-bundle/stores/SearchStore';
 import userStore from 'sulu-admin-bundle/stores/userStore';
-import {translate} from 'sulu-admin-bundle/utils/Translator';
+import { translate } from 'sulu-admin-bundle/utils/Translator';
 import SingleListOverlay from 'sulu-admin-bundle/containers/SingleListOverlay';
 
 import Icon from 'sulu-admin-bundle/components/Icon';
 import Popover from 'sulu-admin-bundle/components/Popover';
 import Overlay from 'sulu-admin-bundle/components/Overlay';
 import Input from 'sulu-admin-bundle/components/Input';
-import {Requester} from 'sulu-admin-bundle/services';
+import { Requester } from 'sulu-admin-bundle/services';
 import styles from './singleContactAutocomplete.scss';
 
 const DEBOUNCE_TIME = 300;
@@ -73,7 +73,7 @@ class SingleContactAutocomplete extends React.Component {
     constructor(props) {
         super(props);
 
-        const {fieldTypeOptions} = this.props;
+        const { fieldTypeOptions } = this.props;
 
         const resourceKey = fieldTypeOptions?.resource_key || 'contacts';
 
@@ -127,7 +127,7 @@ class SingleContactAutocomplete extends React.Component {
     };
 
     handleChange = (value) => {
-        const {onChange, onFinish} = this.props;
+        const { onChange, onFinish } = this.props;
 
         onChange(value);
         if (onFinish) {
@@ -238,10 +238,22 @@ class SingleContactAutocomplete extends React.Component {
             const payload = {
                 firstName: this.quickFirstName,
                 lastName: this.quickLastName,
-                mainPhone: this.quickPhone,
-                mainEmail: this.quickEmail,
                 formOfAddress: 0,
             };
+
+            const contactDetails = {};
+
+            if (this.quickPhone) {
+                contactDetails.phones = [{ phone: this.quickPhone, phoneType: 1 }];
+            }
+
+            if (this.quickEmail) {
+                contactDetails.emails = [{ email: this.quickEmail, emailType: 1 }];
+            }
+
+            if (Object.keys(contactDetails).length > 0) {
+                payload.contactDetails = contactDetails;
+            }
 
             const resourceKey = this.props.fieldTypeOptions?.resource_key || 'contacts';
             const response = await Requester.post(`/admin/api/${resourceKey}`, payload);
@@ -266,7 +278,7 @@ class SingleContactAutocomplete extends React.Component {
     };
 
     renderSuggestionItem = (contact) => {
-        const {fieldTypeOptions} = this.props;
+        const { fieldTypeOptions } = this.props;
         const displayProperty = fieldTypeOptions?.display_property || 'fullName';
         const name = contact.fullName || contact[displayProperty] || '';
 

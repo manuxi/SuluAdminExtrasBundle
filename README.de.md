@@ -16,14 +16,17 @@ Dieses Bundle kombiniert und modernisiert Funktionen der ehemaligen `SuluContent
 
 Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 
-### Content Types (Formularfelder)
+### Property Types (Formularfelder)
 *   **[Color Select](docs/color_select.de.md)** - Farbauswahl mit visueller Vorschau zur besseren Visualisierung
 *   **[Number With Default](docs/number_with_default.de.md)** - Zahl mit hinterlegbarem Standardwert
 *   **[Slider Range](docs/slider_range.de.md)** - Schieberegler
 *   **[Star Rating](docs/star_rating.de.md)** - Auswahlfeld für Sternebewertung
+*   **[DateTime Start / End](docs/datetime_start_end.de.md)** - Miteinander verbundene Date-Time-Picker mit auto End-Zeit, Validierung von Öffnungszeiten und Möglichkeit zum Auffinden freier Zeiten
+*   **[DateTime With Default](docs/datetime_with_default.de.md)** - Date-Time-Picker mit `default_value`-Unterstützung
 *   **[Business Hours](docs/business_hours.de.md)** - Wochenplan mit Zeitfenstern, Pausen und Kopierfunktion
 *   **[Public Holidays](docs/public_holidays.de.md)** - Feiertags-Manager mit Nager.Date-API-Integration
 *   **[Holiday Dates](docs/holiday_dates.de.md)** - Betriebsferien und Schließungszeiten mit Unterstützung wiederkehrender Daten
+*   **[Single Contact Autocomplete](docs/single_contact_autocomplete.de.md)** - Einzel-Kontakt-Auswahl mit Autocomplete-Funktion
 
 ### List Transformers (Listenansicht)
 *   **[Percent Bar](docs/percent_bar.de.md)** - Prozentbalken
