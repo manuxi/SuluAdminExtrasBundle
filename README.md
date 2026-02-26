@@ -16,7 +16,7 @@ This bundle combines and modernizes functionality from the former `SuluContentTy
 
 Detailed documentation for each feature can be found in the `docs/` folder:
 
-### Content Types
+### Property Types
 *   **[Colour Select](docs/color_select.md)** - Colour selection with colour display for better visualisation
 *   **[Number With Default](docs/number_with_default.md)** - Number with storable default value (fixes Sulu limitation)
 *   **[Slider Range](docs/slider_range.md)** - Slider
@@ -26,6 +26,7 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 *   **[Business Hours](docs/business_hours.en.md)** - Weekly schedule with time slots, breaks and copy function
 *   **[Public Holidays](docs/public_holidays.en.md)** - Holiday manager with Nager.Date API integration
 *   **[Holiday Dates](docs/holiday_dates.en.md)** - Company holidays and closure periods with recurring support
+*   **[Single Contact Autocomplete](docs/single_contact_autocomplete.en.md)** - Single-Contact-Select with autocomplete
 
 ### List Transformers
 *   **[Percent Bar](docs/percent_bar.md)** - Percentage bar
