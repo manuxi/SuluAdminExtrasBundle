@@ -123,7 +123,10 @@ class SingleContactAutocomplete extends React.Component {
     }
 
     @action handleAutoCompleteSelectionChange = (selectedItem) => {
-        this.handleChange(selectedItem?.id);
+        const newValue = selectedItem?.id;
+        if (this.value !== newValue) {
+            this.handleChange(newValue);
+        }
     };
 
     handleChange = (value) => {
