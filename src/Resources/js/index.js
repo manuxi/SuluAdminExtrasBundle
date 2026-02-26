@@ -22,6 +22,7 @@ import DateTimeWithDefault from './containers/Form/fields/DateTimeWithDefault';
 import BusinessHours from './containers/Form/fields/BusinessHours/BusinessHours';
 import PublicHolidays from './containers/Form/fields/PublicHolidays/PublicHolidays';
 import HolidayDates from './containers/Form/fields/HolidayDates/HolidayDates';
+import SingleContactAutocomplete from './containers/Form/fields/SingleContactAutocomplete/SingleContactAutocomplete';
 
 import './utils/collapsibleSection.js';
 import './utils/collapsibleSection.scss';
@@ -92,6 +93,7 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     fieldRegistry.add('business_hours', BusinessHours);
     fieldRegistry.add('public_holidays', PublicHolidays);
     fieldRegistry.add('holiday_dates', HolidayDates);
+    fieldRegistry.add('single_contact_autocomplete', SingleContactAutocomplete);
 
     formToolbarActionRegistry.add('sulu_admin_extras.add_new', AddNewToolbarAction);
 });
@@ -112,6 +114,7 @@ export {
     BusinessHours,
     PublicHolidays,
     HolidayDates,
+    SingleContactAutocomplete,
     Drawer,
     drawerStore,
     drawerRegistry,

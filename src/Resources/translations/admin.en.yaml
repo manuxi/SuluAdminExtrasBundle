@@ -14,6 +14,9 @@ sulu_admin_extras:
     # actions
     delete: "Delete entry"
     activate: "Activate/Deactivate"
+    create_new_contact: "Create new contact"
+    no_contact_found: "No contact found."
+    contact_selection: "Select contact"
 
     # Color Palettes (New Structure)
     color_palettes:
