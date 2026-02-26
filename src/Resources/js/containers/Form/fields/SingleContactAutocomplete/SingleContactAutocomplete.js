@@ -94,8 +94,16 @@ class SingleContactAutocomplete extends React.Component {
         );
 
         this.changeAutoCompleteSelectionDisposer = reaction(
-            () => this.autoCompleteSelectionStore?.item,
-            this.handleAutoCompleteSelectionChange
+            () => this.autoCompleteSelectionStore?.item === undefined
+                ? undefined
+                : this.autoCompleteSelectionStore?.item === null
+                    ? null
+                    : this.autoCompleteSelectionStore?.item.id,
+            (loadedItemId) => {
+                if (this.props.value !== loadedItemId) {
+                    this.handleChange(loadedItemId);
+                }
+            }
         );
 
         this.debouncedSearch = debounce(this.search, DEBOUNCE_TIME);
@@ -121,13 +129,6 @@ class SingleContactAutocomplete extends React.Component {
     @computed get popoverMinWidth() {
         return this.inputContainerRef ? this.inputContainerRef.scrollWidth : 0;
     }
-
-    @action handleAutoCompleteSelectionChange = (selectedItem) => {
-        const newValue = selectedItem?.id;
-        if (this.value !== newValue) {
-            this.handleChange(newValue);
-        }
-    };
 
     handleChange = (value) => {
         const { onChange, onFinish } = this.props;
