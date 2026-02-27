@@ -19,11 +19,11 @@ Dieses Bundle kombiniert und modernisiert Funktionen der ehemaligen `SuluContent
 Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 
 ### Property Types (Formularfelder)
-*   **[Color Select](docs/color_select.de.md)** - Farbauswahl mit visueller Vorschau zur besseren Visualisierung
-*   **[Number With Default](docs/number_with_default.de.md)** - Zahl mit hinterlegbarem Standardwert
+*   **[Color Select](docs/color_select.de.md)** - Farbauswahl mit visueller Vorschau (Liste: [Type Color](docs/type_color.de.md), s.u.)
+*   **[Number With Default](docs/number_with_default.de.md)** - Zahl mit `default_value`-Unterstützung
 *   **[Slider Range](docs/slider_range.de.md)** - Schieberegler
 *   **[Star Rating](docs/star_rating.de.md)** - Auswahlfeld für Sternebewertung
-*   **[DateTime Start / End](docs/datetime_start_end.de.md)** - Miteinander verbundene Date-Time-Picker mit auto End-Zeit, Validierung von Öffnungszeiten und Möglichkeit zum Auffinden freier Zeiten
+*   **[DateTime Start / End](docs/datetime_start_end.de.md)** - Verlinkte Date-Time-Picker mit auto End-Zeit, Validierung von Öffnungszeiten und "Freie-Zeit-Finder"
 *   **[DateTime With Default](docs/datetime_with_default.de.md)** - Date-Time-Picker mit `default_value`-Unterstützung
 *   **[Business Hours](docs/business_hours.de.md)** - Wochenplan mit Zeitfenstern, Pausen und Kopierfunktion
 *   **[Public Holidays](docs/public_holidays.de.md)** - Feiertags-Manager mit Nager.Date-API-Integration
@@ -34,10 +34,10 @@ Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 *   **[Percent Bar](docs/percent_bar.de.md)** - Prozentbalken
 *   **[Publish State](docs/publish_state.de.md)** - Anzeige Veröffentlichungsstatus in eigener Spalte (Standard wird ausgeblendet)
 *   **[Ghost Locale](docs/ghost_locale.de.md)** - Sprachstatus in eigener Spalte (Standard wird ausgeblendet)
-*   **[Type Color](docs/type_color.de.md)** - Farbanzeige zur farblichen Kategorisierung
+*   **[Type Color](docs/type_color.de.md)** - Farbanzeige  (Form: [Color Select](docs/color_select.de.md), s.o.)
 *   **[Star Rating](docs/star_rating.de.md)** - Sternebewertung
 *   **[Color Dot](docs/color_dot.de.md)** - Farbiger Kreis aus Hex-Wert zur schnellen visuellen Identifikation in Listen
-*   **[Status Switcher](docs/status_switcher.de.md)** - Interaktiver Inline-Status-Umschalter mit Dropdown zum direkten Ändern des Entity-Status in der Liste
+*   **[Status Switcher](docs/status_switcher.de.md)** - Interaktiver Inline-Status-Umschalter mit Dropdown zum direkten Ändern des Entity-Status
 
 ### Sonstiges
 *   **[Collapsible Sections](docs/collapsible_sections.de.md)** - Aufklappbare Formular-Sektionen im Admin UI (hacky)

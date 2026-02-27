@@ -34,14 +34,14 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 *   **[Percent Bar](docs/percent_bar.md)** - Percentage bar
 *   **[Publish State](docs/publish_state.md)** - Status display in separate column (default is hidden)
 *   **[Ghost Locale](docs/ghost_locale.md)** - Language status in separate column (hidden by default)
-*   **[Type Colour](docs/type_colour.md)** - Colour display for colour categorisation
+*   **[Type Colour](docs/type_color.md)** - Colour display for colour categorisation
 *   **[Star Rating](docs/star_rating.md)** - Star rating
 *   **[Color Dot](docs/color_dot.en.md)** - Colored circle from hex value for quick visual identification in lists
 *   **[Status Switcher](docs/status_switcher.en.md)** - Interactive inline status switcher with dropdown for changing entity status directly in the list
 
 ### Other
 *   **[Collapsible Sections](docs/collapsible_sections.md)** - Auto-collapsible XML sections in the Admin UI (hacky)
-*   **[AddNewToolbarAction](docs/add_new_toolbar_action.en.md)** - "New"-Button in Action-Toolbar of an element
+*   **[AddNewToolbarAction](docs/add_new_toolbar_action.md)** - "New"-Button in Action-Toolbar of an element
 
 ---
 
