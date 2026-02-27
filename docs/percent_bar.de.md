@@ -2,7 +2,11 @@
 
 Der **Percent Bar** ist ein List Transformer, der einen numerischen Wert (0-100) als Fortschrittsbalken in der Listenansicht visualisiert.
 
-![img.png](img/percent_bar.de.png)
+![img.png](img/percent-bar-1.de.png)
+![img.png](img/percent-bar-2.de.png)
+![img.png](img/percent-bar-3.de.png)
+![img.png](img/percent-bar-4.de.png)
+![img.png](img/percent-bar-5.de.png)
 
 ---
 

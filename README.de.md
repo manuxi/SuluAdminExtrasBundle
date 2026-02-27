@@ -62,7 +62,7 @@ return [
 ];
 ```
 
-### 3. Admin Assets einrichten (Wichtiger Schritt)
+### 3. Admin Assets einrichten
 Damit die JavaScript-Komponenten im Sulu Admin geladen werden, müssen die Asset-Konfiguration des Projekts angepasst werden.
 
 **A) `assets/admin/package.json` anpassen**
@@ -94,7 +94,7 @@ npm run build
 ---
 
 ## ⚙️ Konfiguration
-Kopieren der Standard-Konfigurationsdatei:
+Die Standard-Konfigurationsdatei kann kopiert werden:
 ```bash
 cp vendor/manuxi/sulu-admin-extras-bundle/src/Resources/config/default.yaml config/packages/sulu_admin_extras.yaml
 ```
