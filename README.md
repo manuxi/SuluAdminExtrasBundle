@@ -19,25 +19,25 @@ This bundle combines and modernizes functionality from the former `SuluContentTy
 Detailed documentation for each feature can be found in the `docs/` folder:
 
 ### Property Types
-*   **[Colour Select](docs/color_select.md)** - Colour selection with colour display for better visualisation
-*   **[Number With Default](docs/number_with_default.md)** - Number with storable default value (fixes Sulu limitation)
-*   **[Slider Range](docs/slider_range.md)** - Slider
-*   **[Star Rating](docs/star_rating.md)** - Selection field for star rating
+*   **[Colour Select](docs/color_select.md)** - Colour selection with visual preview (List: [Type Colour](docs/type_color.md), see below)
+*   **[Number With Default](docs/number_with_default.md)** - Number with support for `default_value`
+*   **[Slider Range](docs/slider_range.md)** - Slider input
+*   **[Star Rating](docs/star_rating.md)** - Star rating selection
 *   **[DateTime Start / End](docs/datetime_start_end.en.md)** - Linked date-time pickers with auto end-time, business hours validation and next-slot finder
-*   **[DateTime With Default](docs/datetime_with_default.en.md)** - Date-time picker with working `default_value` support (fixes Sulu limitation)
+*   **[DateTime With Default](docs/datetime_with_default.en.md)** - Date-time picker with `default_value` support
 *   **[Business Hours](docs/business_hours.en.md)** - Weekly schedule with time slots, breaks and copy function
 *   **[Public Holidays](docs/public_holidays.en.md)** - Holiday manager with Nager.Date API integration
-*   **[Holiday Dates](docs/holiday_dates.en.md)** - Company holidays and closure periods with recurring support
+*   **[Holiday Dates](docs/holiday_dates.en.md)** - Company holidays and closing times
 *   **[Single Contact Autocomplete](docs/single_contact_autocomplete.en.md)** - Single-Contact-Select with autocomplete
 
 ### List Transformers
-*   **[Percent Bar](docs/percent_bar.md)** - Percentage bar
-*   **[Publish State](docs/publish_state.md)** - Status display in separate column (default is hidden)
-*   **[Ghost Locale](docs/ghost_locale.md)** - Language status in separate column (hidden by default)
-*   **[Type Colour](docs/type_color.md)** - Colour display for colour categorisation
+*   **[Percent Bar](docs/percent_bar.md)** - Percentage bar with many options
+*   **[Publish State](docs/publish_state.md)** - Display publication status in a separate column (hidden by default)
+*   **[Ghost Locale](docs/ghost_locale.md)** - Language status in a separate column (hidden by default)
+*   **[Type Colour](docs/type_color.md)** - Colour display (Form: [Colour Select](docs/color_select.md), see above)
 *   **[Star Rating](docs/star_rating.md)** - Star rating
-*   **[Color Dot](docs/color_dot.en.md)** - Colored circle from hex value for quick visual identification in lists
-*   **[Status Switcher](docs/status_switcher.en.md)** - Interactive inline status switcher with dropdown for changing entity status directly in the list
+*   **[Color Dot](docs/color_dot.en.md)** - Colored circle from hex value
+*   **[Status Switcher](docs/status_switcher.en.md)** - Interactive inline status switcher with dropdown with options changing the entity status
 
 ### Other
 *   **[Collapsible Sections](docs/collapsible_sections.md)** - Auto-collapsible XML sections in the Admin UI (hacky)
@@ -62,7 +62,7 @@ return [
 ];
 ```
 
-### 3. Admin Assets Setup (Crucial Step)
+### 3. Admin Assets Setup
 To load the JavaScript components in the Sulu Admin, you must adjust your project's asset configuration.
 
 **A) Update `assets/admin/package.json`**
@@ -94,7 +94,7 @@ npm run build
 ---
 
 ## ⚙️ Configuration
-Copy the default configuration file:
+You can copy the default configuration file:
 ```bash
 cp vendor/manuxi/sulu-admin-extras-bundle/src/Resources/config/default.yaml config/packages/sulu_admin_extras.yaml
 ```
