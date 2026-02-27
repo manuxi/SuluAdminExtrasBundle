@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TypeColorFieldTransformer Render with fallback color (snapshot) 1`] = `
+<div>
+  <span
+    class="typeDot"
+    style="background-color:#cccccc"
+    title=""
+  />
+</div>
+`;
+
+exports[`TypeColorFieldTransformer Render with palette match and show_name (snapshot) 1`] = `
+<div>
+  <span
+    class="typeDot"
+    style="background-color:#0000ff"
+    title="Meeting"
+  />
+  <span
+    class="typeLabel"
+  >
+    Meeting
+  </span>
+</div>
+`;

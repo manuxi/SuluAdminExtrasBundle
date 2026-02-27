@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorDotFieldTransformer Render with color value (Enzyme snapshot) 1`] = `
+<div>
+  <div
+    class="typeDot"
+    style="background-color:#ff0000"
+    title="#ff0000"
+  />
+</div>
+`;
+
+exports[`ColorDotFieldTransformer Render with null value uses fallback color (Enzyme snapshot) 1`] = `
+<div>
+  <div
+    class="typeDot"
+    style="background-color:#cccccc"
+    title=""
+  />
+</div>
+`;

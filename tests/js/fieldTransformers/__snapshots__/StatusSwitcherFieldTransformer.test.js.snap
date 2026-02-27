@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusSwitcherFieldTransformer Render with context data (snapshot) 1`] = `
+<div>
+  <div
+    class="statusSwitcher statusSwitcherWithName"
+  >
+    <button
+      class="statusButton"
+      title="Published"
+    >
+      <span
+        class="typeDot"
+        style="background-color:#00ff00"
+      />
+      <span
+        class="typeLabel"
+      >
+        Published
+      </span>
+    </button>
+  </div>
+</div>
+`;

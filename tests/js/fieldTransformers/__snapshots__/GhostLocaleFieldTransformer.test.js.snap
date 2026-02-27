@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GhostLocaleFieldTransformer Render null when no ghost locale (snapshot) 1`] = `<div />`;
+
+exports[`GhostLocaleFieldTransformer Render with ghost locale value (snapshot) 1`] = `
+<div>
+  <span
+    class="ghostIndicator"
+  >
+    EN
+  </span>
+</div>
+`;

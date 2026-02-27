@@ -47,6 +47,15 @@
             "Manuxi\\SuluAdminExtrasBundle\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "test": "phpunit",
+        "test-js": "npx jest",
+        "test-js-coverage": "npx jest --coverage",
+        "test-all": [
+            "@test",
+            "@test-js"
+        ]
+    },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true
