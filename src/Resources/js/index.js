@@ -9,6 +9,7 @@ import StarRatingFieldTransformer from './fieldTransformers/StarRatingFieldTrans
 import PercentBarFieldTransformer from './fieldTransformers/PercentBarFieldTransformer';
 import TypeColorFieldTransformer from './fieldTransformers/TypeColorFieldTransformer';
 import ColorDotFieldTransformer from './fieldTransformers/ColorDotFieldTransformer';
+import StatusSwitcherFieldTransformer from './fieldTransformers/StatusSwitcherFieldTransformer';
 
 import ColorSelect from './containers/Form/fields/ColorSelect';
 import NumberWithDefault from './containers/Form/fields/NumberWithDefault';
@@ -81,6 +82,11 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
         new ColorDotFieldTransformer()
     );
 
+    listFieldTransformerRegistry.add(
+        'status_switcher',
+        new StatusSwitcherFieldTransformer()
+    );
+
     fieldRegistry.add('number_with_default', NumberWithDefault);
     fieldRegistry.add('color_select', ColorSelect);
     fieldRegistry.add('slider_range', SliderRange);
@@ -105,6 +111,7 @@ export {
     PercentBarFieldTransformer,
     TypeColorFieldTransformer,
     ColorDotFieldTransformer,
+    StatusSwitcherFieldTransformer,
     NumberWithDefault,
     ColorSelect,
     SliderRange,
