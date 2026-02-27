@@ -1,8 +1,10 @@
 # SuluAdminExtrasBundle
 
+![php workflow](https://github.com/manuxi/SuluAdminExtrasBundle/actions/workflows/js-tests.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/manuxi/SuluAdminExtrasBundle/blob/main/LICENSE)
 ![GitHub Tag](https://img.shields.io/github/v/tag/manuxi/SuluAdminExtrasBundle)
-![Supports Sulu 3.0 or later](https://img.shields.io/badge/Sulu->=3.0-0088cc?color=00b2df)
+![Github Release](https://img.shields.io/github/v/release/manuxi/SuluAdminExtrasBundle?color=116ea3)
+![Supports Sulu 3.0 or later](https://img.shields.io/badge/%20Sulu->=3.0-0088cc?color=00b2df)
 
 Ein Bundle für **Sulu CMS**, das nützliche Tools wie **Content Types** (Formularfelder) und **List Transformers** (Visualisierungen) zur Admin-Oberfläche hinzufügt.
 
