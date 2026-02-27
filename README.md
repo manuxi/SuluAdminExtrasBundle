@@ -19,7 +19,7 @@ This bundle combines and modernizes functionality from the former `SuluContentTy
 Detailed documentation for each feature can be found in the `docs/` folder:
 
 ### Property Types
-*   **[Colour Select](docs/color_select.md)** - Colour selection with visual preview (List: [Type Colour](docs/type_color.md), see below)
+*   **[Color Select](docs/color_select.md)** - Color selection with visual preview (List: [Type Color](docs/type_color.md), see below)
 *   **[Number With Default](docs/number_with_default.md)** - Number with support for `default_value`
 *   **[Slider Range](docs/slider_range.md)** - Slider input
 *   **[Star Rating](docs/star_rating.md)** - Star rating selection
@@ -34,7 +34,7 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 *   **[Percent Bar](docs/percent_bar.md)** - Percentage bar with many options
 *   **[Publish State](docs/publish_state.md)** - Display publication status in a separate column (hidden by default)
 *   **[Ghost Locale](docs/ghost_locale.md)** - Language status in a separate column (hidden by default)
-*   **[Type Colour](docs/type_color.md)** - Colour display (Form: [Colour Select](docs/color_select.md), see above)
+*   **[Type Color](docs/type_color.md)** - Color display (Form: [Color Select](docs/color_select.md), see above)
 *   **[Star Rating](docs/star_rating.md)** - Star rating
 *   **[Color Dot](docs/color_dot.en.md)** - Colored circle from hex value
 *   **[Status Switcher](docs/status_switcher.en.md)** - Interactive inline status switcher with dropdown with options changing the entity status
