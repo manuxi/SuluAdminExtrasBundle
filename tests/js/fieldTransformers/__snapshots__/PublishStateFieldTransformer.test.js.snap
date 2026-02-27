@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PublishStateFieldTransformer Render draft state (snapshot) 1`] = `
+<div>
+  <span
+    class="stateIndicator"
+    title="sulu_admin_extras.draft"
+  >
+    <span
+      class="stateDot published"
+    />
+    <span
+      class="stateDot unpublished"
+    />
+  </span>
+</div>
+`;
+
+exports[`PublishStateFieldTransformer Render published state (snapshot) 1`] = `
+<div>
+  <span
+    class="stateIndicator"
+    title="sulu_admin_extras.published"
+  >
+    <span
+      class="stateDot published"
+    />
+  </span>
+</div>
+`;
+
+exports[`PublishStateFieldTransformer Render unpublished state (snapshot) 1`] = `
+<div>
+  <span
+    class="stateIndicator"
+    title="sulu_admin_extras.not_published"
+  >
+    <span
+      class="stateDot unpublished"
+    />
+  </span>
+</div>
+`;

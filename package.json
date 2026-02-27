@@ -1,0 +1,42 @@
+{
+    "name": "@manuxi/sulu-admin-extras-bundle",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Admin UI extensions for Sulu CMS - Content Types and List Field Transformers",
+    "license": "MIT",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage"
+    },
+    "dependencies": {
+        "sulu-admin-bundle": "file:vendor/sulu/sulu/src/Sulu/Bundle/AdminBundle/Resources/js",
+        "classnames": "^2.3.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/plugin-proposal-decorators": "^7.4.4",
+        "@babel/plugin-transform-class-properties": "^7.22.0",
+        "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+        "@babel/preset-env": "^7.5.5",
+        "@babel/preset-react": "^7.0.0",
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^12.1.5",
+        "@testing-library/user-event": "^14.5.2",
+        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+        "babel-jest": "^26.6.3",
+        "cheerio": "1.0.0-rc.12",
+        "core-js": "^3.18.0",
+        "enzyme": "^3.3.0",
+        "enzyme-to-json": "^3.3.1",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^26.6.3",
+        "jest-canvas-mock": "^2.1.1",
+        "mobx": "^6.0.0",
+        "mobx-react": "^7.0.0",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
+        "react-test-renderer": "^17.0.0",
+        "regenerator-runtime": "^0.14.0"
+    }
+}
