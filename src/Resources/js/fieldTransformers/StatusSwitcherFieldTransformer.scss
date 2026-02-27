@@ -1,0 +1,105 @@
+@import 'sulu-admin-bundle/containers/Application/colors.scss';
+
+.statusSwitcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.statusSwitcherWithName {
+    min-width: 120px;
+}
+
+/* Pill-shaped badge matching the Drawer's statusBadge design */
+.statusButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 22px;
+    padding: 0 8px;
+    font-size: 11px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: 1px solid $mercury;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.12s ease;
+    white-space: nowrap;
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+        background: $concrete;
+    }
+}
+
+.typeDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.typeLabel {
+    color: $mineShaft;
+}
+
+/* Dropdown menu — rendered via portal with fixed positioning */
+.statusMenu {
+    margin-top: 0;
+    background: $white;
+    border: 1px solid $mercury;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    z-index: 9999;
+    min-width: 170px;
+    padding: 4px 0;
+    animation: menuFadeIn 0.1s ease-out;
+}
+
+.statusMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 7px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: $mineShaft;
+    text-align: left;
+    transition: background 0.1s ease;
+
+    &:hover {
+        background: $alabaster;
+    }
+}
+
+.statusMenuDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.statusMenuActive {
+    background: $concrete;
+    font-weight: 600;
+}
+
+@keyframes menuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

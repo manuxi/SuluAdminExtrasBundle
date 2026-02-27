@@ -34,6 +34,8 @@ Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 *   **[Ghost Locale](docs/ghost_locale.de.md)** - Sprachstatus in eigener Spalte (Standard wird ausgeblendet)
 *   **[Type Color](docs/type_color.de.md)** - Farbanzeige zur farblichen Kategorisierung
 *   **[Star Rating](docs/star_rating.de.md)** - Sternebewertung
+*   **[Color Dot](docs/color_dot.de.md)** - Farbiger Kreis aus Hex-Wert zur schnellen visuellen Identifikation in Listen
+*   **[Status Switcher](docs/status_switcher.de.md)** - Interaktiver Inline-Status-Umschalter mit Dropdown zum direkten Ändern des Entity-Status in der Liste
 
 ### Sonstiges
 *   **[Collapsible Sections](docs/collapsible_sections.de.md)** - Aufklappbare Formular-Sektionen im Admin UI (hacky)
