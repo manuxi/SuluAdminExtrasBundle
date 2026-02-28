@@ -89,16 +89,6 @@ if ($monday && $monday['enabled']) {
 
 ---
 
-## Required Translations
-
-| Key | DE | EN |
-|-----|----|----|
-| `sulu_admin_extras.business_hours.apply_to_weekdays` | Mo → Di–Fr | Mon → Tue–Fri |
-| `sulu_admin_extras.business_hours.break` | Pause | Break |
-| `sulu_admin_extras.weekday.monday` … `.sunday` | Montag … Sonntag | Monday … Sunday |
-
----
-
 ## Components
 
 | File | Description |

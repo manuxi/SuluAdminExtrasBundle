@@ -63,13 +63,6 @@ or
 - **End before start**: Field border turns red with an error message, save is blocked
 - **Debounce**: API calls are debounced by 400ms to avoid excessive requests
 
-## Translation Keys
-
-| Key | Usage |
-|---|---|
-| `sulu_admin_extras.errors.start_after_end` | End datetime is before start datetime |
-| `sulu_admin_extras.errors.collision` | Collision detected |
-
 ## Example Endpoint Implementation
 
 ```php

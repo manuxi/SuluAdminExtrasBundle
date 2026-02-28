@@ -63,13 +63,6 @@ oder
 - **Ende vor Start**: Feldrahmen wird rot mit Fehlermeldung, Speichern wird blockiert
 - **Debounce**: API-Aufrufe werden um 400ms verzögert, um übermäßige Requests zu vermeiden
 
-## Übersetzungsschlüssel
-
-| Schlüssel | Verwendung |
-|---|---|
-| `sulu_admin_extras.errors.start_after_end` | End-Datum liegt vor dem Start-Datum |
-| `sulu_admin_extras.errors.collision` | Kollision erkannt |
-
 ## Beispiel-Endpunkt-Implementierung
 
 ```php

@@ -94,21 +94,6 @@ foreach ($holidayDates as $period) {
 
 ---
 
-## Benötigte Übersetzungen
-
-| Schlüssel | DE | EN |
-|-----------|----|----|
-| `sulu_admin_extras.holiday_dates.title` | Betriebsferien | Company Holidays |
-| `sulu_admin_extras.holiday_dates.add` | Hinzufügen | Add |
-| `sulu_admin_extras.holiday_dates.empty` | Keine Betriebsferien eingetragen. | No company holidays defined. |
-| `sulu_admin_extras.holiday_dates.label_placeholder` | Bezeichnung... | Label... |
-| `sulu_admin_extras.holiday_dates.recurring` | Jährlich | Annual |
-| `sulu_admin_extras.holiday_dates.recurring_title` | Jährlich wiederkehrend | Recurring annually |
-| `sulu_admin_extras.holiday_dates.entries` | Einträge | entries |
-| `sulu_admin_extras.holiday_dates.days_total` | Tage gesamt | days total |
-
----
-
 ## Komponenten
 
 | Datei | Beschreibung |
