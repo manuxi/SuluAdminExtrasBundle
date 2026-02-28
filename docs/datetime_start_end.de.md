@@ -23,7 +23,8 @@ Beide erweitern `AbstractDateTime`, das einen Sulu-DatePicker mit Datum + Zeit-F
         <param name="end_date_field" value="end"/>
         <param name="default_duration" value="15"/>
         <param name="auto_update" value="always"/>
-        <param name="settings_resource_key" value="appointment_settings"/>
+        <param name="defaults_api_url" value="/admin/api/appointment-settings/defaults"/>
+        <param name="validate_time_url" value="/admin/api/appointment-settings/validate-time"/>
     </params>
 </property>
 
@@ -46,7 +47,7 @@ Beide erweitern `AbstractDateTime`, das einen Sulu-DatePicker mit Datum + Zeit-F
 ### datetime_start
 
 - **Automatische Endzeit**: Bei Änderung des Starts wird das End-Feld automatisch auf `Start + default_duration` gesetzt
-- **Geschäftszeiten-Validierung**: Bei gesetztem `settings_resource_key` werden Einstellungen über Sulus ResourceRequester geladen und Zeiten gegen konfigurierte Vormittag-/Nachmittag-Slots validiert
+- **Geschäftszeiten-Validierung**: Bei gesetzten `defaults_api_url` und `validate_time_url` werden Standard-Zeiten geladen und gegen konfigurierte Geschäftszeiten via API-Endpunkte validiert
 - **Nächster freier Slot**: Beim ersten Laden (kein Wert) wird automatisch der nächste verfügbare Zeitslot innerhalb der Geschäftszeiten im 7-Tage-Fenster gesucht
 - **Minuten-Schrittweite**: Konfigurierbar über `step`-Parameter (Standard: 15 Minuten)
 - **Warnhinweis**: Zeigt eine gelbe Warnung an, wenn die gewählte Zeit außerhalb der Geschäftszeiten liegt
@@ -69,7 +70,8 @@ Beide erweitern `AbstractDateTime`, das einen Sulu-DatePicker mit Datum + Zeit-F
 | `end_date_field` | `string` | `'end'` | Name des End-Datum-Feldes für Auto-Update |
 | `default_duration` | `integer` | `15` | Dauer in Minuten für die automatische Endzeit |
 | `auto_update` | `string` | `'always'` | Wann Auto-Update: `'always'`, `'initial'` (nur wenn Ende leer), `'never'` |
-| `settings_resource_key` | `string` | — | Sulu-Resource-Key zum Laden der Geschäftszeiten-Einstellungen |
+| `defaults_api_url` | `string` | — | API-Endpunkt-URL zum Laden der Standard-Start-/Endzeiten |
+| `validate_time_url` | `string` | — | API-Endpunkt-URL zur Validierung von Zeitfenstern, gibt `{valid: boolean, strict: boolean}` zurück |
 | `default_value` | `string` | — | Standard-Datetime im Format `YYYY-MM-DDTHH:mm:ss` (geerbt von AbstractDateTime) |
 
 ### datetime_end
@@ -96,11 +98,11 @@ Format: `YYYY-MM-DDTHH:mm:ss`
 
 ## Geschäftszeiten-Validierung (datetime_start)
 
-Bei konfiguriertem `settings_resource_key` wird die Komponente:
+Bei konfigurierten `defaults_api_url` und `validate_time_url` wird die Komponente:
 
-1. Einstellungen über `ResourceRequester.get(settingsResourceKey)` laden
-2. Vormittag-/Nachmittag-Slots pro Wochentag auslesen (z.B. `mondayMorningStart`, `mondayAfternoonEnd`)
-3. Die gewählte Zeit gegen verfügbare Slots validieren
+1. Standard-Start-/Endzeiten über `defaults_api_url` laden
+2. Die gewählte Zeit durch Aufruf von `validate_time_url` validieren, die `{valid: boolean, strict: boolean}` zurückgibt
+3. Eine gelbe Warnung anzeigen, wenn die gewählte Zeit außerhalb der Geschäftszeiten liegt (nicht-strikt), oder einen roten Fehler (strikt)
 4. Beim ersten Laden `findNextAvailableSlot()` aufrufen, um den nächsten gültigen Zeitslot im 7-Tage-Fenster zu wählen
 
 ---

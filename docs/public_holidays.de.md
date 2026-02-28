@@ -128,35 +128,6 @@ foreach ($holidays as $holiday) {
 
 ---
 
-## Benötigte Routen
-
-In `src/Resources/config/routes/routes.yaml` hinzufügen:
-
-```yaml
-sulu_admin_extras_public_holidays:
-    resource: '@SuluAdminExtrasBundle/Controller/PublicHolidayProxyController.php'
-    type: attribute
-```
-
----
-
-## Benötigte Übersetzungen
-
-| Schlüssel | DE | EN |
-|-----------|----|----|
-| `sulu_admin_extras.public_holidays.country` | Land | Country |
-| `sulu_admin_extras.public_holidays.region` | Region | Region |
-| `sulu_admin_extras.public_holidays.year` | Jahr | Year |
-| `sulu_admin_extras.public_holidays.all_regions` | — Alle — | — All — |
-| `sulu_admin_extras.public_holidays.add_custom` | Eigener | Custom |
-| `sulu_admin_extras.public_holidays.refresh` | Jetzt aktualisieren | Refresh now |
-| `sulu_admin_extras.public_holidays.empty` | Keine Feiertage geladen. … | No holidays loaded. … |
-| `sulu_admin_extras.public_holidays.active` | aktiv | active |
-| `sulu_admin_extras.public_holidays.custom` | Eigener | Custom |
-| `sulu_admin_extras.public_holidays.name_placeholder` | Bezeichnung... | Name... |
-
----
-
 ## Komponenten
 
 | Datei | Beschreibung |

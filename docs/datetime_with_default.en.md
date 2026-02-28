@@ -75,17 +75,6 @@ Format: `YYYY-MM-DDTHH:mm:ss`
 
 ---
 
-## Comparison with Sulu's Built-in DatePicker
-
-| Feature | Sulu `date` | `datetime_with_default` |
-|---------|-------------|-------------------------|
-| Date + Time | Via `fieldTypeOptions` | Always enabled |
-| `default_value` support | Not working | ✅ Fully supported |
-| Expression params | Not applied | ✅ Applied on mount |
-| Format | Configurable | Fixed `YYYY-MM-DDTHH:mm:ss` |
-
----
-
 ## Components
 
 | File | Description |

@@ -23,7 +23,8 @@ Both extend `AbstractDateTime`, which provides a Sulu DatePicker with date + tim
         <param name="end_date_field" value="end"/>
         <param name="default_duration" value="15"/>
         <param name="auto_update" value="always"/>
-        <param name="settings_resource_key" value="appointment_settings"/>
+        <param name="defaults_api_url" value="/admin/api/appointment-settings/defaults"/>
+        <param name="validate_time_url" value="/admin/api/appointment-settings/validate-time"/>
     </params>
 </property>
 
@@ -46,7 +47,7 @@ Both extend `AbstractDateTime`, which provides a Sulu DatePicker with date + tim
 ### datetime_start
 
 - **Auto end-time**: When the start is changed, the end field is automatically set to `start + default_duration`
-- **Business hours validation**: If `settings_resource_key` is set, loads settings from a Sulu ResourceRequester and validates times against configured morning/afternoon slots
+- **Business hours validation**: If `defaults_api_url` and `validate_time_url` are set, loads default times and validates against configured business hours via API endpoints
 - **Next available slot**: On initial load (no value), automatically finds the next available time slot within business hours
 - **Minute stepping**: Configurable via `step` param (default: 15 minutes)
 - **Warning display**: Shows a yellow warning if the selected time falls outside business hours
@@ -69,7 +70,8 @@ Both extend `AbstractDateTime`, which provides a Sulu DatePicker with date + tim
 | `end_date_field` | `string` | `'end'` | Name of the end date field to auto-update |
 | `default_duration` | `integer` | `15` | Duration in minutes to add for auto end-time |
 | `auto_update` | `string` | `'always'` | When to auto-update: `'always'`, `'initial'` (only if end is empty), `'never'` |
-| `settings_resource_key` | `string` | — | Sulu resource key for loading business hours settings |
+| `defaults_api_url` | `string` | — | API endpoint URL for loading default start/end times |
+| `validate_time_url` | `string` | — | API endpoint URL for validating time slots, returns `{valid: boolean, strict: boolean}` |
 | `default_value` | `string` | — | Default datetime in `YYYY-MM-DDTHH:mm:ss` format (inherited from AbstractDateTime) |
 
 ### datetime_end
@@ -96,11 +98,11 @@ Format: `YYYY-MM-DDTHH:mm:ss`
 
 ## Business Hours Validation (datetime_start)
 
-When `settings_resource_key` is configured, the component:
+When `defaults_api_url` and `validate_time_url` are configured, the component:
 
-1. Loads settings via `ResourceRequester.get(settingsResourceKey)`
-2. Reads morning/afternoon slots per weekday (e.g. `mondayMorningStart`, `mondayAfternoonEnd`)
-3. Validates the selected time against available slots
+1. Loads default start/end times via `defaults_api_url`
+2. Validates the selected time by calling `validate_time_url`, which returns `{valid: boolean, strict: boolean}`
+3. Shows a yellow warning if the selected time is outside business hours (non-strict) or a red error (strict)
 4. On initial load, calls `findNextAvailableSlot()` to auto-select the next valid time within a 7-day window
 
 ---

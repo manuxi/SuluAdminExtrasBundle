@@ -8,7 +8,7 @@ Der `status_switcher` ist ein interaktiver Transformer für Listenfelder (List F
 
 ## Verwendung
 
-Füge in der XML-Konfiguration deiner Liste den `<transformer type="status_switcher">` zu der Eigenschaft hinzu, die das Statusfeld repräsentiert.
+In der XML-Konfiguration der Liste den `<transformer type="status_switcher">` zu der Eigenschaft hinzufügen, die das Statusfeld repräsentiert.
 
 ```xml
 <property name="status" visibility="always" translation="sulu_admin.status">
