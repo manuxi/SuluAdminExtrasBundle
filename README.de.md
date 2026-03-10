@@ -25,10 +25,10 @@ Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 *   **[Star Rating](docs/star_rating.de.md)** - Auswahlfeld für Sternebewertung
 *   **[DateTime Start / End](docs/datetime_start_end.de.md)** - Verlinkte Date-Time-Picker mit auto End-Zeit, Validierung von Öffnungszeiten und "Freie-Zeit-Finder"
 *   **[DateTime With Default](docs/datetime_with_default.de.md)** - Date-Time-Picker mit `default_value`-Unterstützung
-*   **[Business Hours](docs/business_hours.de.md)** - Wochenplan mit Zeitfenstern, Pausen und Kopierfunktion
-*   **[Public Holidays](docs/public_holidays.de.md)** - Feiertags-Manager mit Nager.Date-API-Integration
-*   **[Holiday Dates](docs/holiday_dates.de.md)** - Betriebsferien und Schließungszeiten mit Unterstützung wiederkehrender Daten
-*   **[Single Contact Autocomplete](docs/single_contact_autocomplete.de.md)** - Einzel-Kontakt-Auswahl mit Autocomplete-Funktion
+*   **[Öffnungszeiten](docs/business_hours.de.md)** - Wochenplan mit Zeitfenstern, Pausen und Kopierfunktion
+*   **[Feiertage](docs/public_holidays.de.md)** - Feiertags-Manager mit Nager.Date-API-Integration
+*   **[Ferien](docs/holiday_dates.de.md)** - Betriebsferien und Schließungszeiten mit Unterstützung wiederkehrender Daten
+*   **[Single Contact Autocomplete](docs/single_contact_autocomplete.de.md)** - Einzel-Kontakt-Select mit Autocomplete-Funktion
 
 ### List Transformers (Listenansicht)
 *   **[Percent Bar](docs/percent_bar.de.md)** - Prozentbalken
