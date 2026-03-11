@@ -48,8 +48,9 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
 
     window.suluAdminExtras = {
         ...(window.suluAdminExtras || {}),
+        starRatingConfig: starRatingConfig,
         collapsibleSections: collapsibleSectionsConfig,
-        initiallyClosedSections: initiallyClosedSectionsConfig
+        initiallyClosedSections: initiallyClosedSectionsConfig,
     };
 
     listFieldTransformerRegistry.add(

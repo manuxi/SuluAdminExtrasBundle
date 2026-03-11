@@ -1,10 +1,8 @@
 // @flow
 import React from 'react';
-import { observer } from 'mobx-react';
-import { SingleSelect } from 'sulu-admin-bundle/components';
-import { Config } from 'sulu-admin-bundle/services';
-import { toJS } from 'mobx';
-import type { FieldTypeProps } from 'sulu-admin-bundle/types';
+import {toJS} from 'mobx';
+import {SingleSelect} from 'sulu-admin-bundle/components';
+import type {FieldTypeProps} from 'sulu-admin-bundle/types';
 import starRatingStyles from './StarRating.scss';
 
 type SchemaOptions = {
@@ -35,7 +33,7 @@ const renderStars = (rating: number, maxValue: number, showText: boolean) => {
         <span className={starRatingStyles.dropdownOption}>
             <span className={starRatingStyles.dropdownStars}>
                 <span className={starRatingStyles.starsBackground}>{backgroundStars}</span>
-                <span className={starRatingStyles.starsForeground} style={{ width: `${fillPercent}%` }}>
+                <span className={starRatingStyles.starsForeground} style={{width: `${fillPercent}%`}}>
                     {foregroundStars}
                 </span>
             </span>
@@ -46,10 +44,9 @@ const renderStars = (rating: number, maxValue: number, showText: boolean) => {
     );
 };
 
-@observer
-class StarRatingSelect extends React.Component<FieldTypeProps<string, SchemaOptions>> {
+export default class StarRatingSelect extends React.Component<FieldTypeProps<string, SchemaOptions>> {
     handleChange = (value: string | number) => {
-        const { onChange, onFinish } = this.props;
+        const {onChange, onFinish} = this.props;
         onChange(value);
         if (onFinish) {
             onFinish();
@@ -57,10 +54,10 @@ class StarRatingSelect extends React.Component<FieldTypeProps<string, SchemaOpti
     };
 
     render() {
-        const { dataPath, error, value, schemaOptions } = this.props;
+        const {dataPath, error, value, schemaOptions} = this.props;
 
-        const globalConfig = Config.get('sulu_admin_extras') || {};
-        const starRatingConfig = globalConfig.star_rating || {};
+        const globalConfig = (window.suluAdminExtras || {});
+        const starRatingConfig = globalConfig.starRatingConfig || {};
 
         const rawValues: Array<{ name: string, title?: string }> = toJS(schemaOptions?.values?.value || []);
         const maxValue: number = schemaOptions?.max_value?.value || starRatingConfig.max_value || 5;
@@ -85,5 +82,3 @@ class StarRatingSelect extends React.Component<FieldTypeProps<string, SchemaOpti
         );
     }
 }
-
-export default StarRatingSelect;

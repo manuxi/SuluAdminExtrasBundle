@@ -1,14 +1,12 @@
 // @flow
 import React from 'react';
-import { observer } from 'mobx-react';
-import { Config } from 'sulu-admin-bundle/services';
-import type { FieldTypeProps } from 'sulu-admin-bundle/types';
+import {toJS} from 'mobx';
+import type {FieldTypeProps} from 'sulu-admin-bundle/types';
 import StarRating from './StarRating';
 
-@observer
-class StarRatingInput extends React.Component<FieldTypeProps<number>> {
+export default class StarRatingInput extends React.Component<FieldTypeProps<number>> {
     handleChange = (value: string) => {
-        const { onChange, onFinish } = this.props;
+        const {onChange, onFinish} = this.props;
 
         const numValue = Number(value);
         onChange(numValue);
@@ -19,12 +17,13 @@ class StarRatingInput extends React.Component<FieldTypeProps<number>> {
     };
 
     render() {
-        const { value, schemaOptions, disabled } = this.props;
+        const {value, schemaOptions, disabled} = this.props;
 
-        const globalConfig = Config.get('sulu_admin_extras') || {};
-        const starRatingConfig = globalConfig.star_rating || {};
+        const globalConfig = (window.suluAdminExtras || {});
+        const starRatingConfig = globalConfig.starRatingConfig || {};
 
-        const max = schemaOptions?.max_value?.value || starRatingConfig.max_value || 5;
+        const maxValueOption = toJS(schemaOptions.max_value);
+        const max = maxValueOption?.value || starRatingConfig.max_value || 5;
 
         return (
             <StarRating
@@ -36,5 +35,3 @@ class StarRatingInput extends React.Component<FieldTypeProps<number>> {
         );
     }
 }
-
-export default StarRatingInput;
