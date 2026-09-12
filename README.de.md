@@ -62,7 +62,17 @@ return [
 ];
 ```
 
-### 3. Admin Assets einrichten
+### 3. Backend-Routen importieren
+Das interaktive Feld `public_holidays` verwendet serverseitige Proxy-Endpunkte. Die Bundle-Routen müssen in `config/routes_admin.yaml` importiert werden:
+
+```yaml
+SuluAdminExtrasBundle:
+    resource: '@SuluAdminExtrasBundle/Resources/config/routes.yaml'
+```
+
+Dadurch werden `/admin/api/public-holidays/countries`, `/subdivisions/{countryCode}` und `/fetch` registriert. Ohne diesen Import wird das JavaScript-Feld geladen, seine API-Aufrufe liefern jedoch 404.
+
+### 4. Admin Assets einrichten
 Damit die JavaScript-Komponenten im Sulu Admin geladen werden, müssen die Asset-Konfiguration des Projekts angepasst werden.
 
 **A) `assets/admin/package.json` anpassen**
@@ -90,6 +100,16 @@ cd assets/admin
 npm install
 npm run build
 ```
+
+### Kompatibilität mit anderen Sulu-Admin-Bundles
+
+Ein Sulu-Feldschlüssel darf nur durch ein JavaScript-Bundle registriert werden. Insbesondere darf in einem Projekt mit diesem Bundle das JavaScript von `sulu-testimonials-bundle` **nicht zusätzlich** importiert werden: Beide Bundles registrieren `star_rating`, wodurch der Sulu Admin nach dem Login mit folgendem Fehler hängen bleibt:
+
+```text
+Error: The key "star_rating" has already been used for another field
+```
+
+`sulu-admin-extras-bundle` bleibt damit die einzige JavaScript-Quelle für die gemeinsamen Sternebewertungsfelder. Das TestimonialsBundle kann weiterhin für serverseitige Routen, Controller, Templates und Entities installiert und verwendet werden.
 
 ---
 
