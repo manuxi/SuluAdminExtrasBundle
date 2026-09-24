@@ -9,7 +9,7 @@ No specialized custom form type is required. Instead, any section whose title (`
 ## How it works
 
 Since the Sulu React frontend ignores the `cssClass` attribute from XML section definitions, this bundle employs a **Mutation Observer**. It continuously scans the DOM for section labels. 
-When a matching title is detected, it injects the necessary CSS classes (`sulu-collapsible-section`) to render an eye icon and enable the hide/show transition functionality for its container field grid.
+When a matching title is detected, it injects the necessary CSS classes (`sulu-collapsible-section`) to render an eye icon at the end of the divider line and enable the hide/show transition functionality for its container field grid. Sections can also be toggled with the keyboard (Enter or Space).
 
 ## Configuration (sulu_admin_extras.yaml)
 
@@ -28,6 +28,14 @@ sulu_admin_extras:
 
 Using the `initially_closed_sections` configuration key, you can define which sections should be collapsed by default when the page first loads.
 Additionally, the browser remembers the collapsed/expanded state for each section per user in their `localStorage`. This means if a user collapses a section, it will remain collapsed on subsequent page loads, regardless of the default configuration.
+
+## Validation errors
+
+A collapsed section never hides a validation error: as soon as a field inside a closed section is invalid, the section opens automatically (for now, the stored choice of the user is not changed). Sulu renders an empty error label below every field and fills it only for invalid fields, so the bundle looks for an error label with text.
+
+## Form grid layout
+
+Sulu positions form fields with floats. A field with a help text (`info_text`) is taller than its neighbours and the next fields snag on it, so columns fall apart. The bundle switches the form grid to a wrapping flex layout with the same 12 column widths; every row now starts below the tallest field of the row before.
 
 ## Usage in XML forms
 
