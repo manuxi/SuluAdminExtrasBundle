@@ -1,25 +1,63 @@
 :global {
+    /*
+     * Sulu lays out the form grid with floats. A field that is taller than its neighbours (for example one with a
+     * help text) makes the following fields snag on it and the columns fall apart. Flex wrapping keeps the same
+     * 12 column widths but starts every row below the tallest field of the previous row.
+     *
+     * The classes are CSS module names (name--hash): the form root carries two "grid--" tokens, a form section
+     * carries "grid-section--".
+     */
+    div[class*="grid--"][class*=" grid--"],
+    div[class*="grid-section--"] {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        &::after {
+            display: none;
+        }
+
+        > div {
+            float: none;
+            flex: 0 0 auto;
+        }
+    }
+
     .sulu-collapsible-section {
         .sulu-collapsible-header {
             cursor: pointer;
             user-select: none;
-            position: relative;
 
-            .sulu-collapsible-icon-wrapper {
-                position: absolute;
-                right: 50px;
-                top: 60%;
-                transform: translateY(-50%);
-                background-color: #f5f5f5;
-                padding: 0 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            &:focus-visible {
+                outline: 2px solid #1A1A1A;
+                outline-offset: 2px;
+            }
 
-                .sulu-collapsible-icon {
-                    font-size: 18px;
-                    color: #6d6d6d;
-                    transition: color 0.15s ease-in-out;
+            /*
+             * The eye lies on the divider line, vertically centered on it, with some distance to the right edge.
+             * The padding and the background hide the line behind the icon, so a piece of the line is left on both
+             * sides of the eye. The title stays centered because the icon is out of the flow. The page form has a
+             * gray background, block forms are white.
+             */
+            .sulu-collapsible-divider {
+                position: relative;
+
+                .sulu-collapsible-icon-wrapper {
+                    position: absolute;
+                    right: 40px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0 12px;
+                    background-color: #f5f5f5;
+
+                    .sulu-collapsible-icon {
+                        font-size: 18px;
+                        color: #6d6d6d;
+                        transition: color 0.15s ease-in-out;
+                    }
                 }
             }
 
@@ -28,7 +66,7 @@
             }
         }
 
-        &>div[class*="item"]:not(.sulu-collapsible-header) {
+        &>div:not(.sulu-collapsible-header) {
             transition: opacity 0.3s ease-out, transform 0.3s ease-out;
             opacity: 1;
             transform: translateY(0);
@@ -36,7 +74,7 @@
         }
 
         &.is-hidden {
-            &>div[class*="item"]:not(.sulu-collapsible-header) {
+            &>div:not(.sulu-collapsible-header) {
                 opacity: 0 !important;
                 transform: translateY(-10px) !important;
                 pointer-events: none !important;
@@ -44,9 +82,13 @@
         }
 
         &.is-closed {
-            &>div[class*="item"]:not(.sulu-collapsible-header) {
+            &>div:not(.sulu-collapsible-header) {
                 display: none !important;
             }
         }
+    }
+
+    [class*="block--"] .sulu-collapsible-divider .sulu-collapsible-icon-wrapper {
+        background-color: #fff;
     }
 }
