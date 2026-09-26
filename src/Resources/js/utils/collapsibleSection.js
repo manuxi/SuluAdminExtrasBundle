@@ -57,6 +57,10 @@ const closeSection = (section) => {
     timers.set(section, window.setTimeout(() => section.classList.add('is-closed'), HIDE_ANIMATION_MS));
 };
 
+// The title is searched as plain text in the whole document. Only a real form section counts: the same text in a
+// block preview, a heading or a field value (for example an overline "Boxen") must not turn into a collapsible section.
+const isFormSection = (element) => /(^|\s)grid-section--/.test(element.className || '');
+
 const isClosed = (section) => section.classList.contains('is-closed') || section.classList.contains('is-hidden');
 
 function initSuluCollapsibleSections() {
@@ -86,7 +90,7 @@ function initSuluCollapsibleSections() {
             const clickableHeader = el.parentElement;
             const gridSection = clickableHeader ? clickableHeader.parentElement : null;
 
-            if (gridSection && !gridSection.dataset.collapsibleInit) {
+            if (gridSection && isFormSection(gridSection) && !gridSection.dataset.collapsibleInit) {
                 gridSection.classList.add('sulu-collapsible-section');
                 gridSection.dataset.collapsibleInit = 'true';
                 el.classList.add('sulu-collapsible-divider');
