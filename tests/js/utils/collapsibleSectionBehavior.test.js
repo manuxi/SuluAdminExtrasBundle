@@ -173,4 +173,17 @@ describe('collapsibleSection behavior', () => {
 
         expect(section).not.toHaveClass('is-closed');
     });
+
+    test('ignores the same text outside a form section (block preview, overline)', () => {
+        // a block preview shows the text of a field, here an overline that equals a section title
+        const preview = document.createElement('div');
+        preview.className = 'blockPreview--a';
+        preview.innerHTML = '<div class="item--x"><div class="overline--z">Formatierung</div></div>';
+        document.body.appendChild(preview);
+        notifyDomChanged();
+
+        expect(preview.querySelector('.overline--z')).not.toHaveClass('sulu-collapsible-divider');
+        expect(preview.querySelector('.sulu-collapsible-icon-wrapper')).toBeNull();
+        expect(preview).not.toHaveClass('sulu-collapsible-section');
+    });
 });
