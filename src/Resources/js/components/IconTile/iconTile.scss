@@ -1,0 +1,48 @@
+@import 'sulu-admin-bundle/containers/Application/colors.scss';
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 96px;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $silver;
+    }
+
+    &.selected {
+        border-color: $shakespeare;
+        background: rgba($shakespeare, .08);
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+    }
+}
+
+.name {
+    max-width: 100%;
+    overflow: hidden;
+    color: $gray;
+    font-size: 11px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

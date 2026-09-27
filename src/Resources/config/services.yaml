@@ -56,6 +56,22 @@ services:
         tags:
             - { name: 'sulu_content.property_resolver', type: 'holiday_dates', alias: 'holiday_dates' }
 
+    # Icon Selection (enhances Sulu core's own single_icon_selection field, see docs/icon_selection.md)
+    Manuxi\SuluAdminExtrasBundle\Icon\IconSetResolver:
+        arguments:
+            $iconSets: '%sulu_admin.icon_sets%'
+            $iconProviders: !tagged_iterator { tag: 'sulu_admin.icon_provider', index_by: 'type' }
+
+    Manuxi\SuluAdminExtrasBundle\Content\Type\IconSelectionPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'single_icon_selection', alias: 'single_icon_selection' }
+
+    Manuxi\SuluAdminExtrasBundle\Twig\IconSelectionTwigExtension:
+        arguments:
+            $debug: '%kernel.debug%'
+        tags:
+            - { name: 'twig.extension' }
+
     # Star Rating Service (Provider)
     Manuxi\SuluAdminExtrasBundle\Service\StarRatingProvider:
         arguments:

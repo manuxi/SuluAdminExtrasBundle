@@ -1,0 +1,26 @@
+.iconItem {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.icon {
+    display: block;
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+    }
+}
+
+.name {
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

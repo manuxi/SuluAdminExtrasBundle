@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "sulu-admin-bundle": "file:vendor/sulu/sulu/src/Sulu/Bundle/AdminBundle/Resources/js",
+        "sulu-media-bundle": "file:vendor/sulu/sulu/src/Sulu/Bundle/MediaBundle/Resources/js",
         "classnames": "^2.3.0"
     },
     "devDependencies": {

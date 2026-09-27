@@ -30,6 +30,7 @@ Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 *   **[Ferien](docs/holiday_dates.de.md)** - Betriebsferien und Schließungszeiten mit Unterstützung wiederkehrender Daten
 *   **[Single Contact Autocomplete](docs/single_contact_autocomplete.de.md)** - Einzel-Kontakt-Select mit Autocomplete-Funktion
 *   **[Media Picker](docs/media_picker.de.md)** - Große Bildvorschau, Klick öffnet Auswahl aus der Mediathek oder Upload, behebt die fehlende Vorschau von `single_media_upload`
+*   **[Icon Selection](docs/icon_selection.de.md)** - echte Vorschau + Auswahl-Overlay für Sulus eigenes `single_icon_selection`-Feld, Twig-Funktion `sulu_icon()`, Property-Resolver
 
 ### List Transformers (Listenansicht)
 *   **[Percent Bar](docs/percent_bar.de.md)** - Prozentbalken

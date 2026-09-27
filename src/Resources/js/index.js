@@ -1,6 +1,7 @@
 import { initializer } from 'sulu-admin-bundle/services';
 import fieldRegistry from 'sulu-admin-bundle/containers/Form/registries/fieldRegistry';
 import listFieldTransformerRegistry from 'sulu-admin-bundle/containers/List/registries/listFieldTransformerRegistry';
+import listAdapterRegistry from 'sulu-admin-bundle/containers/List/registries/listAdapterRegistry';
 import formToolbarActionRegistry from 'sulu-admin-bundle/views/Form/registries/formToolbarActionRegistry';
 
 import PublishStateFieldTransformer from './fieldTransformers/PublishStateFieldTransformer';
@@ -25,6 +26,8 @@ import PublicHolidays from './containers/Form/fields/PublicHolidays/PublicHolida
 import HolidayDates from './containers/Form/fields/HolidayDates/HolidayDates';
 import SingleContactAutocomplete from './containers/Form/fields/SingleContactAutocomplete/SingleContactAutocomplete';
 import MediaPicker from './containers/Form/fields/MediaPicker';
+import IconSelection from './containers/Form/fields/IconSelection';
+import IconAdapter from './containers/IconAdapter/IconAdapter';
 
 import './utils/collapsibleSection.js';
 import './utils/collapsibleSection.scss';
@@ -104,6 +107,14 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     fieldRegistry.add('single_contact_autocomplete', SingleContactAutocomplete);
     fieldRegistry.add('media_picker', MediaPicker);
 
+    // Sulu core already registers "single_icon_selection" (form field) and "icon" (list adapter) itself, in
+    // its own "sulu_admin" update-config-hook, which fires before this one - fieldRegistry.add()/
+    // listAdapterRegistry.add() throw on an already-used key, so the singletons' internal maps are written to
+    // directly, replacing core's components with ours after core's own registration has already run (see
+    // docs/icon_selection.{en,de}.md).
+    fieldRegistry.fields['single_icon_selection'] = IconSelection;
+    listAdapterRegistry.adapters['icon'] = IconAdapter;
+
     formToolbarActionRegistry.add('sulu_admin_extras.add_new', AddNewToolbarAction);
 });
 
@@ -126,6 +137,8 @@ export {
     HolidayDates,
     SingleContactAutocomplete,
     MediaPicker,
+    IconSelection,
+    IconAdapter,
     Drawer,
     drawerStore,
     drawerRegistry,
