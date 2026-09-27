@@ -1,0 +1,94 @@
+.container {
+    max-width: 320px;
+}
+
+.preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 260px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:focus {
+        outline: 2px solid #2a2e33;
+        outline-offset: 1px;
+    }
+}
+
+.empty {
+    border: 1px dashed #cbccd1;
+    background: #f7f7f8;
+
+    &:hover {
+        border-color: #2a2e33;
+    }
+}
+
+.filled {
+    border: 1px solid #e1e1e6;
+}
+
+.error {
+    border-color: #ee3939;
+}
+
+.disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #767676;
+    font-size: 14px;
+    text-align: center;
+}
+
+.fileName {
+    max-width: 90%;
+    overflow: hidden;
+    color: #52565c;
+    font-size: 13px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #52565c;
+    cursor: pointer;
+
+    &:hover {
+        background: #fff;
+        color: #ee3939;
+    }
+}
