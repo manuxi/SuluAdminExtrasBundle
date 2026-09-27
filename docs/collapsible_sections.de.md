@@ -24,6 +24,10 @@ sulu_admin_extras:
         - 'sulu_appointment.section_content'
 ```
 
+### Klartext-Titel und Übersetzungsschlüssel
+
+Ein Titel ist entweder der angezeigte Text (`Formatierung`, alle genutzten Sprachen eintragen) oder ein Übersetzungsschlüssel mit Punkt (`sulu_appointment.section_content`). Nur Schlüssel werden übersetzt; Klartext wird so verglichen, wie er dasteht. Damit meldet die Browser-Konsole keine fehlenden Übersetzungen.
+
 ### Initial geschlossene Sektionen & lokaler Speicher
 
 Mit dem Schlüssel `initially_closed_sections` können Sektionen angegeben werden, die beim ersten Laden der Seite standardmäßig eingeklappt sein sollen.

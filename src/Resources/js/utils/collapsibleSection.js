@@ -1,11 +1,21 @@
 import { translate } from 'sulu-admin-bundle/utils';
 
+// A configured title is either the displayed text ("Formatierung") or a translation key ("sulu_admin.formatting").
+// Only keys are translated: translating a plain text makes Sulu log "translation key ... has not been translated".
+const TRANSLATION_KEY = /^[\w-]+(\.[\w-]+)+$/;
+
+const resolveTitle = (title) => {
+    const text = String(title).trim();
+
+    return TRANSLATION_KEY.test(text) ? (translate(text) || text).trim() : text;
+};
+
 const getCollapsibleSectionTitles = () => {
     let raw = [];
     if (window.suluAdminExtras && Array.isArray(window.suluAdminExtras.collapsibleSections)) {
         raw = window.suluAdminExtras.collapsibleSections;
     }
-    return raw.map(title => (translate(title) || title).trim());
+    return raw.map(resolveTitle);
 };
 
 const getInitiallyClosedSectionTitles = () => {
@@ -13,7 +23,7 @@ const getInitiallyClosedSectionTitles = () => {
     if (window.suluAdminExtras && Array.isArray(window.suluAdminExtras.initiallyClosedSections)) {
         raw = window.suluAdminExtras.initiallyClosedSections;
     }
-    return raw.map(title => (translate(title) || title).trim());
+    return raw.map(resolveTitle);
 };
 
 const initializedSections = new WeakSet();
@@ -71,18 +81,21 @@ function initSuluCollapsibleSections() {
 
     titles.forEach(title => {
         const xpath = `//text()[normalize-space(.)='${title}']/parent::*`;
-        let result;
+        // A snapshot, not a live result: the code below changes the document, and a live XPath result then throws
+        // "The document has mutated since the result was returned".
+        const elements = [];
         try {
-            result = document.evaluate(xpath, document, null, XPathResult.ANY_TYPE, null);
+            const result = document.evaluate(xpath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+            for (let i = 0; i < result.snapshotLength; i++) {
+                elements.push(result.snapshotItem(i));
+            }
         } catch (e) {
             return;
         }
 
-        let el = result.iterateNext();
-        while (el) {
+        elements.forEach((el) => {
             if (initializedSections.has(el)) {
-                el = result.iterateNext();
-                continue;
+                return;
             }
             initializedSections.add(el);
 
@@ -150,9 +163,7 @@ function initSuluCollapsibleSections() {
                 }
                 setIcon(gridSection, shouldBeClosed);
             }
-
-            el = result.iterateNext();
-        }
+        });
     });
 }
 

@@ -24,6 +24,10 @@ sulu_admin_extras:
         - 'sulu_appointment.section_content' # Add sections that should be closed by default
 ```
 
+### Plain titles and translation keys
+
+A title is either the text as displayed (`Formatting`, list every language you use) or a translation key with a dot (`sulu_appointment.section_content`). Only keys are translated; plain text is compared as it is, so nothing is reported as a missing translation in the browser console.
+
 ### Initially Closed Sections & Local Storage
 
 Using the `initially_closed_sections` configuration key, you can define which sections should be collapsed by default when the page first loads.
