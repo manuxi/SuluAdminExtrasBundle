@@ -10,6 +10,13 @@ jest.mock('sulu-admin-bundle/services', () => ({
 const mockFieldRegistryAdd = jest.fn();
 jest.mock('sulu-admin-bundle/containers/Form/registries/fieldRegistry', () => ({
     add: mockFieldRegistryAdd,
+    fields: {},
+    options: {},
+}));
+
+jest.mock('sulu-admin-bundle/containers/List/registries/listAdapterRegistry', () => ({
+    adapters: {},
+    options: {},
 }));
 
 const mockTransformerRegistryAdd = jest.fn();
@@ -60,6 +67,23 @@ jest.mock('sulu-admin-bundle/stores/userStore', () => ({contentLocale: 'de'}));
 
 jest.mock('sulu-admin-bundle/containers/SingleListOverlay', () => jest.fn(() => null));
 
+// IconAdapter references this class (as a static field, Sulu's own List container pattern) without ever
+// invoking it here - the real one drags in ResourceRequester -> fos-jsrouting/router, a package this bundle
+// does not (and does not need to) install for its own tests.
+jest.mock('sulu-admin-bundle/containers/List/loadingStrategies/DefaultLoadingStrategy', () => class DefaultLoadingStrategy {});
+
+// MediaPicker pulls this in for real otherwise, which drags in Sulu core's whole
+// sulu-admin-bundle/containers barrel (CKEditor5 and friends) - way more than this
+// smoke test (import index.js, check the registries) needs.
+jest.mock('sulu-media-bundle/containers/MediaSelectionOverlay', () => {
+    const MediaSelectionOverlay = jest.fn(() => null);
+    MediaSelectionOverlay.createMediaListStore = jest.fn(() => ({
+        selections: [], clear: jest.fn(), clearSelection: jest.fn(), select: jest.fn(), destroy: jest.fn(),
+    }));
+    MediaSelectionOverlay.createCollectionListStore = jest.fn(() => ({destroy: jest.fn()}));
+    return MediaSelectionOverlay;
+});
+
 jest.mock('sulu-admin-bundle/services/Requester', () => ({
     get: jest.fn(() => Promise.resolve({})),
     post: jest.fn(() => Promise.resolve({})),
@@ -100,6 +124,8 @@ if (hookFn) hookFn({}, false);
 const registeredTransformers = mockTransformerRegistryAdd.mock.calls.map(c => c[0]);
 const registeredFields = mockFieldRegistryAdd.mock.calls.map(c => c[0]);
 const toolbarCalls = [...mockToolbarRegistryAdd.mock.calls];
+const fieldRegistry = require('sulu-admin-bundle/containers/Form/registries/fieldRegistry');
+const listAdapterRegistry = require('sulu-admin-bundle/containers/List/registries/listAdapterRegistry');
 
 describe('index.js (bundle initialization)', () => {
     test('Should register updateConfigHook with sulu_admin_extras key', () => {
@@ -130,6 +156,12 @@ describe('index.js (bundle initialization)', () => {
         expect(registeredFields).toContain('public_holidays');
         expect(registeredFields).toContain('holiday_dates');
         expect(registeredFields).toContain('single_contact_autocomplete');
+        expect(registeredFields).toContain('media_picker');
+    });
+
+    test('Should override Sulu core\'s single_icon_selection field and icon list adapter', () => {
+        expect(fieldRegistry.fields['single_icon_selection']).toBe(indexModule.IconSelection);
+        expect(listAdapterRegistry.adapters['icon']).toBe(indexModule.IconAdapter);
     });
 
     test('Should register AddNew toolbar action', () => {
@@ -163,6 +195,9 @@ describe('index.js (bundle initialization)', () => {
         expect(indexModule.PublicHolidays).toBeDefined();
         expect(indexModule.HolidayDates).toBeDefined();
         expect(indexModule.SingleContactAutocomplete).toBeDefined();
+        expect(indexModule.MediaPicker).toBeDefined();
+        expect(indexModule.IconSelection).toBeDefined();
+        expect(indexModule.IconAdapter).toBeDefined();
         expect(indexModule.Drawer).toBeDefined();
         expect(indexModule.drawerStore).toBeDefined();
         expect(indexModule.drawerRegistry).toBeDefined();
