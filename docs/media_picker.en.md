@@ -39,14 +39,20 @@ under that type keeps working unchanged after switching the `type` attribute to 
 
 ## Behaviour
 
+Styled like Sulu core's own `single_media_upload` (`SingleMediaDropzone`): a square preview with a solid border,
+white background and a large centered icon when empty - no dashed "drop zone" look. Download/remove appear as
+text links below the preview, not as an icon floating on top of the image.
+
 - Loads the media by id itself (via `SingleSelectionStore`), so it always shows a correct preview, including right
   after reopening a saved article — unlike `single_media_upload`.
-- Preview is a 260px tall image (thumbnail format configurable via `image_size`, default `sulu-400x400`), not a
+- Preview is a square image (thumbnail format configurable via `image_size`, default `sulu-400x400`), not a
   25×25px line icon.
-- Clicking the preview (or the empty placeholder) opens Sulu's media overlay (browsing the library, including its
-  folder structure, or uploading a new file) — no separate control needed. With `collection_id` the overlay opens
-  directly in that folder (e.g. a system collection) instead of the media library's root.
-- A small trash icon in the corner clears the selection.
+- Clicking the preview opens Sulu's media overlay (browsing the library, including its folder structure, or
+  uploading a new file) — no separate control needed. With `collection_id` the overlay opens directly in that
+  folder (e.g. a system collection) instead of the media library's root.
+- Once a media is selected, "Download" and "Remove" appear as text links below the preview (Sulu's own
+  `sulu_media.download_media`/`delete_media` translations); removing asks for confirmation first, same as
+  `single_media_upload`.
 
 ## Requirements
 

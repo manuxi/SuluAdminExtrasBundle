@@ -1,3 +1,9 @@
+@import 'sulu-admin-bundle/containers/Application/colors.scss';
+
+$imageBorderColor: $silver;
+$emptyBackgroundColor: $white;
+$emptyColor: $alto;
+
 .container {
     max-width: 320px;
 }
@@ -7,88 +13,93 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: auto;
     overflow: hidden;
-    height: 260px;
-    border-radius: 4px;
     cursor: pointer;
+    background-color: $emptyBackgroundColor;
+    border: 1px solid $imageBorderColor;
+
+    &::after {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
 
     &:focus {
-        outline: 2px solid #2a2e33;
+        outline: 2px solid $mineShaft;
         outline-offset: 1px;
     }
 }
 
-.empty {
-    border: 1px dashed #cbccd1;
-    background: #f7f7f8;
-
-    &:hover {
-        border-color: #2a2e33;
-    }
-}
-
-.filled {
-    border: 1px solid #e1e1e6;
-}
-
 .error {
-    border-color: #ee3939;
+    border-color: $persianRed;
 }
 
 .disabled {
     cursor: default;
-    opacity: 0.6;
+    opacity: .5;
 }
 
 .image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    color: #767676;
-    font-size: 14px;
-    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: $emptyColor;
+    font-size: 80px;
 }
 
 .fileName {
-    max-width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    padding: 0 10px;
     overflow: hidden;
-    color: #52565c;
+    color: $scorpion;
     font-size: 13px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
-.remove {
-    position: absolute;
-    top: 6px;
-    right: 6px;
+.buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    color: #52565c;
-    cursor: pointer;
+    flex-wrap: wrap;
 
-    &:hover {
-        background: #fff;
-        color: #ee3939;
+    > * {
+        flex: 1;
+        margin-top: 20px;
     }
 }

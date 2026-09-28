@@ -4,7 +4,7 @@ import {observer} from 'mobx-react';
 import {action, autorun, comparer, computed, observable, reaction, toJS} from 'mobx';
 import userStore from 'sulu-admin-bundle/stores/userStore';
 import SingleSelectionStore from 'sulu-admin-bundle/stores/SingleSelectionStore';
-import {Loader, Icon} from 'sulu-admin-bundle/components';
+import {Button, Dialog, Loader, Icon} from 'sulu-admin-bundle/components';
 import {translate} from 'sulu-admin-bundle/utils/Translator';
 import MediaSelectionOverlay from 'sulu-media-bundle/containers/MediaSelectionOverlay';
 import type {FieldTypeProps} from 'sulu-admin-bundle/types';
@@ -47,6 +47,7 @@ class MediaPicker extends React.Component<FieldTypeProps<Value>> {
     collectionListStore: Object;
 
     @observable overlayOpen: boolean = false;
+    @observable deleteDialogOpen: boolean = false;
 
     constructor(props: FieldTypeProps<Value>) {
         super(props);
@@ -129,9 +130,25 @@ class MediaPicker extends React.Component<FieldTypeProps<Value>> {
         this.overlayOpen = false;
     };
 
-    handleRemove = (event: SyntheticEvent<HTMLButtonElement>) => {
-        event.stopPropagation();
+    @action handleDownloadClick = () => {
+        const {item: media} = this.store;
+
+        if (media) {
+            window.location.assign(media.url);
+        }
+    };
+
+    @action handleDeleteClick = () => {
+        this.deleteDialogOpen = true;
+    };
+
+    @action handleDeleteDialogCancel = () => {
+        this.deleteDialogOpen = false;
+    };
+
+    @action handleDeleteDialogConfirm = () => {
         this.store.clear();
+        this.deleteDialogOpen = false;
     };
 
     handleOverlayConfirm = () => {
@@ -156,7 +173,6 @@ class MediaPicker extends React.Component<FieldTypeProps<Value>> {
                 <div
                     className={[
                         mediaPickerStyles.preview,
-                        media ? mediaPickerStyles.filled : mediaPickerStyles.empty,
                         error ? mediaPickerStyles.error : '',
                         disabled ? mediaPickerStyles.disabled : '',
                     ].join(' ').trim()}
@@ -176,19 +192,19 @@ class MediaPicker extends React.Component<FieldTypeProps<Value>> {
                     {!loading && !media &&
                         <div className={mediaPickerStyles.placeholder}>
                             <Icon name={emptyIcon || DEFAULT_EMPTY_ICON} />
-                            <span>{translate('sulu_admin_extras.media_picker.select')}</span>
                         </div>
                     }
-                    {!loading && media && !disabled &&
-                        <button
-                            className={mediaPickerStyles.remove}
-                            onClick={this.handleRemove}
-                            type="button"
-                        >
-                            <Icon name="su-trash-alt" />
-                        </button>
-                    }
                 </div>
+                {!loading && media && !disabled &&
+                    <div className={mediaPickerStyles.buttons}>
+                        <Button icon="su-download" onClick={this.handleDownloadClick} skin="link">
+                            {translate('sulu_media.download_media')}
+                        </Button>
+                        <Button icon="su-trash-alt" onClick={this.handleDeleteClick} skin="link">
+                            {translate('sulu_media.delete_media')}
+                        </Button>
+                    </div>
+                }
                 <MediaSelectionOverlay
                     collectionId={this.collectionId}
                     collectionListStore={this.collectionListStore}
@@ -198,6 +214,16 @@ class MediaPicker extends React.Component<FieldTypeProps<Value>> {
                     onConfirm={this.handleOverlayConfirm}
                     open={this.overlayOpen}
                 />
+                <Dialog
+                    cancelText={translate('sulu_admin.cancel')}
+                    confirmText={translate('sulu_admin.ok')}
+                    onCancel={this.handleDeleteDialogCancel}
+                    onConfirm={this.handleDeleteDialogConfirm}
+                    open={this.deleteDialogOpen}
+                    title={translate('sulu_media.delete_media_warning_title')}
+                >
+                    {translate('sulu_media.delete_media_warning_text')}
+                </Dialog>
             </div>
         );
     }

@@ -3,10 +3,6 @@ sulu_admin_extras:
     # AddNewToolbarAction
     new: "New"
 
-    # MediaPicker
-    media_picker:
-        select: "Select or upload an image"
-
     # Publish State Indicator
     draft: "Draft"
     published: "Published"

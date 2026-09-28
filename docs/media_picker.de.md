@@ -40,15 +40,20 @@ funktionieren nach dem Wechsel des `type`-Attributs auf `media_picker` unveränd
 
 ## Verhalten
 
+Gestaltet wie Sulus eigenes `single_media_upload` (`SingleMediaDropzone`): quadratische Vorschau mit durchgezogenem
+Rahmen, weißem Hintergrund und großem, zentriertem Icon, wenn nichts ausgewählt ist — keine gepunktete
+"Dropzone"-Optik. Download/Entfernen stehen als Textlinks unter der Vorschau, nicht als Icon über dem Bild.
+
 - Lädt das Bild selbst über die ID nach (`SingleSelectionStore`), zeigt daher immer eine korrekte Vorschau, auch
   direkt nach dem erneuten Öffnen eines gespeicherten Artikels — anders als `single_media_upload`.
-- Vorschau ist ein 260px hohes Bild (Format konfigurierbar über `image_size`, Standard `sulu-400x400`), keine
+- Vorschau ist ein quadratisches Bild (Format konfigurierbar über `image_size`, Standard `sulu-400x400`), keine
   25×25px-Zeilen-Miniatur.
-- Klick auf die Vorschau (oder den leeren Platzhalter) öffnet Sulus Medien-Overlay (Durchsuchen der Mediathek
-  inkl. Ordnerstruktur oder Hochladen einer neuen Datei) — ohne eigenes zusätzliches Bedienelement. Mit
-  `collection_id` startet das Overlay direkt im gewünschten Ordner (z. B. eine System-Collection), statt in der
-  Wurzel der gesamten Mediathek.
-- Ein kleines Papierkorb-Symbol in der Ecke entfernt die Auswahl.
+- Klick auf die Vorschau öffnet Sulus Medien-Overlay (Durchsuchen der Mediathek inkl. Ordnerstruktur oder
+  Hochladen einer neuen Datei) — ohne eigenes zusätzliches Bedienelement. Mit `collection_id` startet das Overlay
+  direkt im gewünschten Ordner (z. B. eine System-Collection), statt in der Wurzel der gesamten Mediathek.
+- Sobald ein Medium gewählt ist, erscheinen "Herunterladen" und "Entfernen" als Textlinks unter der Vorschau
+  (Sulus eigene Übersetzungen `sulu_media.download_media`/`delete_media`); Entfernen fragt vorher nach, genau wie
+  bei `single_media_upload`.
 
 ## Voraussetzungen
 
