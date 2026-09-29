@@ -38,6 +38,14 @@
              * The padding and the background hide the line behind the icon, so a piece of the line is left on both
              * sides of the eye. The title stays centered because the icon is out of the flow. The page form has a
              * gray background, block forms are white.
+             *
+             * The divider is already a flex row with align-items: center (Sulu's own .divider class), which is what
+             * centers the line itself. Centering the icon with top: 50% + transform: translateY(-50%) instead runs
+             * two separate percentage roundings (against the parent's height, then against the icon's own height),
+             * which can each round to a different device pixel on non-integer display scaling (common on smaller
+             * external monitors) and leave the icon a hair off the line. Leaving top/bottom unset lets the icon use
+             * the flex container's own static-position alignment instead, the same single pass that centers the
+             * line, so the two can never drift apart.
              */
             .sulu-collapsible-divider {
                 position: relative;
@@ -45,8 +53,7 @@
                 .sulu-collapsible-icon-wrapper {
                     position: absolute;
                     right: 40px;
-                    top: 50%;
-                    transform: translateY(-50%);
+                    align-self: center;
                     display: flex;
                     align-items: center;
                     justify-content: center;
