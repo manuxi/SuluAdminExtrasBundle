@@ -35,7 +35,8 @@ Lines are sorted by `priority`, highest first. A good scheme for a consistent lo
 |---|---|
 | `single_account_selection`, `single_contact_selection`, `single_snippet_selection`, `single_form_selection` | `Organization: Name` (name is loaded lazily and cached for 30 s) |
 | `account_selection`, `contact_account_selection`, `snippet_selection`, `page_selection`, `article_selection`, `event_selection`, `testimonial_selection`, `teaser_selection` | `Pages: 3` |
-| `block` (nested) | `Entries: 3 · Title A, Title B, Title C` (first `title`/`name`/`headline` of each entry) |
+| `snippet_selection`, `single_snippet_selection` | additionally the title of the allowed snippet type(s) from the field's `types` param, e.g. `Snippets (Link): 2` (the title comes from the snippet template's `<meta><title>`) |
+| `block` (nested) | `Entries: 3 - Title A, Title B, Untitled` (first `title`/`name`/`headline` of each entry, "Untitled" if none is set) |
 | `link` | the address of external links, the kind (page, media, ...) of internal ones |
 
 Existing registry keys are never replaced, so a renderer shipped by Sulu core always wins.

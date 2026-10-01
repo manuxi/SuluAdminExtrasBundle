@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
 import fieldRegistry from 'sulu-admin-bundle/containers/Form/registries/fieldRegistry';
-import {translate} from 'sulu-admin-bundle/utils/Translator';
+import PreviewLabel, {getSnippetTypeKeys} from './PreviewLabel';
 import ResourceLabel from './ResourceLabel';
-import styles from './blockPreview.scss';
 import type {Node} from 'react';
 import type {BlockPreviewTransformer} from 'sulu-admin-bundle/types';
 
@@ -11,13 +10,16 @@ const DEFAULT_DISPLAY_PROPERTY = 'name';
 
 /**
  * Shows "<label>: <name of the selected item>" for single_selection based field types
- * (account, contact, snippet, form, ...). The name is loaded lazily and cached briefly.
+ * (account, contact, snippet, form, ...). The name is loaded lazily and cached briefly. With the "snippetTypes"
+ * flag the titles of the snippet types allowed by the field are added to the label.
  */
 export default class SingleSelectionBlockPreviewTransformer implements BlockPreviewTransformer {
     labelKey: string;
+    snippetTypes: boolean;
 
-    constructor(labelKey: string) {
+    constructor(labelKey: string, snippetTypes: boolean = false) {
         this.labelKey = labelKey;
+        this.snippetTypes = snippetTypes;
     }
 
     transform(value: *, schema: *): Node {
@@ -41,7 +43,10 @@ export default class SingleSelectionBlockPreviewTransformer implements BlockPrev
 
         return (
             <p>
-                <span className={styles.label}>{translate(this.labelKey)}:</span>
+                <PreviewLabel
+                    labelKey={this.labelKey}
+                    snippetTypeKeys={this.snippetTypes ? getSnippetTypeKeys(schema) : []}
+                />
                 <ResourceLabel
                     displayProperty={displayProperty || DEFAULT_DISPLAY_PROPERTY}
                     id={id}

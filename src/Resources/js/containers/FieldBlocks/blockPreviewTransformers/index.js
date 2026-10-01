@@ -17,12 +17,12 @@ export default function registerBlockPreviewTransformers() {
 
         single_account_selection: new SingleSelectionBlockPreviewTransformer(PREFIX + 'account'),
         single_contact_selection: new SingleSelectionBlockPreviewTransformer(PREFIX + 'contact'),
-        single_snippet_selection: new SingleSelectionBlockPreviewTransformer(PREFIX + 'snippet'),
+        single_snippet_selection: new SingleSelectionBlockPreviewTransformer(PREFIX + 'snippet', true),
         single_form_selection: new SingleSelectionBlockPreviewTransformer(PREFIX + 'form'),
 
         account_selection: new SelectionBlockPreviewTransformer(PREFIX + 'accounts'),
         contact_account_selection: new SelectionBlockPreviewTransformer(PREFIX + 'persons'),
-        snippet_selection: new SelectionBlockPreviewTransformer(PREFIX + 'snippets'),
+        snippet_selection: new SelectionBlockPreviewTransformer(PREFIX + 'snippets', true),
         page_selection: new SelectionBlockPreviewTransformer(PREFIX + 'pages'),
         article_selection: new SelectionBlockPreviewTransformer(PREFIX + 'articles'),
         event_selection: new SelectionBlockPreviewTransformer(PREFIX + 'events'),

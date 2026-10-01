@@ -136,6 +136,7 @@ sulu_admin_extras:
     # Block preview (collapsed blocks)
     block_preview_selected: "selected"
     block_preview_entries: "Entries"
+    block_preview_untitled: "Untitled"
     block_preview_account: "Organization"
     block_preview_contact: "Contact"
     block_preview_snippet: "Snippet"

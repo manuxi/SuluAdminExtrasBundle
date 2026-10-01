@@ -37,7 +37,8 @@ Blöcke:
 |---|---|
 | `single_account_selection`, `single_contact_selection`, `single_snippet_selection`, `single_form_selection` | `Organisation: Name` (Name wird bei Bedarf geladen und 30 s zwischengespeichert) |
 | `account_selection`, `contact_account_selection`, `snippet_selection`, `page_selection`, `article_selection`, `event_selection`, `testimonial_selection`, `teaser_selection` | `Seiten: 3` |
-| `block` (verschachtelt) | `Einträge: 3 · Titel A, Titel B, Titel C` (erstes `title`/`name`/`headline` jedes Eintrags) |
+| `snippet_selection`, `single_snippet_selection` | zusätzlich der Titel des erlaubten Snippet-Typs aus dem `types`-Param des Feldes, z. B. `Schnipsel (Link): 2` (der Titel stammt aus `<meta><title>` des Snippet-Templates) |
+| `block` (verschachtelt) | `Einträge: 3 - Titel A, Titel B, Ohne Titel` (erstes `title`/`name`/`headline` jedes Eintrags, „Ohne Titel“, wenn keines gesetzt ist) |
 | `link` | Adresse bei externen Links, Art (Seite, Medium, ...) bei internen |
 
 Bereits registrierte Schlüssel werden nie ersetzt; eine Darstellung aus dem Sulu-Core hat also immer Vorrang.

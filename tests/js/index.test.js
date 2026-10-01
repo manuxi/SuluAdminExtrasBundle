@@ -24,6 +24,8 @@ jest.mock('sulu-admin-bundle/containers/List/registries/listFieldTransformerRegi
     add: mockTransformerRegistryAdd,
 }));
 
+jest.mock('sulu-admin-bundle/stores/metadataStore', () => ({loadMetadata: jest.fn()}));
+
 const mockBlockPreviewRegistryAdd = jest.fn();
 jest.mock('sulu-admin-bundle/containers/FieldBlocks/registries/blockPreviewTransformerRegistry', () => ({
     add: mockBlockPreviewRegistryAdd,

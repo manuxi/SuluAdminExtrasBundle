@@ -2,8 +2,13 @@
 import React from 'react';
 import {render, screen, waitFor} from '@testing-library/react';
 
-jest.mock('sulu-admin-bundle/utils/Translator', () => ({translate: jest.fn((key) => key)}));
+jest.mock('sulu-admin-bundle/utils/Translator', () => ({
+    translate: jest.fn((key) => (key === 'sulu_admin_extras.block_preview_untitled' ? 'Ohne Titel' : key)),
+}));
 jest.mock('sulu-admin-bundle/stores/userStore', () => ({contentLocale: 'de'}));
+
+const mockLoadMetadata = jest.fn();
+jest.mock('sulu-admin-bundle/stores/metadataStore', () => ({loadMetadata: (...args) => mockLoadMetadata(...args)}));
 
 const mockGet = jest.fn();
 jest.mock('sulu-admin-bundle/services', () => ({ResourceRequester: {get: (...args) => mockGet(...args)}}));
@@ -40,13 +45,15 @@ describe('BlockListBlockPreviewTransformer', () => {
     test('Should show the number of entries and their titles', () => {
         render(<div>{transformer.transform([{title: 'Erste'}, {name: 'Zweite'}, {text: 'ohne Titel'}])}</div>);
 
-        expect(screen.getByText(/3 · Erste, Zweite/)).toBeTruthy();
+        expect(screen.getByText(/3 - Erste, Zweite, Ohne Titel/)).toBeTruthy();
     });
 
-    test('Should show only the number when entries have no title', () => {
+    test('Should list entries without a title as untitled', () => {
         const {container} = render(<div>{transformer.transform([{text: 'a'}, {text: 'b'}])}</div>);
 
-        expect(container.textContent).toBe('sulu_admin_extras.block_preview_entries:2');
+        expect(container.textContent).toBe(
+            'sulu_admin_extras.block_preview_entries:2 - Ohne Titel, Ohne Titel'
+        );
     });
 });
 
@@ -120,5 +127,50 @@ describe('SingleSelectionBlockPreviewTransformer', () => {
         render(<div>{transformer.transform(99, {type: 'single_account_selection'})}</div>);
 
         await waitFor(() => expect(screen.getByText('sulu_admin_extras.block_preview_selected')).toBeTruthy());
+    });
+});
+
+describe('Snippet type in the label', () => {
+    beforeEach(() => {
+        mockLoadMetadata.mockReset();
+        mockLoadMetadata.mockReturnValue(Promise.resolve({types: {link: {title: 'Links'}, hero: {title: 'Hero'}}}));
+    });
+
+    test('Should add the snippet type title to the selection label', async() => {
+        const transformer = new SelectionBlockPreviewTransformer('label', true);
+        const schema = {options: {types: {value: 'link'}}};
+
+        const {container} = render(<div>{transformer.transform(['a', 'b'], schema)}</div>);
+
+        await waitFor(() => expect(container.textContent).toBe('label (Links):2'));
+        expect(mockLoadMetadata).toHaveBeenCalledWith('form', 'snippet');
+    });
+
+    test('Should list several snippet types', async() => {
+        const transformer = new SelectionBlockPreviewTransformer('label', true);
+        const schema = {options: {types: {value: 'link,hero'}}};
+
+        const {container} = render(<div>{transformer.transform(['a'], schema)}</div>);
+
+        await waitFor(() => expect(container.textContent).toBe('label (Links, Hero):1'));
+    });
+
+    test('Should keep the plain label without a types param', () => {
+        const transformer = new SelectionBlockPreviewTransformer('label', true);
+
+        const {container} = render(<div>{transformer.transform(['a'], {options: {}})}</div>);
+
+        expect(container.textContent).toBe('label:1');
+        expect(mockLoadMetadata).not.toHaveBeenCalled();
+    });
+
+    test('Should not touch the label of other selections', () => {
+        const transformer = new SelectionBlockPreviewTransformer('label');
+        const schema = {options: {types: {value: 'link'}}};
+
+        const {container} = render(<div>{transformer.transform(['a'], schema)}</div>);
+
+        expect(container.textContent).toBe('label:1');
+        expect(mockLoadMetadata).not.toHaveBeenCalled();
     });
 });
