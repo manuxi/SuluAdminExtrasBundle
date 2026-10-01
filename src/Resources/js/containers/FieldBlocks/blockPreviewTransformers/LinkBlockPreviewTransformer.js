@@ -11,6 +11,8 @@ const MAX_LENGTH = 50;
  * Shows the address of external links and the kind (page, media, ...) of internal ones.
  */
 export default class LinkBlockPreviewTransformer implements BlockPreviewTransformer {
+    labeled: boolean = true;
+
     transform(value: *): Node {
         if (!value || typeof value !== 'object' || !value.provider) {
             return null;

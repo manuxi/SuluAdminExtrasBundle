@@ -15,6 +15,7 @@ const DEFAULT_DISPLAY_PROPERTY = 'name';
  */
 export default class SingleSelectionBlockPreviewTransformer implements BlockPreviewTransformer {
     labelKey: string;
+    labeled: boolean = true;
     snippetTypes: boolean;
 
     constructor(labelKey: string, snippetTypes: boolean = false) {

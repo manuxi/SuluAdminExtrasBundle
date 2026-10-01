@@ -14,6 +14,8 @@ const TITLE_PROPERTIES = ['title', 'name', 'headline'];
  * Entries without a title are listed as "Untitled".
  */
 export default class BlockListBlockPreviewTransformer implements BlockPreviewTransformer {
+    labeled: boolean = true;
+
     transform(value: *): Node {
         if (!isList(value) || value.length === 0) {
             return null;

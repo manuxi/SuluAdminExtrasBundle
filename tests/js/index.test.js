@@ -25,6 +25,7 @@ jest.mock('sulu-admin-bundle/containers/List/registries/listFieldTransformerRegi
 }));
 
 jest.mock('sulu-admin-bundle/stores/metadataStore', () => ({loadMetadata: jest.fn()}));
+jest.mock('sulu-admin-bundle/containers/FieldBlocks', () => ({__esModule: true, default: class FieldBlocks {}}));
 
 const mockBlockPreviewRegistryAdd = jest.fn();
 jest.mock('sulu-admin-bundle/containers/FieldBlocks/registries/blockPreviewTransformerRegistry', () => ({
@@ -183,6 +184,11 @@ describe('index.js (bundle initialization)', () => {
             'snippet_selection',
             'page_selection',
         ]));
+    });
+
+    test('Should replace the core block field with the labeled variant', () => {
+        expect(typeof fieldRegistry.fields['block']).toBe('function');
+        expect(fieldRegistry.fields['block'].name).toBe('LabeledFieldBlocks');
     });
 
     test('Should register AddNew toolbar action', () => {

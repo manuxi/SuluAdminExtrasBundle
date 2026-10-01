@@ -35,6 +35,7 @@ import './utils/collapsibleSection.scss';
 import AddNewToolbarAction from './toolbarActions/AddNewToolbarAction';
 
 import registerBlockPreviewTransformers from './containers/FieldBlocks/blockPreviewTransformers';
+import LabeledFieldBlocks from './containers/FieldBlocks/LabeledFieldBlocks';
 
 import Drawer from './containers/Drawer';
 import drawerStore from './stores/DrawerStore';
@@ -120,6 +121,10 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     formToolbarActionRegistry.add('sulu_admin_extras.add_new', AddNewToolbarAction);
 
     registerBlockPreviewTransformers();
+
+    // Same technique as for single_icon_selection above: core's "block" field is already registered, so the
+    // singleton's map is written to directly. Labels every line of a collapsed block and shows "Untitled" for a missing title.
+    fieldRegistry.fields['block'] = LabeledFieldBlocks;
 });
 
 export {

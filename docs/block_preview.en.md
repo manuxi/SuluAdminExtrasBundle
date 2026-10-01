@@ -29,6 +29,17 @@ Lines are sorted by `priority`, highest first. A good scheme for a consistent lo
 | 768 | text excerpt |
 | 512 | image thumbnail |
 
+## Labels and untitled blocks
+
+Every preview line starts with the label of its field in light grey (`Title: ...`, `Subtitle: ...`,
+`Organization: ...`). For core fields the label is the field's `<meta><title>`; the renderers below bring their own,
+shorter label. Thumbnails of media fields stay without a label.
+
+If a block previews a title field (`title`, `name` or `headline` carries the tag) but the editor left it empty, the
+first line reads `Title: Untitled` instead of the line silently missing. This is done by the bundle's own variant of
+the `block` field type, which replaces Sulu core's in the field registry (same technique as for
+`single_icon_selection`). Collapsed blocks otherwise behave exactly like core.
+
 ## Renderers
 
 | Field type | Shows |

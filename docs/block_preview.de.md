@@ -31,6 +31,17 @@ Blöcke:
 | 768 | Textauszug |
 | 512 | Bild-Vorschau |
 
+## Beschriftungen und Blöcke ohne Titel
+
+Jede Vorschau-Zeile beginnt mit der Bezeichnung ihres Feldes in hellem Grau (`Titel: ...`, `Untertitel: ...`,
+`Organisation: ...`). Bei Core-Feldern ist das der `<meta><title>` des Feldes; die Darstellungen unten bringen eine
+eigene, kürzere Bezeichnung mit. Vorschaubilder von Medienfeldern bleiben ohne Bezeichnung.
+
+Zeigt ein Block ein Titelfeld in der Vorschau (`title`, `name` oder `headline` trägt den Tag), der Redakteur hat es
+aber leer gelassen, lautet die erste Zeile `Titel: Ohne Titel`, statt dass die Zeile einfach fehlt. Das übernimmt
+eine eigene Variante des `block`-Feldtyps im Bundle, die den von Sulu im Feld-Register ersetzt (gleiche Technik wie bei
+`single_icon_selection`). Ansonsten verhalten sich zugeklappte Blöcke exakt wie im Core.
+
 ## Darstellungen
 
 | Feldtyp | Zeigt |

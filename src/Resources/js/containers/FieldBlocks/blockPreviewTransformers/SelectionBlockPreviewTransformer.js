@@ -12,6 +12,7 @@ import type {BlockPreviewTransformer} from 'sulu-admin-bundle/types';
  */
 export default class SelectionBlockPreviewTransformer implements BlockPreviewTransformer {
     labelKey: string;
+    labeled: boolean = true;
     snippetTypes: boolean;
 
     constructor(labelKey: string, snippetTypes: boolean = false) {
