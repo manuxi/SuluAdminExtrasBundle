@@ -56,7 +56,7 @@ services:
         tags:
             - { name: 'sulu_content.property_resolver', type: 'holiday_dates', alias: 'holiday_dates' }
 
-    # Icon Selection (enhances Sulu core's own single_icon_selection field, see docs/icon_selection.md)
+    # Icon Selection (enhances Sulu core's own single_icon_selection field, see docs/icon_selection.en.md)
     Manuxi\SuluAdminExtrasBundle\Icon\IconSetResolver:
         arguments:
             $iconSets: '%sulu_admin.icon_sets%'

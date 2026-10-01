@@ -6,6 +6,8 @@ supports uploading and, because it expects the form to hand it an already-resolv
 preview at all when reopening an article/page that already has an image (it only ever gets `{"id": n}` back). It
 also replaces `single_media_selection` where its 25×25px inline thumbnail is too small to tell images apart.
 
+![media_picker01.de.png](img/media_picker01.de.png) ![media_picker02.de.png](img/media_picker02.de.png)
+
 ---
 
 ## Usage in Form XML

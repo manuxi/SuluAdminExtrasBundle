@@ -14,7 +14,7 @@ import mediaPickerStyles from './mediaPicker.scss';
 /**
  * Replacement for "single_media_upload": that field only shows a preview right after uploading, because it
  * expects the form to hand it an already-resolved media object. On reopening a saved article it only gets
- * "{id}" back and shows empty (see docs/media_picker.md). This field fetches the media by id itself (like
+ * "{id}" back and shows empty (see docs/media_picker.en.md). This field fetches the media by id itself (like
  * "single_media_selection" already does) and additionally lets the editor click the preview to pick an
  * existing file from the media library instead of only uploading a new one.
  *

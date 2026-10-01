@@ -19,10 +19,10 @@ This bundle combines and modernizes functionality from the former `SuluContentTy
 Detailed documentation for each feature can be found in the `docs/` folder:
 
 ### Property Types
-*   **[Color Select](docs/color_select.md)** - Color selection with visual preview (List: [Type Color](docs/type_color.md), see below)
-*   **[Number With Default](docs/number_with_default.md)** - Number with support for `default_value`
-*   **[Slider Range](docs/slider_range.md)** - Slider input
-*   **[Star Rating](docs/star_rating.md)** - Star rating selection
+*   **[Color Select](docs/color_select.en.md)** - Color selection with visual preview (List: [Type Color](docs/type_color.en.md), see below)
+*   **[Number With Default](docs/number_with_default.en.md)** - Number with support for `default_value`
+*   **[Slider Range](docs/slider_range.en.md)** - Slider input
+*   **[Star Rating](docs/star_rating.en.md)** - Star rating selection
 *   **[DateTime Start / End](docs/datetime_start_end.en.md)** - Linked date-time pickers with auto end-time, business hours validation and next-slot finder
 *   **[DateTime With Default](docs/datetime_with_default.en.md)** - Date-time picker with `default_value` support
 *   **[Business Hours](docs/business_hours.en.md)** - Weekly schedule with time slots, breaks and copy function
@@ -34,17 +34,17 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 *   **[Block Preview](docs/block_preview.en.md)** - collapsed blocks show contacts, organisations, forms, links, selections and nested lists instead of looking empty
 
 ### List Transformers
-*   **[Percent Bar](docs/percent_bar.md)** - Percentage bar with many options
-*   **[Publish State](docs/publish_state.md)** - Display publication status in a separate column (hidden by default)
-*   **[Ghost Locale](docs/ghost_locale.md)** - Language status in a separate column (hidden by default)
-*   **[Type Color](docs/type_color.md)** - Color display (Form: [Color Select](docs/color_select.md), see above)
-*   **[Star Rating](docs/star_rating.md)** - Star rating
+*   **[Percent Bar](docs/percent_bar.en.md)** - Percentage bar with many options
+*   **[Publish State](docs/publish_state.en.md)** - Display publication status in a separate column (hidden by default)
+*   **[Ghost Locale](docs/ghost_locale.en.md)** - Language status in a separate column (hidden by default)
+*   **[Type Color](docs/type_color.en.md)** - Color display (Form: [Color Select](docs/color_select.en.md), see above)
+*   **[Star Rating](docs/star_rating.en.md)** - Star rating
 *   **[Color Dot](docs/color_dot.en.md)** - Colored circle from hex value
 *   **[Status Switcher](docs/status_switcher.en.md)** - Interactive inline status switcher with dropdown with options changing the entity status
 
 ### Other
-*   **[Collapsible Sections](docs/collapsible_sections.md)** - Auto-collapsible XML sections in the Admin UI (hacky)
-*   **[AddNewToolbarAction](docs/add_new_toolbar_action.md)** - "New"-Button in Action-Toolbar of an element
+*   **[Collapsible Sections](docs/collapsible_sections.en.md)** - Auto-collapsible XML sections in the Admin UI (hacky)
+*   **[AddNewToolbarAction](docs/add_new_toolbar_action.en.md)** - "New"-Button in Action-Toolbar of an element
 
 ---
 

@@ -7,6 +7,8 @@ Seite mit bereits gesetztem Bild erneut geöffnet wird (das Formular liefert dem
 selbst holt sich die vollständigen Bilddaten aber nie nach). Ersetzt außerdem `single_media_selection`, dessen
 25×25px kleines Vorschaubildchen kaum erkennen lässt, welches Bild ausgewählt ist.
 
+![media_picker01.de.png](img/media_picker01.de.png) ![media_picker02.de.png](img/media_picker02.de.png)
+
 ---
 
 ## Verwendung im Formular-XML
