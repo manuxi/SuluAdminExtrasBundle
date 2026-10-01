@@ -34,6 +34,8 @@ import './utils/collapsibleSection.scss';
 
 import AddNewToolbarAction from './toolbarActions/AddNewToolbarAction';
 
+import registerBlockPreviewTransformers from './containers/FieldBlocks/blockPreviewTransformers';
+
 import Drawer from './containers/Drawer';
 import drawerStore from './stores/DrawerStore';
 import drawerRegistry from './registries/DrawerRegistry';
@@ -116,6 +118,8 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     listAdapterRegistry.adapters['icon'] = IconAdapter;
 
     formToolbarActionRegistry.add('sulu_admin_extras.add_new', AddNewToolbarAction);
+
+    registerBlockPreviewTransformers();
 });
 
 export {

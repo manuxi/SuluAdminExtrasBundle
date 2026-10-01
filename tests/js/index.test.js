@@ -24,6 +24,12 @@ jest.mock('sulu-admin-bundle/containers/List/registries/listFieldTransformerRegi
     add: mockTransformerRegistryAdd,
 }));
 
+const mockBlockPreviewRegistryAdd = jest.fn();
+jest.mock('sulu-admin-bundle/containers/FieldBlocks/registries/blockPreviewTransformerRegistry', () => ({
+    add: mockBlockPreviewRegistryAdd,
+    has: jest.fn(() => false),
+}));
+
 const mockToolbarRegistryAdd = jest.fn();
 jest.mock('sulu-admin-bundle/views/Form/registries/formToolbarActionRegistry', () => ({
     add: mockToolbarRegistryAdd,
@@ -124,6 +130,7 @@ if (hookFn) hookFn({}, false);
 const registeredTransformers = mockTransformerRegistryAdd.mock.calls.map(c => c[0]);
 const registeredFields = mockFieldRegistryAdd.mock.calls.map(c => c[0]);
 const toolbarCalls = [...mockToolbarRegistryAdd.mock.calls];
+const registeredBlockPreviews = mockBlockPreviewRegistryAdd.mock.calls.map(c => c[0]);
 const fieldRegistry = require('sulu-admin-bundle/containers/Form/registries/fieldRegistry');
 const listAdapterRegistry = require('sulu-admin-bundle/containers/List/registries/listAdapterRegistry');
 
@@ -162,6 +169,18 @@ describe('index.js (bundle initialization)', () => {
     test('Should override Sulu core\'s single_icon_selection field and icon list adapter', () => {
         expect(fieldRegistry.fields['single_icon_selection']).toBe(indexModule.IconSelection);
         expect(listAdapterRegistry.adapters['icon']).toBe(indexModule.IconAdapter);
+    });
+
+    test('Should register block preview transformers for field types core does not preview', () => {
+        expect(registeredBlockPreviews).toEqual(expect.arrayContaining([
+            'block',
+            'link',
+            'single_account_selection',
+            'single_contact_selection',
+            'single_form_selection',
+            'snippet_selection',
+            'page_selection',
+        ]));
     });
 
     test('Should register AddNew toolbar action', () => {

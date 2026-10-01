@@ -31,6 +31,7 @@ Detailed documentation for each feature can be found in the `docs/` folder:
 *   **[Single Contact Autocomplete](docs/single_contact_autocomplete.en.md)** - Single-Contact-Select with autocomplete
 *   **[Media Picker](docs/media_picker.en.md)** - Large image preview, click to pick from the media library or upload, fixes the missing preview of `single_media_upload`
 *   **[Icon Selection](docs/icon_selection.en.md)** - real preview + picker overlay for Sulu core's own `single_icon_selection` field, Twig function `sulu_icon()`, property resolver
+*   **[Block Preview](docs/block_preview.en.md)** - collapsed blocks show contacts, organisations, forms, links, selections and nested lists instead of looking empty
 
 ### List Transformers
 *   **[Percent Bar](docs/percent_bar.md)** - Percentage bar with many options
