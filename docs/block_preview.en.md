@@ -59,7 +59,7 @@ Existing registry keys are never replaced, so a renderer shipped by Sulu core al
 
 ## Labels and Untitled Blocks
 
-Every preview line starts with the label of its field in light grey (`Title: ...`, `Subtitle: ...`, `Organization: ...`). For core fields this is the field's `<meta><title>`; the renderers above bring their own, shorter label. Thumbnails of media fields stay without a label.
+Every preview line starts with the label of its field in light grey (`Title: ...`, `Subtitle: ...`, `Organization: ...`). For core fields this is the field's `<meta><title>`; the renderers above bring their own, shorter label. Thumbnails of media fields stay without a label and always come last (Sulu floats them to the left, so any text after one would run next to the image).
 
 If a block previews a title field (`title`, `name` or `headline` carries the tag) but the editor left it empty, the first line reads `Title: Untitled` instead of the line silently missing.
 

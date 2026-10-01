@@ -9,6 +9,8 @@ import styles from './blockPreviewTransformers/blockPreview.scss';
 const BLOCK_PREVIEW_TAG = 'sulu.block_preview';
 const TITLE_PROPERTIES = ['title', 'name', 'headline'];
 const FALLBACK_LIMIT = 3;
+// Core floats the thumbnails of these types to the left, so any text line after one would run next to the image.
+const MEDIA_TYPES = ['single_media_selection', 'media_selection'];
 
 type PreviewEntry = {|
     missing: boolean,
@@ -25,7 +27,7 @@ function getPreviewPriority(entry: Object): ?number {
 /**
  * Same selection as Sulu core (tagged fields that have a value, highest priority first; without any of those the
  * first fields of the types with a block preview transformer), plus tagged title fields that are still empty,
- * so that the preview can say so instead of silently leaving the line out.
+ * so that the preview can say so instead of silently leaving the line out. Thumbnails always come last.
  */
 export function getPreviewEntries(
     form: Object,
@@ -56,7 +58,10 @@ export function getPreviewEntries(
         .filter((name) => TITLE_PROPERTIES.includes(name) && !value[name])
         .forEach((name) => entries.push({missing: true, name, priority: getPreviewPriority(form[name]) || 0}));
 
-    return entries.sort((entry1, entry2) => entry2.priority - entry1.priority);
+    const sorted = entries.sort((entry1, entry2) => entry2.priority - entry1.priority);
+    const isMedia = (entry) => MEDIA_TYPES.includes(form[entry.name].type);
+
+    return [...sorted.filter((entry) => !isMedia(entry)), ...sorted.filter(isMedia)];
 }
 
 /**

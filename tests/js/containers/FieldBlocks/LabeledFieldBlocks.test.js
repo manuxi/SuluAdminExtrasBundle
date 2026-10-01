@@ -49,6 +49,17 @@ describe('getPreviewEntries', () => {
         expect(entries.map((entry) => entry.name)).toEqual(['b', 'a']);
     });
 
+    test('Should put thumbnails last, whatever their priority', () => {
+        const withImage = {
+            ...form,
+            image: {type: 'single_media_selection', label: 'Bild', ...tag(3000)},
+            images: {type: 'media_selection', label: 'Bilder', ...tag(1000)},
+        };
+        const entries = getPreviewEntries(withImage, {title: 'a', text: 'b', image: {id: 1}, images: {ids: [2]}});
+
+        expect(entries.map((entry) => entry.name)).toEqual(['title', 'text', 'image', 'images']);
+    });
+
     test('Should return nothing for an empty block without a previewed title', () => {
         expect(getPreviewEntries({other: form.other}, {})).toEqual([]);
     });

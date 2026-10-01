@@ -59,7 +59,7 @@ Bereits registrierte Schlüssel werden nie ersetzt; eine Darstellung aus dem Sul
 
 ## Beschriftungen und fehlender Titel
 
-Jede Vorschau-Zeile beginnt mit der Bezeichnung ihres Feldes in hellem Grau (`Titel: ...`, `Untertitel: ...`, `Organisation: ...`). Bei Core-Feldern ist das der `<meta><title>` des Feldes; die Darstellungen oben bringen eine eigene, kürzere Bezeichnung mit. Vorschaubilder von Medienfeldern bleiben ohne Bezeichnung.
+Jede Vorschau-Zeile beginnt mit der Bezeichnung ihres Feldes in hellem Grau (`Titel: ...`, `Untertitel: ...`, `Organisation: ...`). Bei Core-Feldern ist das der `<meta><title>` des Feldes; die Darstellungen oben bringen eine eigene, kürzere Bezeichnung mit. Vorschaubilder von Medienfeldern bleiben ohne Bezeichnung und stehen immer zuletzt (Sulu lässt sie links schweben, ein Text dahinter würde sonst neben dem Bild laufen).
 
 Zeigt ein Block ein Titelfeld in der Vorschau (`title`, `name` oder `headline` trägt den Tag), der Redakteur hat es aber leer gelassen, lautet die erste Zeile `Titel: Ohne Titel`, statt dass die Zeile einfach fehlt.
 
