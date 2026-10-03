@@ -34,7 +34,9 @@
             }
 
             /*
-             * The eye lies on the divider line, vertically centered on it, with some distance to the right edge.
+             * The eye lies on the divider line, vertically centered on it. Horizontally it sits above the middle
+             * symbol (the gear) of the toolbar at the top right of the form: the gear is centered 34px left of the
+             * right edge, and the wrapper is 18px icon + 2 x 12px padding = 42px wide, so right = 34 - 21.
              * The padding and the background hide the line behind the icon, so a piece of the line is left on both
              * sides of the eye. The title stays centered because the icon is out of the flow. The page form has a
              * gray background, block forms are white.
@@ -52,7 +54,7 @@
 
                 .sulu-collapsible-icon-wrapper {
                     position: absolute;
-                    right: 40px;
+                    right: 13px;
                     align-self: center;
                     display: flex;
                     align-items: center;
