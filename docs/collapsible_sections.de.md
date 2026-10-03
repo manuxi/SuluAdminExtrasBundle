@@ -35,7 +35,7 @@ Zusätzlich merkt sich der Browser für jeden Benutzer individuell den auf-/zuge
 
 ## Farbe des Auges
 
-Das Auge einer Section wird dunkelblau, sobald in der Section etwas eingetragen ist, egal ob sie auf- oder zugeklappt ist. Beim Darüberfahren erscheint "Enthält Eingaben". So sieht man bei zugeklappten Sections auf einen Blick, welche Inhalt haben.
+Eine zugeklappte Section zeigt mit dem Auge, ob in ihr etwas eingetragen ist: dunkelblau mit kleinem Punkt, wenn ja, hellgrau, wenn sie leer ist. Beim Darüberfahren erscheint "Enthält Eingaben". So sieht man bei zugeklappten Sections auf einen Blick, welche Inhalt haben. Eine aufgeklappte Section behält das normale graue Auge.
 
 Es zählen nur Felder, die von Haus aus leer sind: Textfelder, Texteditoren, Auswahlen (Seiten, Medien, Snippets, Listen), Medien und Blöcke. Schalter und einfache Selects werden ignoriert, weil sich im DOM ein Default nicht von einer Eingabe unterscheiden lässt. Eine Section, die nur aus Schaltern und Selects besteht, bleibt deshalb grau.
 

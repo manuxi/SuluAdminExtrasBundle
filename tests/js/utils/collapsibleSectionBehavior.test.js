@@ -187,7 +187,7 @@ describe('collapsibleSection behavior', () => {
         expect(preview).not.toHaveClass('sulu-collapsible-section');
     });
 
-    test('the eye turns blue (has-values) when a text field holds an entry, open or closed', () => {
+    test('the section gets has-values (blue eye while closed) when a text field holds an entry', () => {
         const section = buildSection('Formatierung');
         notifyDomChanged();
         expect(section).not.toHaveClass('has-values');
