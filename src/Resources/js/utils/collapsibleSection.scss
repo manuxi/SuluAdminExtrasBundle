@@ -1,3 +1,5 @@
+@import "sulu-admin-bundle/containers/Application/colors.scss";
+
 :global {
     /*
      * Sulu lays out the form grid with floats. A field that is taller than its neighbours (for example one with a
@@ -29,7 +31,7 @@
             user-select: none;
 
             &:focus-visible {
-                outline: 2px solid #1A1A1A;
+                outline: 2px solid $black;
                 outline-offset: 2px;
             }
 
@@ -60,19 +62,25 @@
                     align-items: center;
                     justify-content: center;
                     padding: 0 12px;
-                    background-color: #f5f5f5;
+                    background-color: $wildSand;
 
                     .sulu-collapsible-icon {
                         font-size: 18px;
-                        color: #6d6d6d;
+                        color: $doveGray;
                         transition: color 0.15s ease-in-out;
                     }
                 }
             }
 
             &:hover .sulu-collapsible-icon {
-                color: #1A1A1A;
+                color: $black;
             }
+        }
+
+        /* something has been entered in the section: the eye is blue, also while hovered, open or closed */
+        &.has-values .sulu-collapsible-header .sulu-collapsible-divider .sulu-collapsible-icon-wrapper .sulu-collapsible-icon,
+        &.has-values .sulu-collapsible-header:hover .sulu-collapsible-icon {
+            color: $blueZodiac;
         }
 
         &>div:not(.sulu-collapsible-header) {
@@ -99,6 +107,6 @@
 
     /* as specific as the base rule above (which carries the page gray), otherwise that one wins inside blocks */
     [class*="block--"] .sulu-collapsible-section .sulu-collapsible-header .sulu-collapsible-divider .sulu-collapsible-icon-wrapper {
-        background-color: #fff;
+        background-color: $white;
     }
 }

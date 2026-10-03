@@ -133,6 +133,9 @@ sulu_admin_extras:
         invalid_time_slot: "The selected time is outside working hours or during a break."
         collision: "An entry already exists in this time range."
 
+    # Collapsible sections: tooltip of the blue eye
+    collapsible_has_values: "Contains entries"
+
     # Block preview (collapsed blocks)
     block_preview_selected: "selected"
     block_preview_entries: "Entries"

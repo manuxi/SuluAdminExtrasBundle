@@ -33,6 +33,12 @@ A title is either the text as displayed (`Formatting`, list every language you u
 Using the `initially_closed_sections` configuration key, you can define which sections should be collapsed by default when the page first loads.
 Additionally, the browser remembers the collapsed/expanded state for each section per user in their `localStorage`. This means if a user collapses a section, it will remain collapsed on subsequent page loads, regardless of the default configuration.
 
+## Eye color
+
+The eye of a section turns dark blue as soon as something has been entered in it, whether the section is open or closed. Hovering the eye shows "Contains entries". So an editor sees at a glance which closed sections hold content.
+
+Only fields that are empty by default count: text fields, text editors, selections (pages, media, snippets, lists), media and blocks. Switches and plain selects are ignored, because the DOM cannot tell a default from an entry. A section that consists only of switches and selects therefore stays gray.
+
 ## Validation errors
 
 A collapsed section never hides a validation error: as soon as a field inside a closed section is invalid, the section opens automatically (for now, the stored choice of the user is not changed). Sulu renders an empty error label below every field and fills it only for invalid fields, so the bundle looks for an error label with text.

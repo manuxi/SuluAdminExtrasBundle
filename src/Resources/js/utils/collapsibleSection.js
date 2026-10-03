@@ -73,6 +73,36 @@ const isFormSection = (element) => /(^|\s)grid-section--/.test(element.className
 
 const isClosed = (section) => section.classList.contains('is-closed') || section.classList.contains('is-hidden');
 
+// The eye of a section turns blue when the editor has put something into it. Defaults cannot be told from entries in
+// the DOM (a switch that is on by default looks like one the editor switched on), so only fields that are empty by
+// default count: texts, selections, media and blocks. Switches and plain selects are ignored.
+const TEXT_FIELDS = 'input:not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=button]):not([type=submit]), textarea';
+const FILLED_ITEMS = '[class*="remove-button--"], [class*="list-element--"], [class*="block--"], img';
+
+const hasValues = (section) => {
+    const filledText = Array.from(section.querySelectorAll(TEXT_FIELDS)).some(field => field.value.trim() !== '');
+
+    return filledText
+        || Array.from(section.querySelectorAll('[contenteditable="true"]')).some(field => (field.textContent || '').trim() !== '')
+        || section.querySelector(FILLED_ITEMS) !== null;
+};
+
+const updateValueMarks = () => {
+    document.querySelectorAll('.sulu-collapsible-section').forEach(section => {
+        const filled = hasValues(section);
+        section.classList.toggle('has-values', filled);
+
+        const wrapper = section.querySelector('.sulu-collapsible-icon-wrapper');
+        if (wrapper) {
+            if (filled) {
+                wrapper.setAttribute('title', translate('sulu_admin_extras.collapsible_has_values'));
+            } else {
+                wrapper.removeAttribute('title');
+            }
+        }
+    });
+};
+
 function initSuluCollapsibleSections() {
     const titles = getCollapsibleSectionTitles();
     if (titles.length === 0) return;
@@ -206,8 +236,12 @@ const observer = new MutationObserver((mutations) => {
         }
 
         revealSectionsWithErrors();
+        updateValueMarks();
     });
 });
+
+// typing does not change the DOM structure, so entries are also checked on the input events
+['input', 'change', 'focusout'].forEach(type => document.addEventListener(type, () => requestAnimationFrame(updateValueMarks), true));
 
 observer.observe(document.body, {
     childList: true,

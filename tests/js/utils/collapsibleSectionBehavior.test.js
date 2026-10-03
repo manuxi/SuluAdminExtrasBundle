@@ -186,4 +186,39 @@ describe('collapsibleSection behavior', () => {
         expect(preview.querySelector('.sulu-collapsible-icon-wrapper')).toBeNull();
         expect(preview).not.toHaveClass('sulu-collapsible-section');
     });
+
+    test('the eye turns blue (has-values) when a text field holds an entry, open or closed', () => {
+        const section = buildSection('Formatierung');
+        notifyDomChanged();
+        expect(section).not.toHaveClass('has-values');
+        expect(section.querySelector('.sulu-collapsible-icon-wrapper').getAttribute('title')).toBeNull();
+
+        section.querySelector('input').value = 'Titel';
+        section.querySelector('input').dispatchEvent(new Event('input', {bubbles: true}));
+        expect(section).toHaveClass('has-values');
+        expect(section.querySelector('.sulu-collapsible-icon-wrapper').getAttribute('title'))
+            .toBe('sulu_admin_extras.collapsible_has_values');
+        // still closed: the mark does not depend on the open state
+        expect(section).toHaveClass('is-closed');
+
+        section.querySelector('input').value = '  ';
+        section.querySelector('input').dispatchEvent(new Event('input', {bubbles: true}));
+        expect(section).not.toHaveClass('has-values');
+    });
+
+    test('a switch that is on does not count as an entry, a selected item does', () => {
+        const section = buildSection('Formatierung');
+        const toggle = document.createElement('input');
+        toggle.type = 'checkbox';
+        toggle.checked = true;
+        section.appendChild(toggle);
+        notifyDomChanged();
+        expect(section).not.toHaveClass('has-values');
+
+        const item = document.createElement('li');
+        item.className = 'list-element--abc';
+        section.appendChild(item);
+        notifyDomChanged();
+        expect(section).toHaveClass('has-values');
+    });
 });
