@@ -65,7 +65,6 @@
                     background-color: $wildSand;
 
                     .sulu-collapsible-icon {
-                        position: relative;
                         font-size: 18px;
                         color: $doveGray;
                         transition: color 0.15s ease-in-out;
@@ -80,8 +79,8 @@
 
         /*
          * Only a closed section tells what is inside (an open one shows it anyway and keeps the plain gray eye).
-         * Closed and empty: a light gray eye. Closed with entries: dark blue eye with a dot, which also works without
-         * telling the colors apart. Hover keeps both colors, the click target is the whole divider anyway.
+         * Closed and empty: a light gray eye. Closed with entries: dark blue eye.
+         * Hover keeps both colors, the click target is the whole divider anyway.
          */
         &.is-hidden .sulu-collapsible-header .sulu-collapsible-divider .sulu-collapsible-icon-wrapper .sulu-collapsible-icon {
             color: $silverChalice;
@@ -90,17 +89,6 @@
         &.is-hidden.has-values .sulu-collapsible-header .sulu-collapsible-divider .sulu-collapsible-icon-wrapper .sulu-collapsible-icon,
         &.is-hidden.has-values .sulu-collapsible-header:hover .sulu-collapsible-icon {
             color: $blueZodiac;
-
-            &::after {
-                content: '';
-                position: absolute;
-                top: -1px;
-                right: -4px;
-                width: 7px;
-                height: 7px;
-                border-radius: 50%;
-                background-color: $blueZodiac;
-            }
         }
 
         &>div:not(.sulu-collapsible-header) {

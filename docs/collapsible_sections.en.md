@@ -35,7 +35,7 @@ Additionally, the browser remembers the collapsed/expanded state for each sectio
 
 ## Eye color
 
-A closed section shows with its eye whether something has been entered in it: dark blue with a small dot if so, light gray if it is empty. Hovering the eye shows "Contains entries". So an editor sees at a glance which closed sections hold content. An open section keeps the plain gray eye.
+A closed section shows with its eye whether something has been entered in it: dark blue if so, light gray if it is empty. Hovering the eye shows "Contains entries". So an editor sees at a glance which closed sections hold content. An open section keeps the plain gray eye.
 
 Only fields that are empty by default count: text fields, text editors, selections (pages, media, snippets, lists), media and blocks. Switches and plain selects are ignored, because the DOM cannot tell a default from an entry. A section that consists only of switches and selects therefore stays gray.
 
