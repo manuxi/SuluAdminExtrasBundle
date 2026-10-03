@@ -31,6 +31,7 @@ Detaillierte Dokumentationen für jedes Feature befinden sich im `docs/` Ordner:
 *   **[Single Contact Autocomplete](docs/single_contact_autocomplete.de.md)** - Einzel-Kontakt-Select mit Autocomplete-Funktion
 *   **[Media Picker](docs/media_picker.de.md)** - Große Bildvorschau, Klick öffnet Auswahl aus der Mediathek oder Upload, behebt die fehlende Vorschau von `single_media_upload`
 *   **[Icon Selection](docs/icon_selection.de.md)** - echte Vorschau + Auswahl-Overlay für Sulus eigenes `single_icon_selection`-Feld, Twig-Funktion `sulu_icon()`, Property-Resolver
+*   **[Line Break](docs/line_break.de.md)** - beginnt im Admin-Formular eine neue Zeile, per `visibleCondition` steuerbar
 *   **[Block-Vorschau](docs/block_preview.de.md)** - zugeklappte Blöcke zeigen Kontakte, Organisationen, Formulare, Links, Auswahlen und verschachtelte Listen statt leer zu wirken
 
 ### List Transformers (Listenansicht)

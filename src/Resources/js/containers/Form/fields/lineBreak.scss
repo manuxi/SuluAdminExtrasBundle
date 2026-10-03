@@ -1,0 +1,9 @@
+/* the class is added to the grid item of Sulu, which brings its own width and float: doubled for the specificity */
+.line-break-item.line-break-item {
+    clear: left;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}

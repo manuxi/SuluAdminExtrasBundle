@@ -167,6 +167,7 @@ describe('index.js (bundle initialization)', () => {
         expect(registeredFields).toContain('holiday_dates');
         expect(registeredFields).toContain('single_contact_autocomplete');
         expect(registeredFields).toContain('media_picker');
+        expect(registeredFields).toContain('line_break');
     });
 
     test('Should override Sulu core\'s single_icon_selection field and icon list adapter', () => {

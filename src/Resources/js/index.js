@@ -26,6 +26,7 @@ import PublicHolidays from './containers/Form/fields/PublicHolidays/PublicHolida
 import HolidayDates from './containers/Form/fields/HolidayDates/HolidayDates';
 import SingleContactAutocomplete from './containers/Form/fields/SingleContactAutocomplete/SingleContactAutocomplete';
 import MediaPicker from './containers/Form/fields/MediaPicker';
+import LineBreak from './containers/Form/fields/LineBreak';
 import IconSelection from './containers/Form/fields/IconSelection';
 import IconAdapter from './containers/IconAdapter/IconAdapter';
 
@@ -109,6 +110,7 @@ initializer.addUpdateConfigHook('sulu_admin_extras', (config, initialized) => {
     fieldRegistry.add('holiday_dates', HolidayDates);
     fieldRegistry.add('single_contact_autocomplete', SingleContactAutocomplete);
     fieldRegistry.add('media_picker', MediaPicker);
+    fieldRegistry.add('line_break', LineBreak);
 
     // Sulu core already registers "single_icon_selection" (form field) and "icon" (list adapter) itself, in
     // its own "sulu_admin" update-config-hook, which fires before this one - fieldRegistry.add()/

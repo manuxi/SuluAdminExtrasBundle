@@ -56,6 +56,10 @@ services:
         tags:
             - { name: 'sulu_content.property_resolver', type: 'holiday_dates', alias: 'holiday_dates' }
 
+    Manuxi\SuluAdminExtrasBundle\Content\Type\LineBreakPropertyResolver:
+        tags:
+            - { name: 'sulu_content.property_resolver', type: 'line_break', alias: 'line_break' }
+
     # Icon Selection (enhances Sulu core's own single_icon_selection field, see docs/icon_selection.en.md)
     Manuxi\SuluAdminExtrasBundle\Icon\IconSetResolver:
         arguments:
