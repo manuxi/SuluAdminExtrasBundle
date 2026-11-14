@@ -1,6 +1,7 @@
 @import 'sulu-admin-bundle/containers/Application/colors.scss';
 
-td[class*="cell--"] {
+/* Only in rows that show this transformer's own indicator (see PublishStateFieldTransformer.scss) */
+tr:has([data-admin-extras-indicator="ghost"]) {
     span[class*="ghost-indicator--"] {
         display: none !important;
     }

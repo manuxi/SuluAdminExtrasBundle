@@ -6,6 +6,7 @@ exports[`GhostLocaleFieldTransformer Render with ghost locale value (snapshot) 1
 <div>
   <span
     class="ghostIndicator"
+    data-admin-extras-indicator="ghost"
   >
     EN
   </span>

@@ -4,6 +4,7 @@ exports[`PublishStateFieldTransformer Render draft state (snapshot) 1`] = `
 <div>
   <span
     class="stateIndicator"
+    data-admin-extras-indicator="publish"
     title="sulu_admin_extras.draft"
   >
     <span
@@ -20,6 +21,7 @@ exports[`PublishStateFieldTransformer Render published state (snapshot) 1`] = `
 <div>
   <span
     class="stateIndicator"
+    data-admin-extras-indicator="publish"
     title="sulu_admin_extras.published"
   >
     <span
@@ -33,6 +35,7 @@ exports[`PublishStateFieldTransformer Render unpublished state (snapshot) 1`] = 
 <div>
   <span
     class="stateIndicator"
+    data-admin-extras-indicator="publish"
     title="sulu_admin_extras.not_published"
   >
     <span

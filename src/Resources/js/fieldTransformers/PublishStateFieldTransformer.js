@@ -62,7 +62,7 @@ class PublishStateFieldTransformer {
 
         if (isDraft) {
             return (
-                <span className={containerClass} style={containerStyle} title={label}>
+                <span className={containerClass} style={containerStyle} title={label} data-admin-extras-indicator="publish">
                     <span className={`${styles.stateDot} ${styles.published}`} />
                     <span className={`${styles.stateDot} ${styles.unpublished}`} />
                 </span>
@@ -72,7 +72,7 @@ class PublishStateFieldTransformer {
         const colorClass = isPublished ? styles.published : styles.unpublished;
 
         return (
-            <span className={containerClass} style={containerStyle} title={label}>
+            <span className={containerClass} style={containerStyle} title={label} data-admin-extras-indicator="publish">
                 <span className={`${styles.stateDot} ${colorClass}`} />
             </span>
         );

@@ -1,7 +1,7 @@
 # Publish State Indicator
 
 The **Publish State Indicator** is a List Transformer that displays the workflow status of an entity (e.g., Draft vs. Published) using a colored dot.
-It replaces Sulu's own **Publish State Indicator** (which is hidden) and places it in its own column.
+It replaces Sulu's own **Publish State Indicator** (which is hidden, but only in rows that use this transformer; other tables are not affected) and places it in its own column.
 
 ![img.png](img/publish_state_indicator.de.png)
 

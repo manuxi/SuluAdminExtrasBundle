@@ -15,7 +15,7 @@ class GhostLocaleFieldTransformer {
         }
 
         return (
-            <span className={styles.ghostIndicator}>
+            <span className={styles.ghostIndicator} data-admin-extras-indicator="ghost">
                 {ghostLocale.toUpperCase()}
             </span>
         );
