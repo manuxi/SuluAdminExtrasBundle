@@ -115,4 +115,34 @@ describe('PublishStateFieldTransformer', () => {
 
         expect(container.querySelector('[title="sulu_admin_extras.draft"]')).toBeInTheDocument();
     });
+
+    // --- enable_offset ---
+
+    test('enable_offset true applies the offset without ghostLocale', () => {
+        const transformer = new PublishStateFieldTransformer({enable_offset: true, offset_width: 40});
+        const result = transformer.transform(true, {}, {});
+        const {container} = rtlRender(<div>{result}</div>);
+        const indicator = container.querySelector('[title="sulu_admin_extras.published"]');
+
+        expect(indicator.className).toContain('withOffset');
+        expect(indicator.style.getPropertyValue('--offset-width')).toBe('40px');
+    });
+
+    test('enable_offset true skips the offset for a ghostLocale row', () => {
+        const transformer = new PublishStateFieldTransformer({enable_offset: true});
+        const result = transformer.transform(true, {}, {ghostLocale: 'de'});
+        const {container} = rtlRender(<div>{result}</div>);
+        const indicator = container.querySelector('[title="sulu_admin_extras.published"]');
+
+        expect(indicator.className).not.toContain('withOffset');
+        expect(indicator.getAttribute('style')).toBeNull();
+    });
+
+    test('enable_offset false never applies the offset', () => {
+        const transformer = new PublishStateFieldTransformer();
+        const result = transformer.transform(true, {}, {});
+        const {container} = rtlRender(<div>{result}</div>);
+
+        expect(container.querySelector('[title="sulu_admin_extras.published"]').className).not.toContain('withOffset');
+    });
 });
