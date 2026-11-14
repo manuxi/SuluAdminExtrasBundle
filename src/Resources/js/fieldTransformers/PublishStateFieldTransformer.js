@@ -52,7 +52,7 @@ class PublishStateFieldTransformer {
         }
         const label = translate(labelKey);
 
-        const needsOffset = this.config.enable_offset && !hasGhostLocale;
+        const needsOffset = this.config.enable_offset && !ghostLocale;
         const containerClass = needsOffset
             ? `${styles.stateIndicator} ${styles.withOffset}`
             : styles.stateIndicator;
